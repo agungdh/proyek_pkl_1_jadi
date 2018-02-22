@@ -19,7 +19,9 @@
     <div class="box-body">
 
     <div class="form-group">
-      <a href='<?php echo base_url("substandar/tambah"); ?>'><button class="btn btn-success">+ Tambah Substandar</button></a>
+      <h5><strong><font color=blue><?php echo 'Standar : ' . $data['standar']->nomor . ' | ' . $data['standar']->nama; ?></font></strong></h5>
+      <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'><button class="btn btn-success">Kembali ke Standar</button></a><br><br>
+      <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success">+ Tambah Substandar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -27,7 +29,6 @@
         <tr>
                     <th>NOMOR</th>
                     <th>NAMA</th>
-                    <th>STANDAR</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -37,12 +38,12 @@
         foreach ($data['substandar'] as $item) {
           ?>
           <tr>
-            <th><?php echo $item->nomor_substandar; ?></th>
-            <th><?php echo $item->nama_substandar; ?></th>
-            <th><?php echo $item->nomor_standar . ' | ' . $item->nama_standar; ?></th>
+            <th><?php echo $item->nomor; ?></th>
+            <th><?php echo $item->nama; ?></th>
               <th>
-                <a class="btn btn-success" href="<?php echo base_url('substandar/ubah/'.$item->id_standar) ?>">Ubah</a>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id_standar; ?>')">Hapus</a>
+                <a class="btn btn-success" href="<?php echo base_url('butir/index/'.$item->id) ?>">Butir</a>
+                <a class="btn btn-success" href="<?php echo base_url('substandar/ubah/'.$item->id) ?>">Ubah</a>
+                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')">Hapus</a>
               </th>
           </tr>
           <?php
