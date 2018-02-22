@@ -10,8 +10,9 @@ class Butir extends CI_Controller {
 	function index($id_substandar) {
 		$data['isi'] = "butir/index";
 		$data['data']['substandar'] = $this->m_butir->ambil_substandar_id($id_substandar);
+		$data['data']['standar'] = $this->m_butir->ambil_standar_id($data['data']['substandar']->standar_id);
 		$data['data']['butir'] = $this->m_butir->ambil_butir($id_substandar);
-
+		
 		$this->load->view("template/template", $data);
 	}
 
