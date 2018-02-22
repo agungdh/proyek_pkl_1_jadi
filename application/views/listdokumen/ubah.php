@@ -10,8 +10,8 @@
     <input type="hidden" name="id" value="<?php echo $data['data_listdokumen']->id; ?>">
 
     <div class="form-group">
-      <label for="butir">butir</label>
-          <input readonly value="<?php echo $data['butir']->nomor . ' | ' . $data['butir']->nama;?>" required type="text" class="form-control" id="butir" placeholder="Isi butir" name="butir">          
+      <label for="butir">Butir</label>
+          <input readonly value="<?php echo $data['butir']->nomor . ' | ' . $data['butir']->nama;?>" required type="text" class="form-control" id="butir" placeholder="Isi Butir" name="butir">          
     </div>
 
     <div class="form-group">
