@@ -41,6 +41,7 @@
             <th><?php echo $item->versi; ?></th>
             <th><?php echo $item->tahun; ?></th>
               <th>
+                <a class="btn btn-success" href="<?php echo base_url('standar/index/'.$item->id) ?>">Standar</a>
                 <a class="btn btn-success" href="<?php echo base_url('versi/ubah/'.$item->id) ?>">Ubah</a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')">Hapus</a>
               </th>

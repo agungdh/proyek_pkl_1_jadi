@@ -4,10 +4,11 @@ class M_standar extends CI_Model{
 		parent::__construct();		
 	}
 
-	function ambil_standar(){
+	function ambil_standar($id_versi){
 		$sql = "SELECT *
-				FROM v_standar";
-		$query = $this->db->query($sql, array());
+				FROM standar
+				WHERE versi_id = ?";
+		$query = $this->db->query($sql, array($id_versi));
 		$row = $query->result();
 
 		return $row;
@@ -18,6 +19,16 @@ class M_standar extends CI_Model{
 				FROM versi";
 		$query = $this->db->query($sql, array());
 		$row = $query->result();
+
+		return $row;
+	}
+
+	function ambil_versi_id($id_versi){
+		$sql = "SELECT *
+				FROM versi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_versi));
+		$row = $query->row();
 
 		return $row;
 	}
@@ -40,13 +51,12 @@ class M_standar extends CI_Model{
 		$query = $this->db->query($sql, array($nomor, $nama, $id_versi));
 	}	
 
-	function ubah_standar($nomor, $nama, $id_versi, $id){
+	function ubah_standar($nomor, $nama, $id){
 		$sql = "UPDATE standar
 				SET nomor = ?,
-				nama = ?,
-				versi_id = ?
+				nama = ?
 				WHERE id = ?";
-		$query = $this->db->query($sql, array($nomor, $nama, $id_versi, $id));
+		$query = $this->db->query($sql, array($nomor, $nama, $id));
 	}	
 
 	function hapus_standar($id){

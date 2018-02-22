@@ -10,6 +10,11 @@
     <input type="hidden" name="id" value="<?php echo $data['data_standar']->id; ?>">
 
     <div class="form-group">
+      <label for="versi">Versi</label>
+          <input readonly value="<?php echo $data['versi']->versi . ' | ' . $data['versi']->nama . ' | ' . $data['versi']->tahun; ?>" required type="text" class="form-control" id="versi" placeholder="Isi Versi" name="versi">          
+    </div>
+
+    <div class="form-group">
       <label for="nomor">Nomor</label>
           <input value="<?php echo $data['data_standar']->nomor; ?>" required type="text" class="form-control" id="nomor" placeholder="Isi Nomor" name="nomor">          
     </div>
@@ -17,25 +22,6 @@
     <div class="form-group">
       <label for="nama">Nama</label>
           <input value="<?php echo $data['data_standar']->nama; ?>" required type="text" class="form-control" id="nama" placeholder="Isi Nama" name="nama">          
-    </div>
-
-    <div class="form-group">
-      <label>Versi</label>
-      <select class="form-control select2" name="id_versi">
-        <?php
-        foreach ($data['data_versi'] as $item) {
-          if ($item->id == $data['data_standar']->versi_id) {
-            ?>
-            <option selected value="<?php echo $item->id; ?>"><?php echo $item->versi . " | " . $item->nama . " | " . $item->tahun; ?></option>
-            <?php
-          } else {
-            ?>
-            <option value="<?php echo $item->id; ?>"><?php echo $item->versi . " | " . $item->nama . " | " . $item->tahun; ?></option>
-            <?php
-          }
-        }
-        ?>
-      </select>
     </div>
 
     </div><!-- /.box-body -->

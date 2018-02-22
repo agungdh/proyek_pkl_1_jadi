@@ -4,8 +4,13 @@
   </div><!-- /.box-header -->
 
   <!-- form start -->
-  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('standar/aksi_tambah'); ?>">
+  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('standar/aksi_tambah/'.$data['versi']->id); ?>">
     <div class="box-body">
+
+    <div class="form-group">
+      <label for="versi">Versi</label>
+          <input readonly value="<?php echo $data['versi']->versi . ' | ' . $data['versi']->nama . ' | ' . $data['versi']->tahun; ?>" required type="text" class="form-control" id="versi" placeholder="Isi Versi" name="versi">          
+    </div>
 
     <div class="form-group">
       <label for="nomor">Nomor</label>
@@ -17,24 +22,11 @@
           <input required type="text" class="form-control" id="nama" placeholder="Isi Nama" name="nama">          
     </div>
 
-    <div class="form-group">
-      <label>Versi</label>
-      <select class="form-control select2" name="id_versi">
-        <?php
-        foreach ($data['data_versi'] as $item) {
-          ?>
-          <option value="<?php echo $item->id; ?>"><?php echo $item->versi . " | " . $item->nama . " | " . $item->tahun; ?></option>
-          <?php
-        }
-        ?>
-      </select>
-    </div>
-
     </div><!-- /.box-body -->
 
     <div class="box-footer">
       <input class="btn btn-success" name="proses" type="submit" value="Simpan Data" />
-      <a href="<?php echo base_url('standar'); ?>" class="btn btn-info">Batal</a>
+      <a href="<?php echo base_url('standar/index/'.$data['versi']->id); ?>" class="btn btn-info">Batal</a>
     </div>
   </form>
 </div><!-- /.box -->

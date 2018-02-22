@@ -7,34 +7,35 @@ class Standar extends CI_Controller {
 		$this->load->model('m_standar');	
 	}
 
-	function index() {
+	function index($id_versi) {
 		$data['isi'] = "standar/index";
-		$data['data']['standar'] = $this->m_standar->ambil_standar();
+		$data['data']['versi'] = $this->m_standar->ambil_versi_id($id_versi);
+		$data['data']['standar'] = $this->m_standar->ambil_standar($id_versi);
 
 		$this->load->view("template/template", $data);
 	}
 
-	function tambah() {
+	function tambah($id_versi) {
 		$data['isi'] = "standar/tambah";
-		$data['data']['data_versi'] = $this->m_standar->ambil_versi();
+		$data['data']['versi'] = $this->m_standar->ambil_versi_id($id_versi);
 
 		$this->load->view("template/template", $data);
 	}
 
-	function aksi_tambah() {
+	function aksi_tambah($id_versi) {
 		$this->m_standar->tambah_standar(
 			$this->input->post('nomor'),
 			$this->input->post('nama'),
-			$this->input->post('id_versi')
+			$id_versi
 		);
 
-		redirect(base_url('standar'));
+		redirect(base_url('standar/index/'.$id_versi));
 	}
 
 	function ubah($id_standar) {
 		$data['isi'] = "standar/ubah";
 		$data['data']['data_standar'] = $this->m_standar->ambil_standar_id($id_standar);
-		$data['data']['data_versi'] = $this->m_standar->ambil_versi();
+		$data['data']['versi'] = $this->m_standar->ambil_versi_id($data['data']['data_standar']->versi_id);
 
 		$this->load->view("template/template", $data);
 	}
@@ -43,7 +44,6 @@ class Standar extends CI_Controller {
 		$this->m_standar->ubah_standar(
 			$this->input->post('nomor'),
 			$this->input->post('nama'),
-			$this->input->post('id_versi'),
 			$this->input->post('id')
 		);
 		

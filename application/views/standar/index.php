@@ -19,7 +19,9 @@
     <div class="box-body">
 
     <div class="form-group">
-      <a href='<?php echo base_url("standar/tambah"); ?>'><button class="btn btn-success">+ Tambah Standar</button></a>
+      <h5><strong><font color=blue><?php echo 'Versi : ' . $data['versi']->versi . ' | ' . $data['versi']->nama . ' | ' . $data['versi']->tahun; ?></font></strong></h5>
+      <a href='<?php echo base_url("versi"); ?>'><button class="btn btn-success">Kembali ke Versi</button></a><br><br>
+      <a href='<?php echo base_url("standar/tambah/".$data['versi']->id); ?>'><button class="btn btn-success">+ Tambah Standar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -27,7 +29,6 @@
         <tr>
                     <th>NOMOR</th>
                     <th>NAMA</th>
-                    <th>VERSI</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -37,12 +38,11 @@
         foreach ($data['standar'] as $item) {
           ?>
           <tr>
-            <th><?php echo $item->nomor_standar; ?></th>
-            <th><?php echo $item->nama_standar; ?></th>
-            <th><?php echo $item->versi . ' | ' . $item->nama_versi . ' | ' . $item->tahun_versi; ?></th>
+            <th><?php echo $item->nomor; ?></th>
+            <th><?php echo $item->nama; ?></th>
               <th>
-                <a class="btn btn-success" href="<?php echo base_url('standar/ubah/'.$item->id_standar) ?>">Ubah</a>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id_standar; ?>')">Hapus</a>
+                <a class="btn btn-success" href="<?php echo base_url('standar/ubah/'.$item->id) ?>">Ubah</a>
+                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')">Hapus</a>
               </th>
           </tr>
           <?php
