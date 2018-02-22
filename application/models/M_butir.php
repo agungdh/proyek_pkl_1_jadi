@@ -14,6 +14,16 @@ class M_butir extends CI_Model{
 		return $row;
 	}
 
+	function ambil_versi_id($id_versi){
+		$sql = "SELECT *
+				FROM versi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_versi));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_butir($id_substandar){
 		$sql = "SELECT *
 				FROM butir

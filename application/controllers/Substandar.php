@@ -10,6 +10,7 @@ class Substandar extends CI_Controller {
 	function index($id_standar) {
 		$data['isi'] = "substandar/index";
 		$data['data']['standar'] = $this->m_substandar->ambil_standar_id($id_standar);
+		$data['data']['versi'] = $this->m_substandar->ambil_versi_id($data['data']['standar']->versi_id);
 		$data['data']['substandar'] = $this->m_substandar->ambil_substandar($id_standar);
 
 		$this->load->view("template/template", $data);

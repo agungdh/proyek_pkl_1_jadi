@@ -12,6 +12,7 @@ class Listdokumen extends CI_Controller {
 		$data['data']['butir'] = $this->m_listdokumen->ambil_butir_id($id_butir);
 		$data['data']['substandar'] = $this->m_listdokumen->ambil_substandar_id($data['data']['butir']->substandar_id);
 		$data['data']['standar'] = $this->m_listdokumen->ambil_standar_id($data['data']['substandar']->standar_id);
+		$data['data']['versi'] = $this->m_listdokumen->ambil_versi_id($data['data']['standar']->versi_id);
 		$data['data']['listdokumen'] = $this->m_listdokumen->ambil_listdokumen($id_butir);
 
 		$this->load->view("template/template", $data);

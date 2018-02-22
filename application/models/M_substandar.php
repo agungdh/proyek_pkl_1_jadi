@@ -43,6 +43,16 @@ class M_substandar extends CI_Model{
 		return $row;
 	}
 
+	function ambil_versi_id($id_versi){
+		$sql = "SELECT *
+				FROM versi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_versi));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_substandar_id($id_substandar){
 		$sql = "SELECT *
 				FROM substandar

@@ -19,9 +19,8 @@
     <div class="box-body">
 
     <div class="form-group">
-      <h5><strong><font color=blue><?php echo 'Versi : ' . $data['versi']->versi . ' | ' . $data['versi']->nama . ' | ' . $data['versi']->tahun; ?></font></strong></h5>
-      <a href='<?php echo base_url("versi"); ?>'><button class="btn btn-warning"><i class="fa fa-mail-reply-all"></i> Versi</button></a>
-      <a href='<?php echo base_url("standar/tambah/".$data['versi']->id); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Standar</button></a>
+      <a href='<?php echo base_url("versi"); ?>'><h5><strong><font color=blue><?php echo $data['versi']->nama; ?></font></strong></h5></a>
+      <a href='<?php echo base_url("standar/tambah/".$data['versi']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Standar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">

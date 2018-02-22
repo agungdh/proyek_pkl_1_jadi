@@ -19,20 +19,21 @@
     <div class="box-body">
 
     <div class="form-group">
-      <h5><strong><font color=blue><?php echo 'Standar : ' . $data['standar']->nomor . ' | ' . $data['standar']->nama; ?></font></strong></h5>
+      <h5><strong>
+        <a href='<?php echo base_url("versi"); ?>'>
+          <font color=blue>
+            <?php echo $data['versi']->nama; ?>
+          </font>
+        </a>
+        |
+        <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
+          <font color=blue>
+            <?php echo 'Standar ' . $data['standar']->nomor; ?>
+          </font>
+        </a>
+      </strong></h5>
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-warning"><i class="fa fa-mail-reply-all"></i> <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>' style="color: white;"> Standar</a> </button>
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href='<?php echo base_url("versi"); ?>'> Versi</a></li>        
-        </ul>
-      </div>
-
-      <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success pull-right">+ Substandar</button></a>
+      <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success">+ Substandar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">

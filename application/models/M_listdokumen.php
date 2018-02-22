@@ -4,6 +4,16 @@ class M_listdokumen extends CI_Model{
 		parent::__construct();		
 	}
 
+	function ambil_versi_id($id_versi){
+		$sql = "SELECT *
+				FROM versi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_versi));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_data_butir_dari_id_listdokumen($id_listdokumen){
 		$sql = "SELECT *
 				FROM v_listdokumen

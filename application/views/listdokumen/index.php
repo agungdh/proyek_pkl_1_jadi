@@ -19,23 +19,33 @@
     <div class="box-body">
 
     <div class="form-group">
-      <h5><strong><font color=blue><?php echo 'Butir : ' . $data['butir']->nomor . ' | ' . $data['butir']->nama; ?></font></strong></h5>
+      <h5><strong>
+        <a href='<?php echo base_url("versi"); ?>'>
+          <font color=blue>
+            <?php echo $data['versi']->nama; ?>
+          </font>
+        </a>
+        |
+        <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
+          <font color=blue>
+            <?php echo 'Standar ' . $data['standar']->nomor; ?>
+          </font>
+        </a>
+        |
+        <a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'>
+          <font color=blue>
+            <?php echo 'Substandar ' . $data['substandar']->nomor; ?>
+          </font>
+        </a>
+        |
+        <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>'>
+          <font color=blue>
+            <?php echo 'Butir ' . $data['butir']->nomor; ?>
+          </font>
+        </a>
+      </strong></h5>
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-warning"><i class="fa fa-mail-reply-all"></i> <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>' style="color: 
-        white;"> Butir</a></button>
-        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'> Substandar</a></li>
-          <li><a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'> Standar</a></li>
-          <li><a href='<?php echo base_url("versi"); ?>'> Versi</a></li>          
-        </ul>
-      </div>
-
-      <a href='<?php echo base_url("listdokumen/tambah/".$data['butir']->id); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> List Dokumen</button></a>
+      <a href='<?php echo base_url("listdokumen/tambah/".$data['butir']->id); ?>'><button class="btn btn-success "><i class="fa fa-plus"></i> List Dokumen</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
