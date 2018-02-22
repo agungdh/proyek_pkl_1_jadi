@@ -21,7 +21,7 @@
     <div class="form-group">
       <h5><strong><font color=blue><?php echo 'Standar : ' . $data['standar']->nomor . ' | ' . $data['standar']->nama; ?></font></strong></h5>
       <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'><button class="btn btn-warning"> <i class="fa fa-mail-reply-all"></i> Kembali ke Standar</button></a>
-      <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'><button class="btn btn-warning"> <i class="fa fa-mail-reply-all"></i> Kembali ke Versi</button></a>
+      <a href='<?php echo base_url("versi"); ?>'><button class="btn btn-warning"> <i class="fa fa-mail-reply-all"></i> Kembali ke Versi</button></a>
 
       <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success pull-right">+ Tambah Substandar</button></a>
     </div>

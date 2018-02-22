@@ -33,21 +33,31 @@ class M_listdokumen extends CI_Model{
 		return $row;
 	}
 
-	function ambil_standar_id($id_standar){
-		$sql = "SELECT *
-				FROM standar
-				WHERE id = ?";
-		$query = $this->db->query($sql, array($id_standar));
-		$row = $query->row();
-
-		return $row;
-	}
-
 	function ambil_butir_id($id_butir){
 		$sql = "SELECT *
 				FROM butir
 				WHERE id = ?";
 		$query = $this->db->query($sql, array($id_butir));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_substandar_id($id_substandar){
+		$sql = "SELECT *
+				FROM substandar
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_substandar));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_standar_id($id_standar){
+		$sql = "SELECT *
+				FROM standar
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_standar));
 		$row = $query->row();
 
 		return $row;
