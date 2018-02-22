@@ -41,21 +41,25 @@ class Standar extends CI_Controller {
 	}
 
 	function aksi_ubah() {
+		$versi = $this->m_standar->ambil_data_versi_dari_id_standar($this->input->post('id'));
+		
 		$this->m_standar->ubah_standar(
 			$this->input->post('nomor'),
 			$this->input->post('nama'),
 			$this->input->post('id')
 		);
 		
-		redirect(base_url('standar'));
+		redirect(base_url('standar/index/'.$versi->id_versi));
 	}
 
 	function aksi_hapus($id_standar) {
+		$versi = $this->m_standar->ambil_data_versi_dari_id_standar($id_standar);
+
 		$this->m_standar->hapus_standar(
 			$id_standar
 		);
 
-		redirect(base_url('standar'));
+		redirect(base_url('standar/index/'.$versi->id_versi));
 	}
 
 }

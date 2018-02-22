@@ -41,6 +41,7 @@
             <th><?php echo $item->nomor; ?></th>
             <th><?php echo $item->nama; ?></th>
               <th>
+                <a class="btn btn-success" href="<?php echo base_url('substandar/index/'.$item->id) ?>">Substandar</a>
                 <a class="btn btn-success" href="<?php echo base_url('standar/ubah/'.$item->id) ?>">Ubah</a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')">Hapus</a>
               </th>

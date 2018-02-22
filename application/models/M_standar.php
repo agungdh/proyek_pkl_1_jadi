@@ -4,6 +4,16 @@ class M_standar extends CI_Model{
 		parent::__construct();		
 	}
 
+	function ambil_data_versi_dari_id_standar($id_standar){
+		$sql = "SELECT *
+				FROM v_standar
+				WHERE id_standar = ?";
+		$query = $this->db->query($sql, array($id_standar));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_standar($id_versi){
 		$sql = "SELECT *
 				FROM standar

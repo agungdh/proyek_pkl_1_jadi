@@ -28,7 +28,7 @@
 
     <div class="box-footer">
       <input class="btn btn-success" name="proses" type="submit" value="Simpan Data" />
-      <a href="<?php echo base_url('standar'); ?>" class="btn btn-info">Batal</a>
+      <a href="<?php echo base_url('standar/index/'.$data['versi']->id); ?>" class="btn btn-info">Batal</a>
     </div>
   </form>
 </div><!-- /.box -->
