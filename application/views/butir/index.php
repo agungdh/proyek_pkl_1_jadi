@@ -22,21 +22,21 @@
       <h5><strong>
         <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
-            <?php echo $data['versi']->nama; ?>
-          </font>
-        </a>
+            <u>Versi:</u>
+          </a><?php echo $data['versi']->nama; ?></font>
+        
         |
         <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
           <font color=blue>
-            <?php echo 'Standar ' . $data['standar']->nomor; ?>
-          </font>
-        </a>
+            <u>Standar:</u>
+          </a><?php echo $data['standar']->nomor; ?></font>
+        
         |
         <a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'>
           <font color=blue>
-            <?php echo 'Substandar ' . $data['substandar']->nomor; ?>
-          </font>
-        </a>
+            <u>Substandar:</u>
+          </a><?php echo $data['substandar']->nomor; ?></font>
+        
       </strong></h5>
 
       <a href='<?php echo base_url("butir/tambah/".$data['substandar']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Butir</button></a>

@@ -22,15 +22,15 @@
       <h5><strong>
         <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
-            <?php echo $data['versi']->nama; ?>
-          </font>
-        </a>
+            <u>Versi:</u>
+          </a><?php echo $data['versi']->nama; ?></font>
+        
         |
         <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
           <font color=blue>
-            <?php echo 'Standar ' . $data['standar']->nomor; ?>
-          </font>
-        </a>
+            <u>Standar:</u>
+          </a><?php echo $data['standar']->nomor; ?></font>
+        
       </strong></h5>
 
       <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success">+ Substandar</button></a>

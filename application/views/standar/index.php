@@ -19,7 +19,14 @@
     <div class="box-body">
 
     <div class="form-group">
-      <a href='<?php echo base_url("versi"); ?>'><h5><strong><font color=blue><?php echo $data['versi']->nama; ?></font></strong></h5></a>
+      
+      <h5><strong>
+        <a href='<?php echo base_url("versi"); ?>'>
+          <font color=blue>
+            <u>Versi:</u>
+          </a><?php echo $data['versi']->nama; ?></font>
+      </strong></h5>
+
       <a href='<?php echo base_url("standar/tambah/".$data['versi']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Standar</button></a>
     </div>
 
