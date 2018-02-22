@@ -20,10 +20,21 @@
 
     <div class="form-group">
       <h5><strong><font color=blue><?php echo 'Butir : ' . $data['butir']->nomor . ' | ' . $data['butir']->nama; ?></font></strong></h5>
-      <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>'><button class="btn btn-warning"><i class="fa fa-mail-reply-all"></i> Kembali ke Butir</button></a>
-      <a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'><button class="btn btn-warning"><i class="fa fa-mail-reply-all"></i> Kembali ke Substandar</button></a>
-      <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'><button class="btn btn-warning"> <i class="fa fa-mail-reply-all"></i> Kembali ke Standar</button></a>
-      <a href='<?php echo base_url("versi"); ?>'><button class="btn btn-warning"> <i class="fa fa-mail-reply-all"></i> Kembali ke Versi</button></a>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-warning"><i class="fa fa-mail-reply-all"></i> <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>' style="color: 
+        white;"> Butir</a></button>
+        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'> Substandar</a></li>
+          <li><a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'> Standar</a></li>
+          <li><a href='<?php echo base_url("versi"); ?>'> Versi</a></li>          
+        </ul>
+      </div>
+
       <a href='<?php echo base_url("listdokumen/tambah/".$data['butir']->id); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah List Dokumen</button></a>
     </div>
 
