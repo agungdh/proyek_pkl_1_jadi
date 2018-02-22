@@ -15,13 +15,14 @@
   <div class="box-header with-border">
     <h4><strong><font color=blue>DATA SUBSTANDAR</font></strong></h4>
   </div><!-- /.box-header -->
-
+ 
     <div class="box-body">
 
     <div class="form-group">
       <h5><strong><font color=blue><?php echo 'Standar : ' . $data['standar']->nomor . ' | ' . $data['standar']->nama; ?></font></strong></h5>
-      <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'><button class="btn btn-success">Kembali ke Standar</button></a><br><br>
-      <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success">+ Tambah Substandar</button></a>
+      <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'><button class="btn btn-warning"> <i class="fa fa-mail-reply-all"></i> Kembali ke Standar</button></a>
+
+      <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success pull-right">+ Tambah Substandar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -41,9 +42,11 @@
             <th><?php echo $item->nomor; ?></th>
             <th><?php echo $item->nama; ?></th>
               <th>
-                <a class="btn btn-success" href="<?php echo base_url('butir/index/'.$item->id) ?>">Butir</a>
-                <a class="btn btn-success" href="<?php echo base_url('substandar/ubah/'.$item->id) ?>">Ubah</a>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')">Hapus</a>
+                <center>
+                  <a class="btn btn-primary" href="<?php echo base_url('butir/index/'.$item->id) ?>"><i class="fa fa-share"></i> Butir</a>
+                  <a class="btn btn-info" href="<?php echo base_url('substandar/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
+                  <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i></a> 
+                </center>
               </th>
           </tr>
           <?php
