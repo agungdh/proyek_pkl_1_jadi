@@ -19,7 +19,7 @@
     <div class="box-body">
 
     <div class="form-group">
-      <a href='<?php echo base_url("versi/tambah"); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah Versi</button></a><br><br>
+      <a href='<?php echo base_url("versi/tambah"); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Versi</button></a><br><br>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">

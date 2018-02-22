@@ -35,7 +35,7 @@
         </ul>
       </div>
 
-      <a href='<?php echo base_url("listdokumen/tambah/".$data['butir']->id); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah List Dokumen</button></a>
+      <a href='<?php echo base_url("listdokumen/tambah/".$data['butir']->id); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> List Dokumen</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">

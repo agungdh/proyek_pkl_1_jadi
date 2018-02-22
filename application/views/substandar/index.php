@@ -32,7 +32,7 @@
         </ul>
       </div>
 
-      <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success pull-right">+ Tambah Substandar</button></a>
+      <a href='<?php echo base_url("substandar/tambah/".$data['standar']->id); ?>'><button class="btn btn-success pull-right">+ Substandar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
