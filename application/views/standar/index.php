@@ -20,8 +20,8 @@
 
     <div class="form-group">
       <h5><strong><font color=blue><?php echo 'Versi : ' . $data['versi']->versi . ' | ' . $data['versi']->nama . ' | ' . $data['versi']->tahun; ?></font></strong></h5>
-      <a href='<?php echo base_url("versi"); ?>'><button class="btn btn-success">Kembali ke Versi</button></a><br><br>
-      <a href='<?php echo base_url("standar/tambah/".$data['versi']->id); ?>'><button class="btn btn-success">+ Tambah Standar</button></a>
+      <a href='<?php echo base_url("versi"); ?>'><button class="btn btn-warning"><i class="fa fa-mail-reply-all"></i> Kembali ke Versi</button></a>
+      <a href='<?php echo base_url("standar/tambah/".$data['versi']->id); ?>'><button class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah Standar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
@@ -41,9 +41,9 @@
             <th><?php echo $item->nomor; ?></th>
             <th><?php echo $item->nama; ?></th>
               <th>
-                <a class="btn btn-success" href="<?php echo base_url('substandar/index/'.$item->id) ?>">Substandar</a>
-                <a class="btn btn-success" href="<?php echo base_url('standar/ubah/'.$item->id) ?>">Ubah</a>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')">Hapus</a>
+                <a class="btn btn-primary" href="<?php echo base_url('substandar/index/'.$item->id) ?>"><i class="fa fa-share"></i>  Substandar</a>
+                <a class="btn btn-info" href="<?php echo base_url('standar/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
               </th>
           </tr>
           <?php
