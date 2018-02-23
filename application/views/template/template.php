@@ -129,17 +129,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     
     switch ($this->session->level) {
       case '1':
-        $this->load->view('template/menu_siswa');
-        break;
-      
-      case '2':
-        $this->load->view('template/menu_guru');
-        break;
-      
-      case '4':
         $this->load->view('template/menu_admin');
         break;
-      
+            
       default:
         $this->load->view('template/menu_other');
         break;
