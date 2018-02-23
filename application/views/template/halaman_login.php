@@ -1,13 +1,3 @@
-<?php
-if ($this->input->get('valid') == '0') {
-  ?>
-    <script type="text/javascript">
-      alert("Password salah");
-    </script>
-  <?php
-}
-?>
-
 <!DOCTYPE html>
 
 <html>
@@ -24,15 +14,15 @@ if ($this->input->get('valid') == '0') {
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Isi Username dan Password</p>
-        <form role="form" method="post" name="loginForm" id="loginForm" action="<?php echo base_url('login'); ?>">
+        <form role="form" method="post" name="loginForm" id="loginForm" action="<?php echo base_url('welcome/aksi_login'); ?>">
           
           <div class="form-group has-feedback">
-            <input name="username" id="username" type="text" class="form-control" placeholder="Username:">
+            <input required name="username" id="username" type="text" class="form-control" placeholder="Username:">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           
           <div class="form-group has-feedback">
-            <input name="password" id="password" type="password" class="form-control" placeholder="Password:">
+            <input required name="password" id="password" type="password" class="form-control" placeholder="Password:">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           
@@ -43,7 +33,7 @@ if ($this->input->get('valid') == '0') {
             <div class="col-xs-4">
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <a class="btn btn-primary btn-block btn-flat" href="<?php echo base_url("lihat_nilai") ?>">Lihat Nilai</a>
+              <!-- <a class="btn btn-primary btn-block btn-flat" href="<?php echo base_url("lihat_nilai") ?>">Lihat Nilai</a> -->
               <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button> -->
               <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button> -->
             </div><!-- /.col -->
@@ -56,14 +46,12 @@ if ($this->input->get('valid') == '0') {
   </body>
 </html>
 
-<script type="text/javascript">
-
-$('#loginForm').submit(function() 
-{
-    if ($.trim($("#username").val()) === "" || $.trim($("#password").val()) === "") {
-        alert('Masukkan Username dan Password !!!');
-    return false;
-    }
-});
-
-</script>
+<?php
+if ($this->input->get('error') == '1') {
+  ?>
+    <script type="text/javascript">
+      alert("Password salah");
+    </script>
+  <?php
+}
+?>
