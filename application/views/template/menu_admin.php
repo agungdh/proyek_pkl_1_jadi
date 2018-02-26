@@ -7,16 +7,16 @@
 	</a>
 </li>
 
-<!-- <li>
-	<a href="<?php echo base_url("prodi"); ?>">
-		<i class="fa fa-users text-aqua"></i>
-		<span>Data Prodi</span>
-	</a>
-</li> -->
-
 <li>
 	<a href="<?php echo base_url("user"); ?>">
 		<i class="fa fa-users text-aqua"></i>
 		<span>Data User</span>
+	</a>
+</li>
+
+<li>
+	<a href="<?php echo base_url("versi"); ?>">
+		<i class="fa fa-users text-aqua"></i>
+		<span>Data Borang</span>
 	</a>
 </li>
