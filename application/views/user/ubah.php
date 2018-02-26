@@ -4,34 +4,56 @@
   </div><!-- /.box-header -->
 
   <!-- form start -->
-  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('user/aksi_tambah'); ?>">
+  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('user/aksi_ubah'); ?>">
     <div class="box-body">
+
+    <input type="hidden" name="id" value="<?php echo $data['user']->id; ?>">
 
     <div class="form-group">
       <label for="username">Username</label>
-          <input required type="text" class="form-control" id="username" placeholder="Isi Username" name="username">          
+          <input readonly value="<?php echo $data['user']->username; ?>" required type="text" class="form-control" id="username" placeholder="Isi Username" name="username">          
     </div>
+
+    <?php
+    switch ($data['user']->level) {
+      case 1:
+        $level = "Administrator";
+        break;
+
+      case 2:
+        $level = "Universitas";
+        break;
+
+      case 3:
+        $level = "Program Studi";
+        break;
+      
+      default:
+        $level = "ERROR !!!";
+        break;
+    }
+    
+    $prodi = $this->m_user->ambil_prodi_dari_id_user($data['user']->id) == null ? null : $this->m_user->ambil_prodi_dari_id_user($data['user']->id)->nama;
+    ?>
 
     <div class="form-group">
       <label for="level">Level</label>
-          <select id="level" class="form-control select2" name="level">
-            <option value="1">Administrator</option>
-            <option value="2">Universitas</option>
-            <option value="3" selected>Program Studi</option>
-          </select>          
+          <input readonly value="<?php echo $level; ?>" required type="text" class="form-control" id="level" placeholder="Isi Level" name="level">          
     </div>
 
     <div class="form-group">
       <label for="prodi">Prodi</label>
-          <select id="prodi" class="form-control select2" name="prodi">
-            <?php
-            foreach ($data['prodi'] as $item) {
-              ?>
-              <option value="<?php echo $item->id_prodi; ?>"><?php echo '(' . $item->kode_fakultas . ') ' . $item->nama_fakultas . ' | (' . $item->kode_prodi . ') ' . $item->nama_prodi; ?></option>
-              <?php
-            }
-            ?>
-          </select>          
+          <input readonly value="<?php echo $prodi; ?>" required type="text" class="form-control" id="prodi" name="prodi">          
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+          <input required type="password" class="form-control" id="password" placeholder="Isi Password" name="password">          
+    </div>
+
+    <div class="form-group">
+      <label for="password2">Ulangi Password</label>
+          <input required type="password" class="form-control" id="password2" placeholder="Isi Ulangi Password" name="password2">          
     </div>
 
     </div><!-- /.box-body -->
@@ -44,6 +66,14 @@
 </div><!-- /.box -->
 
 <script type="text/javascript">
+$('#form').submit(function() 
+{
+    if ($("#password").val() != $("#password2").val()) {
+        alert('Password Tidak Sama !!');
+    return false;
+    }
+});
+
 $(function () {
   $('.select2').select2()
 });

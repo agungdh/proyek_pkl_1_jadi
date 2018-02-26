@@ -41,10 +41,8 @@ class User extends CI_Controller {
 
 	function aksi_ubah() {
 		$this->m_user->ubah_user(
-			$this->input->post('username'),
-			hash('sha512', $this->input->post('password')),
-			$this->input->post('level'),
-			$this->input->post('prodi')
+			hash("sha512", $this->input->post('password')),
+			$this->input->post('id')
 		);
 
 		redirect(base_url('user'));

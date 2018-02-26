@@ -13,6 +13,17 @@ class M_user extends CI_Model{
 		return $row;
 	}
 
+	function ambil_prodi_dari_id_user($id_user){
+		$sql = "SELECT p.nama
+				FROM user u, prodi p
+				WHERE u.prodi_id = p.id
+				AND u.id = ?";
+		$query = $this->db->query($sql, array($id_user));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_prodi(){
 		$sql = "SELECT *
 				FROM v_prodi";
@@ -20,16 +31,6 @@ class M_user extends CI_Model{
 		$row = $query->result();
 
 		return $row;
-	}
-
-	function ambil_detil_user($id_user) {
-		$sql = "SELECT *
-				FROM v_user
-				WHERE id = ?";
-		$query = $this->db->query($sql, array($id_user));
-		$row = $query->row();
-
-		return $row;	
 	}
 
 	function ambil_user_id($id_user){
@@ -51,12 +52,11 @@ class M_user extends CI_Model{
 		$query = $this->db->query($sql, array($username, $password, $level, $id_prodi));
 	}
 
-	function ubah_user($kode, $nama, $id){
+	function ubah_user($password, $id){
 		$sql = "UPDATE user
-				SET kode = ?,
-				nama = ?
+				SET password = ?
 				WHERE id = ?";
-		$query = $this->db->query($sql, array($kode, $nama, $id));
+		$query = $this->db->query($sql, array($password, $id));
 	}
 
 	function hapus_user($id){

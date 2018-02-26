@@ -36,7 +36,7 @@
       <tbody>
         <?php
         foreach ($data['user'] as $item) {
-          $detil_user = $this->m_user->ambil_detil_user($item->id);
+          $prodi = $this->m_user->ambil_prodi_dari_id_user($item->id) == null ? null : $this->m_user->ambil_prodi_dari_id_user($item->id)->nama;
           switch ($item->level) {
             case 1:
              $level = "Administrator";
@@ -58,7 +58,7 @@
           <tr>
             <th><?php echo $item->username; ?></th>
             <th><?php echo $level; ?></th>
-            <th><?php echo $detil_user == null ? null : $detil_user->nama_prodi; ?></th>
+            <th><?php echo $prodi; ?></th>
               <th>
                 <a class="btn btn-info" href="<?php echo base_url('user/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i> </a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
