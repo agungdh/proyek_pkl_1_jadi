@@ -28,7 +28,8 @@ class M_dokumen extends CI_Model{
 	function ambil_detail($id_standar){
 		$sql = "SELECT *
 				FROM v_pengajuan_dokumen
-				WHERE id_standar = ?";
+				WHERE id_standar = ?
+				ORDER BY nomor_standar, nomor_substandar, nomor_butir, id_listdokumen";
 		$query = $this->db->query($sql, array($id_standar));
 		$row = $query->result();
 
