@@ -25,23 +25,23 @@
             <u>Versi:</u>
           </a><?php echo $data['versi']->nama; ?></font>
         
-        |
+        <br>
         <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
           <font color=blue>
             <u>Standar:</u>
-          </a><?php echo $data['standar']->nomor; ?></font>
+          </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
         
-        |
+        <br>
         <a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'>
           <font color=blue>
             <u>Substandar:</u>
-          </a><?php echo $data['substandar']->nomor; ?></font>
+          </a><?php echo $data['substandar']->nomor . ' ' . $data['substandar']->nama; ?></font>
         
-        |
+        <br>
         <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>'>
           <font color=blue>
             <u>Butir:</u>
-          </a><?php echo $data['butir']->nomor; ?></font>
+          </a><?php echo $data['butir']->nomor . ' ' . $data['butir']->nama; ?></font>
         
       </strong></h5>
 

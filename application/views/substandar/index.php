@@ -25,11 +25,11 @@
             <u>Versi:</u>
           </a><?php echo $data['versi']->nama; ?></font>
         
-        |
+        <br>
         <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
           <font color=blue>
             <u>Standar:</u>
-          </a><?php echo $data['standar']->nomor; ?></font>
+          </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
         
       </strong></h5>
 
