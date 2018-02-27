@@ -45,6 +45,7 @@
                 <th>Substandar</th>
                 <th>Butir</th>
                 <th>List Dokumen</th>
+                <th>Tipe Dokumen</th>
                 <th>Dokumen</th>
                 <th>Upload</th>
               </tr>
@@ -82,6 +83,28 @@
                     <td><?php echo $substandar; ?></td>
                     <td><?php echo $butir; ?></td>
                     <td><?php echo $listdokumen; ?></td>
+                    <td>
+                    <?php
+                    switch ($item2->tipe_listdokumen) {
+                      case 1:
+                        $tipe = "Dokumen Wajib";
+                        break;
+                      
+                      case 2:
+                        $tipe = "Dokumen Visitasi";
+                        break;
+                      
+                      case 3:
+                        $tipe = "Dokumen Pendukung";
+                        break;
+                      
+                      default:
+                        $tipe = null;
+                        break;
+                    }
+                    echo $tipe;
+                    ?>  
+                    </td>
                   </tr>
                   <?php
                   $id_standar = $item2->id_standar; $id_substandar = $item2->id_substandar; $id_butir = $item2->id_butir; $id_listdokumen = $item2->id_listdokumen; 
