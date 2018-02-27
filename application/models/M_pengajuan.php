@@ -44,20 +44,22 @@ class M_pengajuan extends CI_Model{
 		return $row;
 	}
 
-	function tambah_pengajuan($tanggal, $versi, $user_id){
+	function tambah_pengajuan($tanggal, $versi, $tahun, $user_id){
 		$sql = "INSERT INTO pengajuan
 				SET tanggal = ?,
 				versi_id = ?,
+				tahun_borang = ?,
 				user_id = ?";
-		$query = $this->db->query($sql, array($tanggal, $versi, $user_id));
+		$query = $this->db->query($sql, array($tanggal, $versi, $tahun, $user_id));
 	}
 
-	function ubah_pengajuan($tanggal, $versi, $id){
+	function ubah_pengajuan($tanggal, $versi, $tahun, $id){
 		$sql = "UPDATE pengajuan
 				SET tanggal = ?,
-				versi_id = ?
+				versi_id = ?,
+				tahun_borang = ?
 				WHERE id = ?";
-		$query = $this->db->query($sql, array($tanggal, $versi, $id));
+		$query = $this->db->query($sql, array($tanggal, $versi, $tahun, $id));
 	}
 
 	function hapus_pengajuan($id){

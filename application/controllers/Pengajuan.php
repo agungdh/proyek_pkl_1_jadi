@@ -26,6 +26,7 @@ class Pengajuan extends CI_Controller {
 		$this->m_pengajuan->tambah_pengajuan(
 			$this->input->post('tanggal'),
 			$this->input->post('versi'),
+			$this->input->post('tahun'),
 			$this->session->id
 		);
 
@@ -44,6 +45,7 @@ class Pengajuan extends CI_Controller {
 		$this->m_pengajuan->ubah_pengajuan(
 			$this->input->post('tanggal'),
 			$this->input->post('versi'),
+			$this->input->post('tahun'),
 			$this->input->post('id')
 		);
 

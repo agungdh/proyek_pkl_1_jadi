@@ -33,6 +33,11 @@
           </select>          
     </div>
 
+    <div class="form-group">
+      <label for="tahun">Tahun</label>
+          <input required type="number" value="<?php echo $data['pengajuan']->tahun_borang; ?>" min="1900" max="2900" class="form-control" id="tahun" placeholder="Isi Tahun" name="tahun">          
+    </div>
+
     </div><!-- /.box-body -->
 
     <div class="box-footer">
