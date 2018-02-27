@@ -17,7 +17,8 @@ class M_dokumen extends CI_Model{
 	function ambil_standar($id_versi){
 		$sql = "SELECT *
 				FROM standar
-				WHERE versi_id = ?";
+				WHERE versi_id = ?
+				ORDER BY nomor";
 		$query = $this->db->query($sql, array($id_versi));
 		$row = $query->result();
 
