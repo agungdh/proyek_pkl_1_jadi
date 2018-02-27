@@ -52,6 +52,7 @@
       <thead>
         <tr>
                     <th>KETERANGAN</th>
+                    <th>TIPE</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -59,9 +60,27 @@
       <tbody>
         <?php
         foreach ($data['listdokumen'] as $item) {
+          switch ($item->tipe) {
+            case 1:
+              $tipe = "Dokumen Wajib";
+              break;
+            
+            case 2:
+              $tipe = "Dokumen Visitasi";
+              break;
+            
+            case 3:
+              $tipe = "Dokumen Pendukung";
+              break;
+            
+            default:
+              $tipe = null;
+              break;
+          }
           ?>
           <tr>
             <th><?php echo $item->keterangan; ?></th>
+            <th><?php echo $tipe; ?></th>
               <th>
                 <a class="btn btn-info" href="<?php echo base_url('listdokumen/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i></a>

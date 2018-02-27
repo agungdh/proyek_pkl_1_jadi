@@ -28,6 +28,7 @@ class Listdokumen extends CI_Controller {
 	function aksi_tambah($id_butir) {
 		$this->m_listdokumen->tambah_listdokumen(
 			$this->input->post('keterangan'),
+			$this->input->post('tipe'),
 			$id_butir
 		);
 
@@ -47,6 +48,7 @@ class Listdokumen extends CI_Controller {
 		
 		$this->m_listdokumen->ubah_listdokumen(
 			$this->input->post('keterangan'),
+			$this->input->post('tipe'),
 			$this->input->post('id')
 		);
 		

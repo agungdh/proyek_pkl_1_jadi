@@ -83,18 +83,20 @@ class M_listdokumen extends CI_Model{
 		return $row;
 	}
 
-	function tambah_listdokumen($keterangan, $id_butir){
+	function tambah_listdokumen($keterangan, $tipe, $id_butir){
 		$sql = "INSERT INTO listdokumen
 				SET keterangan = ?,
+				tipe = ?,
 				butir_id = ?";
-		$query = $this->db->query($sql, array($keterangan, $id_butir));
+		$query = $this->db->query($sql, array($keterangan, $tipe, $id_butir));
 	}	
 
-	function ubah_listdokumen($keterangan, $id){
+	function ubah_listdokumen($keterangan, $tipe, $id){
 		$sql = "UPDATE listdokumen
-				SET keterangan = ?
+				SET keterangan = ?,
+				tipe = ?
 				WHERE id = ?";
-		$query = $this->db->query($sql, array($keterangan, $id));
+		$query = $this->db->query($sql, array($keterangan, $tipe, $id));
 	}	
 
 	function hapus_listdokumen($id){
