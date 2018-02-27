@@ -40,6 +40,7 @@
             <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
             <th><?php echo $item->nama; ?></th>
               <th>
+                <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id) ?>"><i class="fa fa-share"></i>  Dokumen</a>
                 <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i> </a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
               </th>
