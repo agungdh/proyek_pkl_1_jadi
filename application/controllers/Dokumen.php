@@ -21,15 +21,15 @@ class Dokumen extends CI_Controller {
 		$list_dokumen = $this->m_dokumen->ambil_listdokumen($pengajuan->versi_id);
 		$versi = $this->m_dokumen->ambil_versi($pengajuan->versi_id);
 		$user = $this->m_dokumen->ambil_user($pengajuan->user_id);
-		$prodi = $this->m_dokumen->ambil_prodi($user->prodi_id);
-		$fakultas = $this->m_dokumen->ambil_fakultas($prodi->fakultas_id);
 		$dokumen = $_FILES['dokumen'];
 
 		foreach ($list_dokumen as $item) {
 			if ($dokumen['size'][$item->id_listdokumen] != 0){
 				if ($user->level == 3) {
+					$prodi = $this->m_dokumen->ambil_prodi($user->prodi_id);
+					$fakultas = $this->m_dokumen->ambil_fakultas($prodi->fakultas_id);
 					$awal = $fakultas->kode . '/' . $prodi->kode; 
-				} elseif ($user->level == 3) {
+				} elseif ($user->level == 2) {
 					$awal = 'univ'; 
 				} else {
 					$awal = "ERROR !!!";
