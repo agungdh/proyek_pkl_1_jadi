@@ -45,9 +45,10 @@ class Dokumen extends CI_Controller {
 					. '/substandar_' . $item->nomor_substandar
 					. '/butir_' . $item->nomor_butir . '/'
 				, 0755, true);
-
-				if ($this->m_dokumen->cek_dokumen($item->id_listdokumen, $pengajuan->id) != null) {
+				$cek_dokumen = $this->m_dokumen->cek_dokumen($item->id_listdokumen, $pengajuan->id);
+				if ($cek_dokumen != null) {
 					$this->m_dokumen->hapus_dokumen($item->id_listdokumen, $pengajuan->id);
+					unlink($cek_dokumen->url);
 				} 
 				
 				$dokumen_upload = $this->m_dokumen->tambah_dokumen(
