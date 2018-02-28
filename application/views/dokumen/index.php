@@ -30,7 +30,8 @@
         ?>
       </ul>
       <div class="tab-content">
-      <input class="btn btn-success" type="submit" name="submit">
+      <input class="btn btn-success" type="submit" name="submit" value="Submit">
+      <input class="btn btn-success pull-right" type="submit" name="submit" value="Submit">
         <?php
         foreach ($data['standar'] as $item) {
           if ($item->nomor == 1) {
@@ -110,8 +111,11 @@
                     </td>
                     <td>
                       <?php
-                      if ($item2->id_listdokumen == $this->m_dokumen->ambil_dokumen($data['pengajuan']->id, $item2->id_listdokumen)) {
-                        echo "file ada";
+                      $dokumen = $this->m_dokumen->ambil_dokumen($data['pengajuan']->id, $item2->id_listdokumen);
+                      if ($dokumen != null) {
+                        ?>
+                        <a href="<?php echo base_url($dokumen->url); ?>"><?php echo $dokumen->nama_file; ?></a>
+                        <?php
                       } else {
                         echo "-";
                       }
@@ -132,7 +136,8 @@
           <?php
         }
         ?>
-        
+        <input class="btn btn-success" type="submit" name="submit" value="Submit">
+        <input class="btn btn-success pull-right" type="submit" name="submit" value="Submit">
       </div>
       <!-- /.tab-content -->
     </div>

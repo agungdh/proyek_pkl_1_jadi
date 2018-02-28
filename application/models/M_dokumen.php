@@ -4,6 +4,24 @@ class M_dokumen extends CI_Model{
 		parent::__construct();		
 	}
 
+	function cek_dokumen($id_listdokumen, $id_pengajuan){
+		$sql = "SELECT *
+				FROM dokumen
+				WHERE listdokumen_id = ?
+				AND pengajuan_id = ?";
+		$query = $this->db->query($sql, array($id_listdokumen, $id_pengajuan));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function hapus_dokumen($id_listdokumen, $id_pengajuan){
+		$sql = "DELETE FROM dokumen
+				WHERE listdokumen_id = ?
+				AND pengajuan_id = ?";
+		$query = $this->db->query($sql, array($id_listdokumen, $id_pengajuan));
+	}
+
 	function ambil_pengajuan($id_pengajuan){
 		$sql = "SELECT *
 				FROM pengajuan
@@ -12,6 +30,34 @@ class M_dokumen extends CI_Model{
 		$row = $query->row();
 
 		return $row;
+	}
+
+	function tambah_dokumen($nama, $nama_asli, $mime, $url, $id_listdokumen, $id_pengajuan){
+		$sql = "INSERT INTO dokumen
+				SET nama_file = ?,
+				nama_file_asli = ?,
+				mime = ?,
+				url = ?,
+				listdokumen_id = ?,
+				pengajuan_id = ?";
+		$query = $this->db->query($sql, array($nama, $nama_asli, $mime, $url, $id_listdokumen, $id_pengajuan));
+
+		$insert_id = $this->db->insert_id();
+
+		$nama_file_fix = $insert_id . $nama;
+		$url_fix = $url . $nama_file_fix;
+
+		$sql = "UPDATE dokumen
+				SET nama_file = ?,
+				url = ?
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($nama_file_fix, $url_fix, $insert_id));
+
+		$sql = "SELECT *
+				FROM dokumen
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($insert_id));
+		return $query->row();
 	}
 
 	function ambil_user($id_user){
