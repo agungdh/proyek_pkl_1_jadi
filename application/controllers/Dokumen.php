@@ -70,7 +70,7 @@ class Dokumen extends CI_Controller {
 				move_uploaded_file($dokumen['tmp_name'][$item->id_listdokumen], $dokumen_upload->url);
 			}
 		}
-		redirect(base_url('dokumen/index/'.$pengajuan->id));
+		redirect(base_url('dokumen/index/'.$pengajuan->id.'?tab='.$this->input->post('last_tab')));
 	}
 
 }

@@ -4,16 +4,30 @@
 ?>
 <script type="text/javascript" language="javascript" >
   var dTable;
+  var var_last_tab = <?php echo $this->input->get('tab'); ?>;
+
+
+
   $(document).ready(function() {
+    console.log(var_last_tab-1);
+    $("ul.nav-tabs li").eq(0).attr('class','');
+    $("ul.nav-tabs li").eq(var_last_tab-1).attr('class','active');
+    $("#tab_1").attr('class','tab-pane');
+    $("#tab_"+var_last_tab).attr('class','tab-pane active');
     dTable = $('#lookup').DataTable({
       responsive: true
     });
   });
+
+  function pilih_tab(id) {
+    $('#last_tab').val(id);
+  }
 </script>
 
 <!-- Custom Tabs -->
     <form method="post" enctype="multipart/form-data" action="<?php echo base_url('dokumen/upload'); ?>">
     <input type="hidden" name="id_pengajuan" value="<?php echo $data['pengajuan']->id; ?>">
+    <input type="hidden" name="last_tab" id="last_tab" value="1">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <?php
@@ -24,7 +38,7 @@
             $status = null;
           }
           ?>
-          <li class="<?php echo $status; ?>"><a href="#tab_<?php echo $item->nomor; ?>" data-toggle="tab">Standar <?php echo $item->nomor; ?></a></li>
+          <li class="<?php echo $status; ?>"><a href="#tab_<?php echo $item->nomor; ?>" onclick="pilih_tab(<?php echo $item->nomor; ?>)" data-toggle="tab">Standar <?php echo $item->nomor; ?></a></li>
           <?php
         }
         ?>
@@ -143,3 +157,4 @@
     </div>
     <!-- nav-tabs-custom -->
     </form>
+
