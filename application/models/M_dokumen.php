@@ -14,6 +14,46 @@ class M_dokumen extends CI_Model{
 		return $row;
 	}
 
+	function ambil_user($id_user){
+		$sql = "SELECT *
+				FROM user
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_user));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_prodi($id_prodi){
+		$sql = "SELECT *
+				FROM prodi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_prodi));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_fakultas($id_fakultas){
+		$sql = "SELECT *
+				FROM fakultas
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_fakultas));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_versi($id_versi){
+		$sql = "SELECT *
+				FROM versi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_versi));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_listdokumen($id_versi){
 		$sql = "SELECT *
 				FROM v_pengajuan_dokumen
