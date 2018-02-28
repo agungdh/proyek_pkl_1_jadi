@@ -14,6 +14,16 @@ class M_dokumen extends CI_Model{
 		return $row;
 	}
 
+	function ambil_listdokumen($id_versi){
+		$sql = "SELECT *
+				FROM v_pengajuan_dokumen
+				WHERE versi_id = ?";
+		$query = $this->db->query($sql, array($id_versi));
+		$row = $query->result();
+
+		return $row;
+	}
+
 	function ambil_standar($id_versi){
 		$sql = "SELECT *
 				FROM standar
@@ -21,6 +31,17 @@ class M_dokumen extends CI_Model{
 				ORDER BY nomor";
 		$query = $this->db->query($sql, array($id_versi));
 		$row = $query->result();
+
+		return $row;
+	}
+
+	function ambil_dokumen($id_pengajuan, $id_listdokumen){
+		$sql = "SELECT *
+				FROM dokumen
+				WHERE pengajuan_id = ?
+				AND listdokumen_id = ?";
+		$query = $this->db->query($sql, array($id_pengajuan, $id_listdokumen));
+		$row = $query->row();
 
 		return $row;
 	}

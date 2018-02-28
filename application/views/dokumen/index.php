@@ -12,6 +12,8 @@
 </script>
 
 <!-- Custom Tabs -->
+    <form method="post" enctype="multipart/form-data" action="<?php echo base_url('dokumen/upload'); ?>">
+    <input type="hidden" name="id_pengajuan" value="<?php echo $data['pengajuan']->id; ?>">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <?php
@@ -28,6 +30,7 @@
         ?>
       </ul>
       <div class="tab-content">
+      <input class="btn btn-success" type="submit" name="submit">
         <?php
         foreach ($data['standar'] as $item) {
           if ($item->nomor == 1) {
@@ -105,6 +108,18 @@
                     echo $tipe;
                     ?>  
                     </td>
+                    <td>
+                      <?php
+                      if ($item2->id_listdokumen == $this->m_dokumen->ambil_dokumen($data['pengajuan']->id, $item2->id_listdokumen)) {
+                        echo "file ada";
+                      } else {
+                        echo "-";
+                      }
+                      ?>
+                    </td>
+                    <td>
+                      <input type="file" name="dokumen[<?php echo $item2->id_listdokumen; ?>]">
+                    </td>
                   </tr>
                   <?php
                   $id_standar = $item2->id_standar; $id_substandar = $item2->id_substandar; $id_butir = $item2->id_butir; $id_listdokumen = $item2->id_listdokumen; 
@@ -122,3 +137,4 @@
       <!-- /.tab-content -->
     </div>
     <!-- nav-tabs-custom -->
+    </form>
