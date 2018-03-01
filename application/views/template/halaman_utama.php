@@ -12,15 +12,15 @@
     <div class="carousel-inner" role="listbox">
 
       <div class="item active">
-        <img src="<?php echo base_url("assets/gambar/1.jpg"); ?>" alt="Photo1" width="100%">
+        <img src="<?php echo base_url("assets/gambar/ubl.jpg"); ?>" alt="Photo1" width="100%">
       </div>
 
       <div class="item">
-        <img src="<?php echo base_url("assets/gambar/2.jpg"); ?>" alt="Photo2" width="100%">
+        <img src="<?php echo base_url("assets/gambar/ubl3.jpg"); ?>" alt="Photo2" width="100%">
       </div>
 
       <div class="item">
-        <img src="<?php echo base_url("assets/gambar/3.jpg"); ?>" alt="Photo3" width="100%">
+        <img src="<?php echo base_url("assets/gambar/ubl2.jpg"); ?>" alt="Photo3" width="100%">
       </div>
 
     </div>
