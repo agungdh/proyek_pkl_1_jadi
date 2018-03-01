@@ -4,16 +4,19 @@
 ?>
 <script type="text/javascript" language="javascript" >
   var dTable;
-  var var_last_tab = <?php echo $this->input->get('tab'); ?>;
+  var var_last_tab = <?php echo $this->input->get('tab') != null ? $this->input->get('tab') : 'null'; ?>;
 
 
 
   $(document).ready(function() {
-    console.log(var_last_tab-1);
-    $("ul.nav-tabs li").eq(0).attr('class','');
-    $("ul.nav-tabs li").eq(var_last_tab-1).attr('class','active');
-    $("#tab_1").attr('class','tab-pane');
-    $("#tab_"+var_last_tab).attr('class','tab-pane active');
+
+    if (var_last_tab != null) {
+      $("ul.nav-tabs li").eq(0).attr('class','');
+      $("ul.nav-tabs li").eq(var_last_tab-1).attr('class','active');
+      $("#tab_1").attr('class','tab-pane');
+      $("#tab_"+var_last_tab).attr('class','tab-pane active');
+    }
+
     dTable = $('#lookup').DataTable({
       responsive: true
     });
