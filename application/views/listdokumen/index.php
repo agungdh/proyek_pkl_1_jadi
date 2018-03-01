@@ -27,7 +27,7 @@
         
         <br>
         <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
-          <font color=blue>
+          <font color=black>
             <u>Standar:</u>
           </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
         
@@ -39,7 +39,7 @@
         
         <br>
         <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>'>
-          <font color=blue>
+          <font color=black>
             <u>Butir:</u>
           </a><?php echo $data['butir']->nomor . ' ' . $data['butir']->nama; ?></font>
         

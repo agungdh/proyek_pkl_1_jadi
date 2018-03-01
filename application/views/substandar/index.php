@@ -27,7 +27,7 @@
         
         <br>
         <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
-          <font color=blue>
+          <font color=black>
             <u>Standar:</u>
           </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
         
