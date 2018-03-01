@@ -31,6 +31,15 @@ class Penilaian extends CI_Controller {
 		$this->load->view("template/template", $data);
 	}
 
+	function ubah($id_penilaian) {
+		$data['isi'] = "penilaian/ubah";
+		$data['data']['penilaian'] = $this->m_penilaian->ambil_penilaian_id($id_penilaian);
+		$data['data']['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($data['data']['penilaian']->pengajuan_id);
+		$data['data']['standar'] = $this->m_penilaian->ambil_standar($data['data']['pengajuan']->versi_id);
+
+		$this->load->view("template/template", $data);
+	}
+
 	function aksi_tambah() {
 		$id_pengajuan = $this->input->post('id_pengajuan');
 		$nilai = $this->input->post('nilai');

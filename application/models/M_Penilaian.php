@@ -82,6 +82,27 @@ class M_penilaian extends CI_Model{
 		return $row;
 	}
 
+	function ambil_nilai_butir($id_penilaian, $id_butir){
+		$sql = "SELECT *
+				FROM detilpenilaian
+				WHERE penilaian_id = ?
+				AND butir_id = ?";
+		$query = $this->db->query($sql, array($id_penilaian, $id_butir));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_penilaian_id($id_penilaian){
+		$sql = "SELECT *
+				FROM penilaian
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_penilaian));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_data_user($id_user){
 		$sql = "SELECT *
 				FROM user

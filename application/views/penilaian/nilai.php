@@ -53,7 +53,7 @@
                 <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
                 <th><?php echo floor($this->m_penilaian->ambil_nilai($item->id) / $jumlah_butir); ?></th>
                 <th>
-                  <a class="btn btn-info" href="<?php echo base_url('penilaian/nilai/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
+                  <a class="btn btn-info" href="<?php echo base_url('penilaian/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
                   <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
                 </th>
               </tr>
