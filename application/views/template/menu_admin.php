@@ -20,3 +20,10 @@
 		<span>Data Borang</span>
 	</a>
 </li>
+
+<li>
+	<a href="<?php echo base_url("penilaian"); ?>">
+		<i class="fa fa-users text-aqua"></i>
+		<span>Data Penilaian</span>
+	</a>
+</li>
