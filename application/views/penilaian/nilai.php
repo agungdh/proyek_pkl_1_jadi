@@ -20,28 +20,37 @@
 
     <div class="form-group">
 
+      <h5><strong>
+        <a href='<?php echo base_url("penilaian"); ?>'>
+          <font color=black>
+            <u>Penilaian:</u>
+          </a>
+            <br>
+            Tanggal = <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tanggal); ?> <br>
+            Tahun Borang = <?php echo $data['pengajuan']->tahun_borang; ?> <br>
+            Pengajuan = <?php echo $data['pengajuan']->nama . ' (' . $data['pengajuan']->tahun . ')'; ?> <br>
+            </font>
+      </strong></h5>
+
+    <a href='<?php echo base_url("penilaian/tambah/".$data['pengajuan']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Penilaian</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
       <thead>
         <tr>
                     <th>TANGGAL</th>
-                    <th>USER</th>
-                    <th>VERSI</th>
-                    <th>TAHUN</th>
+                    <th>NILAI</th>
                     <th>PROSES</th>
         </tr>
       </thead>
 
       <tbody>
             <?php
-            foreach ($data['pengajuan'] as $item) {
+            foreach ($data['penilaian'] as $item) {
               ?>
               <tr>
                 <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
-                <th><?php echo $this->m_penilaian->ambil_data_user($item->user_id)->username; ?></th>
-                <th><?php echo $item->nama . ' (' . $item->tahun . ')'; ?></th>
-                <th><?php echo $item->tahun_borang; ?></th>
+                <th>0</th>
                 <th>
                   <a class="btn btn-info" href="<?php echo base_url('penilaian/nilai/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
                 </th>
