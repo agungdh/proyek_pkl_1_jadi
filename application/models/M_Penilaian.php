@@ -4,6 +4,13 @@ class M_penilaian extends CI_Model{
 		parent::__construct();		
 	}
 
+	function ubah_penilaian($tanggal, $id_pengajuan){
+		$sql = "UPDATE penilaian
+				SET tanggal = ?,
+				pengajuan_id = ?";
+		$query = $this->db->query($sql, array($tanggal, $id_pengajuan));
+	}
+
 	function tambah_penilaian($tanggal, $id_pengajuan){
 		$sql = "INSERT INTO penilaian
 				SET tanggal = ?,
@@ -21,6 +28,14 @@ class M_penilaian extends CI_Model{
 		$query = $this->db->query($sql, array($id_penilaian, $id_butir, $nilai));
 	}
 
+	function ubah_detil_penilaian($id_penilaian, $id_butir, $nilai){
+		$sql = "UPDATE detilpenilaian
+				SET nilai = ?
+				WHERE butir_id = ?
+				AND penilaian_id = ?";
+		$query = $this->db->query($sql, array($nilai, $id_butir, $id_penilaian));
+	}
+
 	function hapus_penilaian($id_penilaian){
 		$sql = "DELETE FROM detilpenilaian
 				WHERE penilaian_id = ?";
@@ -36,6 +51,17 @@ class M_penilaian extends CI_Model{
 				FROM v_pengajuan";
 		$query = $this->db->query($sql, array());
 		$row = $query->result();
+
+		return $row;
+	}
+
+	function cek_detil_penilaian($id_butir, $id_penilaian){
+		$sql = "SELECT *
+				FROM detilpenilaian
+				WHERE butir_id = ?
+				AND penilaian_id = ?";
+		$query = $this->db->query($sql, array($id_butir, $id_penilaian));
+		$row = $query->row();
 
 		return $row;
 	}

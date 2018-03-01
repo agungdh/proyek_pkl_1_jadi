@@ -58,6 +58,24 @@ class Penilaian extends CI_Controller {
 		redirect(base_url('penilaian/nilai/'.$id_pengajuan));
 	}
 
+	function aksi_ubah() {
+		$id_pengajuan = $this->input->post('id_pengajuan');
+		$id_penilaian = $this->input->post('id_penilaian');
+		$nilai = $this->input->post('nilai');
+
+		foreach ($nilai as $butir => $jumlah_nilai) {
+			if ($jumlah_nilai != null) {
+				if ($this->m_penilaian->cek_detil_penilaian($butir, $id_penilaian) != null) {
+					$this->m_penilaian->ubah_detil_penilaian($id_penilaian, $butir, $jumlah_nilai);
+				} else {
+					$this->m_penilaian->tambah_detil_penilaian($id_penilaian, $butir, $jumlah_nilai);
+				}			
+			}
+		}
+
+		redirect(base_url('penilaian/nilai/'.$id_pengajuan));
+	}
+
 	function aksi_hapus($id_penilaian, $id_pengajuan) {
 		$this->m_penilaian->hapus_penilaian($id_penilaian);
 

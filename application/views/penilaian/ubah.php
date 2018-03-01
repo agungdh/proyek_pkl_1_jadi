@@ -28,8 +28,9 @@
 </script>
 
 <!-- Custom Tabs -->
-    <form method="post" enctype="multipart/form-data" action="<?php echo base_url('penilaian/aksi_tambah'); ?>">
+    <form method="post" enctype="multipart/form-data" action="<?php echo base_url('penilaian/aksi_ubah'); ?>">
     <input type="hidden" name="id_pengajuan" value="<?php echo $data['pengajuan']->id; ?>">
+    <input type="hidden" name="id_penilaian" value="<?php echo $data['penilaian']->id; ?>">
     <input type="hidden" name="last_tab" id="last_tab" value="1">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
