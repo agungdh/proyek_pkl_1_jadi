@@ -21,6 +21,16 @@ class M_penilaian extends CI_Model{
 		$query = $this->db->query($sql, array($id_penilaian, $id_butir, $nilai));
 	}
 
+	function hapus_penilaian($id_penilaian){
+		$sql = "DELETE FROM detilpenilaian
+				WHERE penilaian_id = ?";
+		$query = $this->db->query($sql, array($id_penilaian));
+
+		$sql = "DELETE FROM penilaian
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_penilaian));
+	}
+
 	function ambil_pengajuan(){
 		$sql = "SELECT *
 				FROM v_pengajuan";
@@ -38,6 +48,28 @@ class M_penilaian extends CI_Model{
 		$row = $query->result();
 
 		return $row;
+	}
+
+	function ambil_jumlah_butir($id_versi){
+		$sql = "SELECT count(*) total
+				FROM standar st, substandar ss, butir b
+				WHERE b.substandar_id = ss.id
+				AND ss.standar_id = st.id
+				AND st.versi_id=?";
+		$query = $this->db->query($sql, array($id_versi));
+		$row = $query->row();
+
+		return $row->total;
+	}
+
+	function ambil_nilai($id_penilaian){
+		$sql = "SELECT sum(nilai) nilai
+				FROM detilpenilaian
+				WHERE penilaian_id = ?";
+		$query = $this->db->query($sql, array($id_penilaian));
+		$row = $query->row();
+
+		return $row->nilai;
 	}
 
 	function ambil_pengajuan_id($id_pengajuan){
