@@ -11,9 +11,9 @@ class Butir extends CI_Controller {
 		$data['isi'] = "butir/index";
 		$data['data']['substandar'] = $this->m_butir->ambil_substandar_id($id_substandar);
 		$data['data']['standar'] = $this->m_butir->ambil_standar_id($data['data']['substandar']->standar_id);
-		$data['data']['versi'] = $this->m_butir->ambil_versi_id($data['data']['standar']->versi_id);
+		$data['data']['tipeversi'] = $this->m_butir->ambil_tipeversi_id($data['data']['standar']->tipeversi_id);
 		$data['data']['butir'] = $this->m_butir->ambil_butir($id_substandar);
-		
+		$data['data']['versi'] = $this->m_butir->ambil_versi_id($data['data']['tipeversi']->versi_id);
 		$this->load->view("template/template", $data);
 	}
 

@@ -4,11 +4,21 @@ class M_listdokumen extends CI_Model{
 		parent::__construct();		
 	}
 
-	function ambil_versi_id($id_versi){
+	function ambil_versi_id($id_tipeversi){
 		$sql = "SELECT *
 				FROM versi
 				WHERE id = ?";
-		$query = $this->db->query($sql, array($id_versi));
+		$query = $this->db->query($sql, array($id_tipeversi));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_tipeversi_id($id_tipeversi){
+		$sql = "SELECT *
+				FROM tipeversi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_tipeversi));
 		$row = $query->row();
 
 		return $row;
@@ -16,8 +26,8 @@ class M_listdokumen extends CI_Model{
 
 	function ambil_data_butir_dari_id_listdokumen($id_listdokumen){
 		$sql = "SELECT *
-				FROM v_listdokumen
-				WHERE id_listdokumen = ?";
+				FROM v_lisdokumen
+				WHERE id_lisdokumen = ?";
 		$query = $this->db->query($sql, array($id_listdokumen));
 		$row = $query->row();
 
@@ -103,6 +113,16 @@ class M_listdokumen extends CI_Model{
 		$sql = "DELETE FROM listdokumen
 				WHERE id = ?";
 		$query = $this->db->query($sql, array($id));
+	}
+
+	//-------------------------------
+	function ambil_type(){
+		$sql = "SELECT *
+				FROM type_listdokumen";
+		$query = $this->db->query($sql, array());
+		$row = $query->result();
+
+		return $row;
 	}	
 
 }

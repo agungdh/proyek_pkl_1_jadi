@@ -13,12 +13,17 @@
     </div>
 
     <div class="form-group">
-      <label for="versi">Versi</label>
-          <select id="versi" class="form-control select2" name="versi">
+      <label for="tahun">Tahun</label>
+          <input required type="number" min="1900" max="2900" class="form-control" id="tahun" placeholder="Isi Tahun" name="tahun">          
+    </div>
+
+    <div class="form-group">
+      <label for="versi">Tipe Versi</label>
+          <select id="tipe" class="form-control select2" name="tipe">
             <?php
-            foreach ($data['versi'] as $item) {
+            foreach ($data['tipeversi'] as $item) {
               ?>
-              <option value="<?php echo $item->id; ?>"><?php echo $item->nama . ' (' . $item->tahun . ')'; ?></option>
+              <option value="<?php echo $item->id_tipeversi; ?>"><?php echo $item->tipe.' | '.$item->nama.' | '.$item->versi.' | '.$item->tahun; ?></option>
               <?php
             }
             ?>
@@ -26,9 +31,20 @@
     </div>
 
     <div class="form-group">
-      <label for="tahun">Tahun</label>
-          <input required type="number" min="1900" max="2900" class="form-control" id="tahun" placeholder="Isi Tahun" name="tahun">          
+      <label for="versi">User</label>
+          <select id="user" class="form-control select2" name="user">
+            <?php
+            foreach ($data['user'] as $item) {
+              ?>
+              <option value="<?php echo $item->id; ?>"><?php echo $item->username; ?></option>
+              <?php
+            }
+            ?>
+          </select>          
     </div>
+
+
+
 
     </div><!-- /.box-body -->
 

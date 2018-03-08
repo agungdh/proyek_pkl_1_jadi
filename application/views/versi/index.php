@@ -41,7 +41,7 @@
             <th><?php echo $item->versi; ?></th>
             <th><?php echo $item->tahun; ?></th>
               <th><center>
-                <a class="btn btn-primary" href="<?php echo base_url('standar/index/'.$item->id) ?>"><i class="fa fa-share"></i> Standar</a>
+                <a class="btn btn-primary" href="<?php echo base_url('tipeversi/index/'.$item->id) ?>"><i class="fa fa-share"></i> tipe versi</a>
                 <a class="btn btn-info" href="<?php echo base_url('versi/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i></a>
               </center></th>

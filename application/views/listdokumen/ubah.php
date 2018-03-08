@@ -22,25 +22,18 @@
     <div class="form-group">
       <label for="tipe">Tipe</label>
           <select id="tipe" class="form-control select2" name="tipe">
-            <?php
-            switch ($data['data_listdokumen']->tipe) {
-            case 1:
-              $isi = "<option selected value='1'>Dokumen Wajib</option><option value='2'>Dokumen Visitasi</option><option value='3'>Dokumen Pendukung</option>";
-              break;
-            
-            case 2:
-              $isi = "<option value='1'>Dokumen Wajib</option><option selected value='2'>Dokumen Visitasi</option><option value='3'>Dokumen Pendukung</option>";
-              break;
-            
-            case 3:
-              $isi = "<option value='1'>Dokumen Wajib</option><option value='2'>Dokumen Visitasi</option><option selected value='3'>Dokumen Pendukung</option>";
-              break;
-            
-            default:
-              $isi = null;
-              break;
+             <?php
+            foreach ($data['type'] as $item) {
+              if ($item->id_type == $data['data_listdokumen']->tipe) {
+                ?>
+                <option selected value="<?php echo $item->id_type; ?>"><?php echo $item->type; ?></option>
+                <?php
+              } else {
+                ?>
+                <option value="<?php echo $item->id_type; ?>"><?php echo $item->type; ?></option>
+                <?php                
+              }
             }
-            echo $isi;
             ?>
           </select>          
     </div>

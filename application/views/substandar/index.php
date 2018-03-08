@@ -20,16 +20,22 @@
 
     <div class="form-group">
       <h5><strong>
+
         <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
-            <u>Versi:</u>
-          </a><?php echo $data['versi']->nama; ?></font>
+            <u>Tipe Versi:</u>
+          </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
+          <br>
+        <a href='<?php echo base_url("versi"); ?>'>
+          <font color=black>
+            <u>Tipe Versi:</u>
+          </a><?php echo $data['tipeversi']->tipe; ?></font>
         
         <br>
-        <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
-          <font color=black>
+        <a href="<?php echo base_url("standar/index/".$data['standar']->tipeversi_id); ?>">
+          <font color=blue>
             <u>Standar:</u>
-          </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
+        </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
         
       </strong></h5>
 
@@ -40,7 +46,7 @@
       <thead>
         <tr>
                     <th>NOMOR</th>
-                    <th>NAMA</th>
+                    <th width="700">NAMA</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -51,7 +57,7 @@
           ?>
           <tr>
             <th><?php echo $item->nomor; ?></th>
-            <th><?php echo $item->nama; ?></th>
+            <th style="text-align: justify;"><?php echo $item->nama; ?></th>
               <th>
                 <center>
                   <a class="btn btn-primary" href="<?php echo base_url('butir/index/'.$item->id) ?>"><i class="fa fa-share"></i> Butir</a>

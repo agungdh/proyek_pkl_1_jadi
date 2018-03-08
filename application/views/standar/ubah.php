@@ -10,8 +10,8 @@
     <input type="hidden" name="id" value="<?php echo $data['data_standar']->id; ?>">
 
     <div class="form-group">
-      <label for="versi">Versi</label>
-          <input readonly value="<?php echo $data['versi']->versi . ' | ' . $data['versi']->nama . ' | ' . $data['versi']->tahun; ?>" required type="text" class="form-control" id="versi" placeholder="Isi Versi" name="versi">          
+      <label for="tipeversi">tipe versi</label>
+          <input readonly value="<?php echo $data['tipeversi']->tipe; ?>" required type="text" class="form-control" id="versi" placeholder="Isi Versi" name="tipevesrsi">          
     </div>
 
     <div class="form-group">
@@ -28,7 +28,7 @@
 
     <div class="box-footer">
       <input class="btn btn-success" name="proses" type="submit" value="Simpan Data" />
-      <a href="<?php echo base_url('standar/index/'.$data['versi']->id); ?>" class="btn btn-info">Batal</a>
+      <a href="<?php echo base_url('standar/index/'.$data['tipeversi']->id); ?>" class="btn btn-info">Batal</a>
     </div>
   </form>
 </div><!-- /.box -->

@@ -4,12 +4,12 @@
   </div><!-- /.box-header -->
 
   <!-- form start -->
-  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('standar/aksi_tambah/'.$data['versi']->id); ?>">
+  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('standar/aksi_tambah/'.$data['tipeversi']->id); ?>">
     <div class="box-body">
 
     <div class="form-group">
-      <label for="versi">Versi</label>
-          <input readonly value="<?php echo $data['versi']->versi . ' | ' . $data['versi']->nama . ' | ' . $data['versi']->tahun; ?>" required type="text" class="form-control" id="versi" placeholder="Isi Versi" name="versi">          
+      <label for="tipeversi">tipeversi</label>
+          <input readonly value="<?php echo $data['tipeversi']->tipe ?>" required type="text" class="form-control" id="tipeversi" placeholder="Isi tipeversi" name="tipeversi">          
     </div>
 
     <div class="form-group">
@@ -26,7 +26,7 @@
 
     <div class="box-footer">
       <input class="btn btn-success" name="proses" type="submit" value="Simpan Data" />
-      <a href="<?php echo base_url('standar/index/'.$data['versi']->id); ?>" class="btn btn-info">Batal</a>
+      <a href="<?php echo base_url('standar/index/'.$data['tipeversi']->id); ?>" class="btn btn-info">Batal</a>
     </div>
   </form>
 </div><!-- /.box -->

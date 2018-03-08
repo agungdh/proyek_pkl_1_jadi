@@ -20,9 +20,9 @@
     <div class="form-group">
       <label for="tipe">Tipe</label>
           <select id="tipe" class="form-control select2" name="tipe">
-            <option value="1">Dokumen Wajib</option>
-            <option value="2">Dokumen Visitasi</option>
-            <option value="3">Dokumen Pendukung</option>
+            <?php foreach($data['list'] as $item): ?>
+            <option value="<?php echo $item->id_type; ?>"><?php echo $item->type; ?></option>
+          <?php endforeach; ?>
           </select>          
     </div>
 

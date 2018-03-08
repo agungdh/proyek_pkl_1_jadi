@@ -4,11 +4,10 @@ class M_pengajuan extends CI_Model{
 		parent::__construct();		
 	}
 
-	function ambil_pengajuan($id_user){
+	function ambil_pengajuan(){
 		$sql = "SELECT *
-				FROM v_pengajuan
-				WHERE user_id = ?";
-		$query = $this->db->query($sql, array($id_user));
+				FROM v_pengajuan";
+		$query = $this->db->query($sql, array());
 		$row = $query->result();
 
 		return $row;
@@ -34,6 +33,24 @@ class M_pengajuan extends CI_Model{
 		return $row;
 	}
 
+	function ambil_tipeversi(){
+		$sql = "SELECT *
+				FROM v_versitipe";
+		$query = $this->db->query($sql, array());
+		$row = $query->result();
+
+		return $row;
+	}
+
+	function ambil_user(){
+		$sql = "SELECT *
+				FROM user";
+		$query = $this->db->query($sql, array());
+		$row = $query->result();
+
+		return $row;
+	}
+
 	function ambil_pengajuan_id($id_pengajuan){
 		$sql = "SELECT *
 				FROM pengajuan
@@ -44,22 +61,23 @@ class M_pengajuan extends CI_Model{
 		return $row;
 	}
 
-	function tambah_pengajuan($tanggal, $versi, $tahun, $user_id){
+	function tambah_pengajuan($tanggal, $user, $tipe, $tahun){
 		$sql = "INSERT INTO pengajuan
 				SET tanggal = ?,
-				versi_id = ?,
-				tahun_borang = ?,
-				user_id = ?";
-		$query = $this->db->query($sql, array($tanggal, $versi, $tahun, $user_id));
+				user_id = ?,
+				tipeversi_id = ?,
+				tahun_borang = ?";
+		$query = $this->db->query($sql, array($tanggal, $user, $tipe, $tahun));
 	}
 
-	function ubah_pengajuan($tanggal, $versi, $tahun, $id){
+	function ubah_pengajuan($tanggal, $user, $tipe, $tahun, $id){
 		$sql = "UPDATE pengajuan
-				SET tanggal = ?,
-				versi_id = ?,
-				tahun_borang = ?
-				WHERE id = ?";
-		$query = $this->db->query($sql, array($tanggal, $versi, $tahun, $id));
+				SET tanggal 	= ?,
+				user_id 		= ?,
+				tipeversi_id 	= ?,
+				tahun_borang 	= ?
+				WHERE id 		= ?";
+		$query = $this->db->query($sql, array($tanggal, $user, $tipe, $tahun, $id));
 	}
 
 	function hapus_pengajuan($id){

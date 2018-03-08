@@ -19,27 +19,35 @@
     <div class="box-body">
 
     <div class="form-group">
+     
       <h5><strong>
+
         <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
             <u>Versi:</u>
-          </a><?php echo $data['versi']->nama; ?></font>
+          </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
+
+          <br>
+        <a href='<?php echo base_url("tipeversi/index/").$data['tipeversi']->versi_id; ?>'>
+          <font color=black>
+            <u>Tipe Versi:</u>
+          </a><?php echo $data['tipeversi']->tipe; ?></font>
         
         <br>
         <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
-          <font color=black>
+          <font color=blue>
             <u>Standar:</u>
           </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
         
         <br>
         <a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'>
-          <font color=blue>
+          <font color=black>
             <u>Substandar:</u>
           </a><?php echo $data['substandar']->nomor . ' ' . $data['substandar']->nama; ?></font>
         
         <br>
         <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>'>
-          <font color=black>
+          <font color=blue>
             <u>Butir:</u>
           </a><?php echo $data['butir']->nomor . ' ' . $data['butir']->nama; ?></font>
         

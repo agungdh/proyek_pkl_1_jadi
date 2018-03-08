@@ -10,7 +10,8 @@ class Substandar extends CI_Controller {
 	function index($id_standar) {
 		$data['isi'] = "substandar/index";
 		$data['data']['standar'] = $this->m_substandar->ambil_standar_id($id_standar);
-		$data['data']['versi'] = $this->m_substandar->ambil_versi_id($data['data']['standar']->versi_id);
+		$data['data']['tipeversi'] = $this->m_substandar->ambil_tipeversi_id($data['data']['standar']->tipeversi_id);
+		$data['data']['versi'] = $this->m_substandar->ambil_versi_id($data['data']['tipeversi']->versi_id);
 		$data['data']['substandar'] = $this->m_substandar->ambil_substandar($id_standar);
 
 		$this->load->view("template/template", $data);
@@ -42,7 +43,7 @@ class Substandar extends CI_Controller {
 	}
 
 	function aksi_ubah() {
-		$versi = $this->m_substandar->ambil_data_standar_dari_id_substandar($this->input->post('id'));
+		$tipeversi = $this->m_substandar->ambil_data_standar_dari_id_substandar($this->input->post('id'));
 		
 		$this->m_substandar->ubah_substandar(
 			$this->input->post('nomor'),
@@ -50,7 +51,7 @@ class Substandar extends CI_Controller {
 			$this->input->post('id')
 		);
 		
-		redirect(base_url('substandar/index/'.$versi->id_standar));
+		redirect(base_url('substandar/index/'.$tipeversi->id_standar));
 	}
 
 	function aksi_hapus($id_substandar) {

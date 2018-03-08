@@ -27,7 +27,7 @@
       <thead>
         <tr>
                     <th>TANGGAL</th>
-                    <th>VERSI</th>
+                    <th>TIPE VERSI</th>
                     <th>TAHUN</th>
                     <th>PROSES</th>
         </tr>
@@ -38,13 +38,13 @@
         foreach ($data['pengajuan'] as $item) {
           ?>
           <tr>
-            <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
-            <th><?php echo $item->nama; ?></th>
+            <th><?php echo $this->pustaka->tanggal_indo($item->tgl_pengajuan); ?></th>
+            <th><?php echo $item->tipeversi; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
               <th>
-                <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id) ?>"><i class="fa fa-share"></i>  Dokumen</a>
-                <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i> </a>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
+                <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i>  Dokumen</a>
+                <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id_pengajuan) ?>"><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id_pengajuan; ?>')"><i class="fa fa-trash"></i> </a>
               </th>
           </tr>
           <?php

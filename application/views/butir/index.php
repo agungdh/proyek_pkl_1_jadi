@@ -19,21 +19,30 @@
     <div class="box-body">
 
     <div class="form-group">
+      
       <h5><strong>
+
         <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
             <u>Versi:</u>
-          </a><?php echo $data['versi']->nama; ?></font>
+          </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
+          
+          <br> 
+
+        <a href='<?php echo base_url("tipeversi/index/").$data['standar']->tipeversi_id; ?>'>
+          <font color=black>
+            <u>TipeVersi:</u>
+          </a><?php echo $data['tipeversi']->tipe; ?></font>
         
         <br>
-        <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
-          <font color=black>
+        <a href='<?php echo base_url("standar/index/".$data['standar']->tipeversi_id); ?>'>
+          <font color=blue>
             <u>Standar:</u>
           </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
-        
+          
         <br>
         <a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'>
-          <font color=blue>
+          <font color=black>
             <u>Substandar:</u>
           </a><?php echo $data['substandar']->nomor . ' ' . $data['substandar']->nama; ?></font>
         
@@ -46,7 +55,7 @@
       <thead>
         <tr>
                     <th>NOMOR</th>
-                    <th>NAMA</th>
+                    <th width="450">NAMA</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -60,7 +69,11 @@
             <th><?php echo $item->nama; ?></th>
               <th>
                 <a class="btn btn-primary" href="<?php echo base_url('listdokumen/index/'.$item->id) ?>"> <i class="fa fa-share"></i> List Dokumen</a>
+
+                <a class="btn btn-warning" href="<?php echo base_url('butirpenilaian/index/'.$item->id) ?>"> <i class="fa fa-share"></i> Butiir penilain</a>
+
                 <a class="btn btn-info" href="<?php echo base_url('butir/ubah/'.$item->id) ?>"> <i class="fa fa-pencil"></i></a>
+                
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"> <i class="fa fa-trash"></i></a>
               </th>
           </tr>

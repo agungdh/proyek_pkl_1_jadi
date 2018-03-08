@@ -15,23 +15,43 @@
     </div>
 
     <div class="form-group">
-      <label for="versi">Versi</label>
-          <select id="versi" class="form-control select2" name="versi">
+      <label for="versi">Tipe Versi</label>
+          <select id="tipe" class="form-control select2" name="tipe">
             <?php
-            foreach ($data['versi'] as $item) {
-              if ($item->id == $data['pengajuan']->versi_id) {
+            foreach ($data['tipeversi'] as $item) {
+              if ($item->id_tipeversi == $data['pengajuan']->tipeversi_id) {
                 ?>
-                <option selected value="<?php echo $item->id; ?>"><?php echo $item->nama . ' (' . $item->tahun . ')'; ?></option>
+                <option selected value="<?php echo $item->id_tipeversi; ?>"><?php echo $item->tipe.' | '.$item->nama.' | '.$item->tahun; ?></option>
                 <?php
               } else {
                 ?>
-                <option value="<?php echo $item->id; ?>"><?php echo $item->nama . ' (' . $item->tahun . ')'; ?></option>
+                <option value="<?php echo $item->id_tipeversi; ?>"><?php echo $item->tipe.' | '.$item->nama.' | '.$item->tahun; ?></option>
                 <?php                
               }
             }
             ?>
           </select>          
     </div>
+
+    <div class="form-group">
+      <label for="versi">User</label>
+          <select id="tipe" class="form-control select2" name="user">
+            <?php
+            foreach ($data['user'] as $item) {
+              if ($item->id == $data['pengajuan']->user_id) {
+                ?>
+                <option selected value="<?php echo $item->id; ?>"><?php echo $item->username; ?></option>
+                <?php
+              } else {
+                ?>
+                <option value="<?php echo $item->id; ?>"><?php echo $item->username; ?></option>
+                <?php                
+              }
+            }
+            ?>
+          </select>          
+    </div>
+
 
     <div class="form-group">
       <label for="tahun">Tahun</label>

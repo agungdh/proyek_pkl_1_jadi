@@ -27,3 +27,19 @@
 		<span>Data Penilaian</span>
 	</a>
 </li>
+
+<li>
+	<a href="<?php echo base_url("type_dokumen"); ?>">
+		<i class="fa fa-users text-aqua"></i>
+		<span>Type List Dokumen</span>
+	</a>
+</li>
+
+<li>
+	<a href="<?php echo base_url("pengajuan"); ?>">
+		<i class="fa fa-users text-aqua"></i>
+		<span>Pengajuan</span>
+	</a>
+</li>
+
+

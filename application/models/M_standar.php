@@ -4,7 +4,17 @@ class M_standar extends CI_Model{
 		parent::__construct();		
 	}
 
-	function ambil_data_versi_dari_id_standar($id_standar){
+	function ambil_versi_id($id_tipeversi){
+		$sql = "SELECT *
+				FROM versi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_tipeversi));
+		$row = $query->row();
+
+		return $row;
+	}
+
+	function ambil_data_tipeversi_dari_id_standar($id_standar){
 		$sql = "SELECT *
 				FROM v_standar
 				WHERE id_standar = ?";
@@ -14,11 +24,11 @@ class M_standar extends CI_Model{
 		return $row;
 	}
 
-	function ambil_standar($id_versi){
+	function ambil_standar($id_tipeversi){
 		$sql = "SELECT *
 				FROM standar
-				WHERE versi_id = ?";
-		$query = $this->db->query($sql, array($id_versi));
+				WHERE tipeversi_id = ?";
+		$query = $this->db->query($sql, array($id_tipeversi));
 		$row = $query->result();
 
 		return $row;
@@ -33,11 +43,11 @@ class M_standar extends CI_Model{
 		return $row;
 	}
 
-	function ambil_versi_id($id_versi){
+	function ambil_tipeversi_id($id_tipeversi){
 		$sql = "SELECT *
-				FROM versi
+				FROM tipeversi
 				WHERE id = ?";
-		$query = $this->db->query($sql, array($id_versi));
+		$query = $this->db->query($sql, array($id_tipeversi));
 		$row = $query->row();
 
 		return $row;
@@ -53,12 +63,12 @@ class M_standar extends CI_Model{
 		return $row;
 	}
 
-	function tambah_standar($nomor, $nama, $id_versi){
+	function tambah_standar($nomor, $nama, $id_tipeversi){
 		$sql = "INSERT INTO standar
 				SET nomor = ?,
 				nama = ?,
-				versi_id = ?";
-		$query = $this->db->query($sql, array($nomor, $nama, $id_versi));
+				tipeversi_id = ?";
+		$query = $this->db->query($sql, array($nomor, $nama, $id_tipeversi));
 	}	
 
 	function ubah_standar($nomor, $nama, $id){

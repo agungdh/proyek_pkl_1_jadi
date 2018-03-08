@@ -19,15 +19,23 @@
     <div class="box-body">
 
     <div class="form-group">
-      
+
       <h5><strong>
+
         <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
             <u>Versi:</u>
-          </a><?php echo $data['versi']->nama; ?></font>
+          </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
+        <br>
+        <a href='<?php echo base_url("tipeversi/index/").$data['tipeversi']->id; ?>'>
+          <font color=black>
+            <u>Tipe Versi:</u>
+          </a><?php echo $data['tipeversi']->tipe; ?></font>
       </strong></h5>
 
-      <a href='<?php echo base_url("standar/tambah/".$data['versi']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Standar</button></a>
+
+
+      <a href='<?php echo base_url("standar/tambah/".$data['tipeversi']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Standar</button></a>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">

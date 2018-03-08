@@ -10,24 +10,24 @@ class Pengajuan extends CI_Controller {
 
 	function index() {
 		$data['isi'] = "pengajuan/index";
-		$data['data']['pengajuan'] = $this->m_pengajuan->ambil_pengajuan($this->session->id);
+		$data['data']['pengajuan'] = $this->m_pengajuan->ambil_pengajuan();
 
 		$this->load->view("template/template", $data);
 	}
 
 	function tambah() {
 		$data['isi'] = "pengajuan/tambah";
-		$data['data']['versi'] = $this->m_pengajuan->ambil_versi();
-
+		$data['data']['user'] = $this->m_pengajuan->ambil_user();
+		$data['data']['tipeversi'] = $this->m_pengajuan->ambil_tipeversi();
 		$this->load->view("template/template", $data);	
 	}
 
 	function aksi_tambah() {
 		$this->m_pengajuan->tambah_pengajuan(
 			$this->input->post('tanggal'),
-			$this->input->post('versi'),
-			$this->input->post('tahun'),
-			$this->session->id
+			$this->input->post('user'),
+			$this->input->post('tipe'),
+			$this->input->post('tahun')
 		);
 
 		redirect(base_url('pengajuan'));
@@ -35,7 +35,8 @@ class Pengajuan extends CI_Controller {
 
 	function ubah($id_pengajuan) {
 		$data['isi'] = "pengajuan/ubah";
-		$data['data']['versi'] = $this->m_pengajuan->ambil_versi();
+		$data['data']['user'] = $this->m_pengajuan->ambil_user();
+		$data['data']['tipeversi'] = $this->m_pengajuan->ambil_tipeversi();
 		$data['data']['pengajuan'] = $this->m_pengajuan->ambil_pengajuan_id($id_pengajuan);
 
 		$this->load->view("template/template", $data);
@@ -44,7 +45,8 @@ class Pengajuan extends CI_Controller {
 	function aksi_ubah() {
 		$this->m_pengajuan->ubah_pengajuan(
 			$this->input->post('tanggal'),
-			$this->input->post('versi'),
+			$this->input->post('user'),
+			$this->input->post('tipe'),
 			$this->input->post('tahun'),
 			$this->input->post('id')
 		);

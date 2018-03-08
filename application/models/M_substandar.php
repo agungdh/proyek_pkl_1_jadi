@@ -4,6 +4,16 @@ class M_substandar extends CI_Model{
 		parent::__construct();		
 	}
 
+	function ambil_versi_id($id_tipeversi){
+		$sql = "SELECT *
+				FROM versi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_tipeversi));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_data_standar_dari_id_substandar($id_substandar){
 		$sql = "SELECT *
 				FROM v_substandar
@@ -43,11 +53,11 @@ class M_substandar extends CI_Model{
 		return $row;
 	}
 
-	function ambil_versi_id($id_versi){
+	function ambil_tipeversi_id($id_tipeversi){
 		$sql = "SELECT *
-				FROM versi
+				FROM tipeversi
 				WHERE id = ?";
-		$query = $this->db->query($sql, array($id_versi));
+		$query = $this->db->query($sql, array($id_tipeversi));
 		$row = $query->row();
 
 		return $row;
