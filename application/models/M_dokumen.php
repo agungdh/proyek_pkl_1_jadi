@@ -100,6 +100,16 @@ class M_dokumen extends CI_Model{
 		return $row;
 	}
 
+	function ambil_tipeversi($id_tipeversi){
+		$sql = "SELECT *
+				FROM tipeversi
+				WHERE id = ?";
+		$query = $this->db->query($sql, array($id_tipeversi));
+		$row = $query->row();
+
+		return $row;
+	}
+
 	function ambil_listdokumen($id_versi){
 		$sql = "SELECT *
 				FROM v_pengajuan_dokumen
@@ -110,12 +120,12 @@ class M_dokumen extends CI_Model{
 		return $row;
 	}
 
-	function ambil_standar($id_versi){
+	function ambil_standar($id_tipeversi){
 		$sql = "SELECT *
 				FROM standar
-				WHERE versi_id = ?
+				WHERE tipeversi_id = ?
 				ORDER BY nomor";
-		$query = $this->db->query($sql, array($id_versi));
+		$query = $this->db->query($sql, array($id_tipeversi));
 		$row = $query->result();
 
 		return $row;

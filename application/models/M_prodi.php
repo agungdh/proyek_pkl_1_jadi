@@ -7,7 +7,7 @@ class M_prodi extends CI_Model{
 	function ambil_data_fakultas_dari_id_prodi($id_prodi){
 		$sql = "SELECT *
 				FROM v_prodi
-				WHERE id = ?";
+				WHERE id_prodi = ?";
 		$query = $this->db->query($sql, array($id_prodi));
 		$row = $query->row();
 

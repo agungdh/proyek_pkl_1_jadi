@@ -25,7 +25,8 @@ class Tipeversi extends CI_Controller {
 			$this->input->post('type'),
 			$id_versi
 		);
-		redirect('tipeversi');
+		redirect('tipeversi/index/'.$id_versi);
+
 	}
 
 	function ubah($id){
@@ -34,17 +35,24 @@ class Tipeversi extends CI_Controller {
 		$this->load->view("template/template", $data);
 	}
 
-	function aksi_ubah(){
+	function aksi_ubah($id){
 		$this->m_tipeversi->ubah_type(
 			$this->input->post('type'),
 			$this->input->post('id')
 		);
-		redirect('tipeversi');
+
+		//print_r($id);
+		redirect('tipeversi/index/'.$id);
 	}
 
-	function aksi_hapus($id){
-		$this->m_tipeversi->aksi_hapus($id);
-		redirect('tipeversi');
+	function aksi_hapus($id_tipeversi) {
+		$tipeversi = $this->m_tipeversi->ambil_data_versi_dari_id_tipeversi($id_tipeversi);
+
+		$this->m_tipeversi->aksi_hapus(
+			$id_tipeversi
+		);
+
+		redirect(base_url('tipeversi/index/'.$tipeversi->id_versi));
 	}
 
 

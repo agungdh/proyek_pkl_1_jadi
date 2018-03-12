@@ -4,11 +4,11 @@
   </div><!-- /.box-header -->
 
   <!-- form start -->
-  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('tipeversi/aksi_tambah/' . $data['versi']->id); ?>">
+  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('tipeversi/aksi_tambah/').$data['versi']->id; ?>">
     <div class="box-body">
 
     <div class="form-group">
-      <label for="versi">Tipe Versi</label>
+      <label for="versi">tipe versi</label>
           <input required type="text" class="form-control" id="versi" placeholder="Isi tipe versi" name="type">          
     </div>
 
@@ -16,7 +16,7 @@
 
     <div class="box-footer">
       <input class="btn btn-success" name="proses" type="submit" value="Simpan Data" />
-      <a href="<?php echo base_url('tipeversi'); ?>" class="btn btn-info">Batal</a>
+      <a href="<?php echo base_url('tipeversi/index/').$data['versi']->id; ?>" class="btn btn-info">Batal</a>
     </div>
   </form>
 </div><!-- /.box -->

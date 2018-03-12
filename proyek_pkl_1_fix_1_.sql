@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08 Mar 2018 pada 04.03
--- Versi Server: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Mar 12, 2018 at 04:01 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `proyek_pkl_1_fix`
+-- Database: `proyek_pkl_1_fix(1)`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `butir`
+-- Table structure for table `butir`
 --
 
 CREATE TABLE `butir` (
@@ -36,7 +34,7 @@ CREATE TABLE `butir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `butir`
+-- Dumping data for table `butir`
 --
 
 INSERT INTO `butir` (`id`, `nomor`, `nama`, `substandar_id`) VALUES
@@ -104,7 +102,7 @@ INSERT INTO `butir` (`id`, `nomor`, `nama`, `substandar_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `butirpenilaian`
+-- Table structure for table `butirpenilaian`
 --
 
 CREATE TABLE `butirpenilaian` (
@@ -116,7 +114,7 @@ CREATE TABLE `butirpenilaian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `butirpenilaian`
+-- Dumping data for table `butirpenilaian`
 --
 
 INSERT INTO `butirpenilaian` (`id`, `nomor_butir`, `deskripsi`, `bobot`, `butir_id`) VALUES
@@ -127,7 +125,7 @@ INSERT INTO `butirpenilaian` (`id`, `nomor_butir`, `deskripsi`, `bobot`, `butir_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detilpenilaian`
+-- Table structure for table `detilpenilaian`
 --
 
 CREATE TABLE `detilpenilaian` (
@@ -138,7 +136,7 @@ CREATE TABLE `detilpenilaian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detilpenilaian`
+-- Dumping data for table `detilpenilaian`
 --
 
 INSERT INTO `detilpenilaian` (`id`, `penilaian_id`, `butir_id`, `nilai`) VALUES
@@ -218,7 +216,7 @@ INSERT INTO `detilpenilaian` (`id`, `penilaian_id`, `butir_id`, `nilai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dokumen`
+-- Table structure for table `dokumen`
 --
 
 CREATE TABLE `dokumen` (
@@ -232,7 +230,7 @@ CREATE TABLE `dokumen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `dokumen`
+-- Dumping data for table `dokumen`
 --
 
 INSERT INTO `dokumen` (`id`, `nama_file`, `nama_file_asli`, `mime`, `url`, `listdokumen_id`, `pengajuan_id`) VALUES
@@ -248,7 +246,7 @@ INSERT INTO `dokumen` (`id`, `nama_file`, `nama_file_asli`, `mime`, `url`, `list
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `fakultas`
+-- Table structure for table `fakultas`
 --
 
 CREATE TABLE `fakultas` (
@@ -258,7 +256,7 @@ CREATE TABLE `fakultas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `fakultas`
+-- Dumping data for table `fakultas`
 --
 
 INSERT INTO `fakultas` (`id`, `kode`, `nama`) VALUES
@@ -272,7 +270,7 @@ INSERT INTO `fakultas` (`id`, `kode`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `listdokumen`
+-- Table structure for table `listdokumen`
 --
 
 CREATE TABLE `listdokumen` (
@@ -283,7 +281,7 @@ CREATE TABLE `listdokumen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `listdokumen`
+-- Dumping data for table `listdokumen`
 --
 
 INSERT INTO `listdokumen` (`id`, `keterangan`, `butir_id`, `tipe`) VALUES
@@ -382,12 +380,12 @@ INSERT INTO `listdokumen` (`id`, `keterangan`, `butir_id`, `tipe`) VALUES
 (253, 'Beri tanda ? pada kolom yang sesuai (hanya satu kolom) dengan aksesibilitas tiap jenis data pada tabel berikut.', 133, 2),
 (254, 'Jelaskan blueprint pengembangan, pengelolaan, dan pemanfaatan sistem informasi.', 134, 3),
 (255, 'file tentang dana yang diterima tahun ini', 116, 2),
-(256, 'lj;', 136, 2);
+(256, 'lj;', 136, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan`
+-- Table structure for table `pengajuan`
 --
 
 CREATE TABLE `pengajuan` (
@@ -399,17 +397,19 @@ CREATE TABLE `pengajuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengajuan`
+-- Dumping data for table `pengajuan`
 --
 
 INSERT INTO `pengajuan` (`id`, `tanggal`, `user_id`, `tipeversi_id`, `tahun_borang`) VALUES
 (18, '2019-02-27', 3, 29, 2019),
-(23, '2018-03-07', 4, 29, 2090);
+(23, '2018-03-07', 4, 29, 2090),
+(24, '2018-03-09', 1, 28, 2018),
+(25, '2018-03-09', 3, 29, 2019);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penilaian`
+-- Table structure for table `penilaian`
 --
 
 CREATE TABLE `penilaian` (
@@ -419,7 +419,7 @@ CREATE TABLE `penilaian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `penilaian`
+-- Dumping data for table `penilaian`
 --
 
 INSERT INTO `penilaian` (`id`, `tanggal`, `pengajuan_id`) VALUES
@@ -430,7 +430,7 @@ INSERT INTO `penilaian` (`id`, `tanggal`, `pengajuan_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `prodi`
+-- Table structure for table `prodi`
 --
 
 CREATE TABLE `prodi` (
@@ -441,7 +441,7 @@ CREATE TABLE `prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `prodi`
+-- Dumping data for table `prodi`
 --
 
 INSERT INTO `prodi` (`id`, `kode`, `nama`, `fakultas_id`) VALUES
@@ -459,7 +459,7 @@ INSERT INTO `prodi` (`id`, `kode`, `nama`, `fakultas_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `standar`
+-- Table structure for table `standar`
 --
 
 CREATE TABLE `standar` (
@@ -470,7 +470,7 @@ CREATE TABLE `standar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `standar`
+-- Dumping data for table `standar`
 --
 
 INSERT INTO `standar` (`id`, `nomor`, `nama`, `tipeversi_id`) VALUES
@@ -483,12 +483,13 @@ INSERT INTO `standar` (`id`, `nomor`, `nama`, `tipeversi_id`) VALUES
 (70, '4', 'Standar 4', 28),
 (71, '1', 'satu', 29),
 (73, '2', 'nama 2', 28),
-(76, '2', 'dua', 29);
+(76, '2', 'dua', 29),
+(77, '100', 'testtt', 28);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `substandar`
+-- Table structure for table `substandar`
 --
 
 CREATE TABLE `substandar` (
@@ -499,7 +500,7 @@ CREATE TABLE `substandar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `substandar`
+-- Dumping data for table `substandar`
 --
 
 INSERT INTO `substandar` (`id`, `nomor`, `nama`, `standar_id`) VALUES
@@ -528,7 +529,7 @@ INSERT INTO `substandar` (`id`, `nomor`, `nama`, `standar_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tipeversi`
+-- Table structure for table `tipeversi`
 --
 
 CREATE TABLE `tipeversi` (
@@ -538,17 +539,19 @@ CREATE TABLE `tipeversi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tipeversi`
+-- Dumping data for table `tipeversi`
 --
 
 INSERT INTO `tipeversi` (`id`, `tipe`, `versi_id`) VALUES
 (28, 'universitas', 28),
-(29, 'Program Studi', 29);
+(29, 'Program Studi', 29),
+(30, 'program studi', 28),
+(31, '53', 28);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `type_listdokumen`
+-- Table structure for table `type_listdokumen`
 --
 
 CREATE TABLE `type_listdokumen` (
@@ -557,7 +560,7 @@ CREATE TABLE `type_listdokumen` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `type_listdokumen`
+-- Dumping data for table `type_listdokumen`
 --
 
 INSERT INTO `type_listdokumen` (`id_type`, `type`) VALUES
@@ -568,7 +571,7 @@ INSERT INTO `type_listdokumen` (`id_type`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -580,7 +583,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `level`, `prodi_id`) VALUES
@@ -592,7 +595,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `level`, `prodi_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `versi`
+-- Table structure for table `versi`
 --
 
 CREATE TABLE `versi` (
@@ -603,7 +606,7 @@ CREATE TABLE `versi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `versi`
+-- Dumping data for table `versi`
 --
 
 INSERT INTO `versi` (`id`, `nama`, `versi`, `tahun`) VALUES
@@ -614,7 +617,6 @@ INSERT INTO `versi` (`id`, `nama`, `versi`, `tahun`) VALUES
 
 --
 -- Stand-in structure for view `v_butir`
--- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_butir` (
 `id_butir` int(11)
@@ -637,7 +639,6 @@ CREATE TABLE `v_butir` (
 
 --
 -- Stand-in structure for view `v_butirbutir`
--- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_butirbutir` (
 `id_butirpenilaian` int(11)
@@ -653,7 +654,6 @@ CREATE TABLE `v_butirbutir` (
 
 --
 -- Stand-in structure for view `v_lisdokumen`
--- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_lisdokumen` (
 `id_lisdokumen` int(11)
@@ -679,7 +679,6 @@ CREATE TABLE `v_lisdokumen` (
 
 --
 -- Stand-in structure for view `v_pengajuan`
--- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_pengajuan` (
 `id_pengajuan` int(11)
@@ -695,8 +694,51 @@ CREATE TABLE `v_pengajuan` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `v_pengajuan_dokumen`
+--
+CREATE TABLE `v_pengajuan_dokumen` (
+`id_dokumen` int(11)
+,`nama_file` varchar(255)
+,`id_pengajuan` int(11)
+,`tanggal_pengajuan` date
+,`tipe_versi` text
+,`versi_id` int(11)
+,`nama_versi` varchar(255)
+,`tahun_versi` year(4)
+,`id_standar` int(11)
+,`nomor_standar` varchar(255)
+,`nama_standar` text
+,`id_substandar` int(11)
+,`nomor_substandar` varchar(255)
+,`nama_substandar` text
+,`id_butir` int(11)
+,`nomor_butir` varchar(255)
+,`nama_butir` text
+,`id_listdokumen` int(11)
+,`keterangan_listdokumen` text
+,`tipe_listdokumen` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_penilaian`
+--
+CREATE TABLE `v_penilaian` (
+`id_penilaian` int(11)
+,`tanggal_penilaian` date
+,`tanggal_pengajuan` date
+,`tahun_borang` year(4)
+,`tipe` text
+,`nama_versi` varchar(255)
+,`tahun_versi` year(4)
+,`level` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `v_standar`
--- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_standar` (
 `id_standar` int(11)
@@ -714,7 +756,6 @@ CREATE TABLE `v_standar` (
 
 --
 -- Stand-in structure for view `v_substandar`
--- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_substandar` (
 `id_substandar` int(11)
@@ -735,7 +776,6 @@ CREATE TABLE `v_substandar` (
 
 --
 -- Stand-in structure for view `v_versitipe`
--- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_versitipe` (
 `id_tipeversi` int(11)
@@ -749,7 +789,7 @@ CREATE TABLE `v_versitipe` (
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_butir`
+-- Structure for view `v_butir`
 --
 DROP TABLE IF EXISTS `v_butir`;
 
@@ -758,7 +798,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_butirbutir`
+-- Structure for view `v_butirbutir`
 --
 DROP TABLE IF EXISTS `v_butirbutir`;
 
@@ -767,7 +807,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_lisdokumen`
+-- Structure for view `v_lisdokumen`
 --
 DROP TABLE IF EXISTS `v_lisdokumen`;
 
@@ -776,7 +816,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_pengajuan`
+-- Structure for view `v_pengajuan`
 --
 DROP TABLE IF EXISTS `v_pengajuan`;
 
@@ -785,7 +825,25 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_standar`
+-- Structure for view `v_pengajuan_dokumen`
+--
+DROP TABLE IF EXISTS `v_pengajuan_dokumen`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_pengajuan_dokumen`  AS  select `d`.`id` AS `id_dokumen`,`d`.`nama_file` AS `nama_file`,`p`.`id` AS `id_pengajuan`,`p`.`tanggal` AS `tanggal_pengajuan`,`t`.`tipe` AS `tipe_versi`,`v`.`id` AS `versi_id`,`v`.`nama` AS `nama_versi`,`v`.`tahun` AS `tahun_versi`,`s`.`id` AS `id_standar`,`s`.`nomor` AS `nomor_standar`,`s`.`nama` AS `nama_standar`,`ss`.`id` AS `id_substandar`,`ss`.`nomor` AS `nomor_substandar`,`ss`.`nama` AS `nama_substandar`,`b`.`id` AS `id_butir`,`b`.`nomor` AS `nomor_butir`,`b`.`nama` AS `nama_butir`,`ld`.`id` AS `id_listdokumen`,`ld`.`keterangan` AS `keterangan_listdokumen`,`ld`.`tipe` AS `tipe_listdokumen` from ((((((((`dokumen` `d` join `pengajuan` `p`) join `tipeversi` `t`) join `versi` `v`) join `user` `u`) join `standar` `s`) join `substandar` `ss`) join `butir` `b`) join `listdokumen` `ld`) where ((`d`.`pengajuan_id` = `p`.`id`) and (`p`.`tipeversi_id` = `t`.`id`) and (`t`.`versi_id` = `v`.`id`) and (`s`.`tipeversi_id` = `v`.`id`) and (`ss`.`standar_id` = `s`.`id`) and (`b`.`substandar_id` = `ss`.`id`) and (`ld`.`butir_id` = `b`.`id`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_penilaian`
+--
+DROP TABLE IF EXISTS `v_penilaian`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_penilaian`  AS  select `pn`.`id` AS `id_penilaian`,`pn`.`tanggal` AS `tanggal_penilaian`,`p`.`tanggal` AS `tanggal_pengajuan`,`p`.`tahun_borang` AS `tahun_borang`,`t`.`tipe` AS `tipe`,`v`.`nama` AS `nama_versi`,`v`.`tahun` AS `tahun_versi`,`u`.`level` AS `level` from ((((`penilaian` `pn` join `pengajuan` `p`) join `user` `u`) join `tipeversi` `t`) join `versi` `v`) where ((`pn`.`pengajuan_id` = `p`.`id`) and (`p`.`tipeversi_id` = `t`.`id`) and (`p`.`user_id` = `u`.`id`) and (`t`.`versi_id` = `v`.`id`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_standar`
 --
 DROP TABLE IF EXISTS `v_standar`;
 
@@ -794,7 +852,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_substandar`
+-- Structure for view `v_substandar`
 --
 DROP TABLE IF EXISTS `v_substandar`;
 
@@ -803,7 +861,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_versitipe`
+-- Structure for view `v_versitipe`
 --
 DROP TABLE IF EXISTS `v_versitipe`;
 
@@ -928,12 +986,12 @@ ALTER TABLE `versi`
 -- AUTO_INCREMENT for table `butir`
 --
 ALTER TABLE `butir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 --
 -- AUTO_INCREMENT for table `butirpenilaian`
 --
 ALTER TABLE `butirpenilaian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `detilpenilaian`
 --
@@ -958,7 +1016,7 @@ ALTER TABLE `listdokumen`
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `penilaian`
 --
@@ -973,7 +1031,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `standar`
 --
 ALTER TABLE `standar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT for table `substandar`
 --
@@ -983,7 +1041,7 @@ ALTER TABLE `substandar`
 -- AUTO_INCREMENT for table `tipeversi`
 --
 ALTER TABLE `tipeversi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `type_listdokumen`
 --
@@ -1000,84 +1058,83 @@ ALTER TABLE `user`
 ALTER TABLE `versi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `butir`
+-- Constraints for table `butir`
 --
 ALTER TABLE `butir`
   ADD CONSTRAINT `butir_ibfk_1` FOREIGN KEY (`substandar_id`) REFERENCES `substandar` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `butirpenilaian`
+-- Constraints for table `butirpenilaian`
 --
 ALTER TABLE `butirpenilaian`
   ADD CONSTRAINT `butirpenilaian_ibfk_1` FOREIGN KEY (`butir_id`) REFERENCES `butir` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `detilpenilaian`
+-- Constraints for table `detilpenilaian`
 --
 ALTER TABLE `detilpenilaian`
   ADD CONSTRAINT `detilpenilaian_ibfk_1` FOREIGN KEY (`penilaian_id`) REFERENCES `penilaian` (`id`),
   ADD CONSTRAINT `detilpenilaian_ibfk_2` FOREIGN KEY (`butir_id`) REFERENCES `butir` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `dokumen`
+-- Constraints for table `dokumen`
 --
 ALTER TABLE `dokumen`
   ADD CONSTRAINT `dokumen_ibfk_1` FOREIGN KEY (`listdokumen_id`) REFERENCES `listdokumen` (`id`),
   ADD CONSTRAINT `dokumen_ibfk_2` FOREIGN KEY (`pengajuan_id`) REFERENCES `pengajuan` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `listdokumen`
+-- Constraints for table `listdokumen`
 --
 ALTER TABLE `listdokumen`
   ADD CONSTRAINT `listdokumen_ibfk_1` FOREIGN KEY (`butir_id`) REFERENCES `butir` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `pengajuan`
+-- Constraints for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
   ADD CONSTRAINT `pengajuan_ibfk_1` FOREIGN KEY (`tipeversi_id`) REFERENCES `tipeversi` (`id`),
   ADD CONSTRAINT `pengajuan_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `penilaian`
+-- Constraints for table `penilaian`
 --
 ALTER TABLE `penilaian`
   ADD CONSTRAINT `penilaian_ibfk_1` FOREIGN KEY (`pengajuan_id`) REFERENCES `pengajuan` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `prodi`
+-- Constraints for table `prodi`
 --
 ALTER TABLE `prodi`
   ADD CONSTRAINT `prodi_ibfk_1` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `standar`
+-- Constraints for table `standar`
 --
 ALTER TABLE `standar`
   ADD CONSTRAINT `standar_ibfk_1` FOREIGN KEY (`tipeversi_id`) REFERENCES `tipeversi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `substandar`
+-- Constraints for table `substandar`
 --
 ALTER TABLE `substandar`
   ADD CONSTRAINT `substandar_ibfk_1` FOREIGN KEY (`standar_id`) REFERENCES `standar` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `tipeversi`
+-- Constraints for table `tipeversi`
 --
 ALTER TABLE `tipeversi`
   ADD CONSTRAINT `tipeversi_ibfk_1` FOREIGN KEY (`versi_id`) REFERENCES `versi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`prodi_id`) REFERENCES `prodi` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

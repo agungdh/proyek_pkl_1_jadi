@@ -58,7 +58,6 @@
           }
           ?>
           <div class="tab-pane <?php echo $status; ?>" id="tab_<?php echo $item->nomor; ?>">
-
           <table class="table">
             <thead>
               <tr>
@@ -123,11 +122,13 @@
                         $tipe = null;
                         break;
                     }
+
                     echo $tipe;
                     ?>  
                     </td>
                     <td>
                       <?php
+                 
                       $dokumen = $this->m_dokumen->ambil_dokumen($data['pengajuan']->id, $item2->id_listdokumen);
                       if ($dokumen != null) {
                         ?>
@@ -160,4 +161,3 @@
     </div>
     <!-- nav-tabs-custom -->
     </form>
-

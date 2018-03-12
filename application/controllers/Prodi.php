@@ -49,7 +49,7 @@ class Prodi extends CI_Controller {
 			$this->input->post('id')
 		);
 
-		redirect(base_url('prodi/index/' . $versi->fakultas_id)); 
+		redirect(base_url('prodi/index/' . $versi->id_fakultas)); 
 	}
 
 	function aksi_hapus($id_prodi) {
@@ -59,7 +59,7 @@ class Prodi extends CI_Controller {
 			$id_prodi
 		);
 
-		redirect(base_url('prodi/index/' . $versi->fakultas_id)); 
+		redirect(base_url('prodi/index/' . $versi->id_fakultas)); 
 	}
 
 }

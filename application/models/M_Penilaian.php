@@ -48,7 +48,7 @@ class M_penilaian extends CI_Model{
 
 	function ambil_pengajuan(){
 		$sql = "SELECT *
-				FROM v_pengajuan";
+				FROM v_penilaian";
 		$query = $this->db->query($sql, array());
 		$row = $query->result();
 

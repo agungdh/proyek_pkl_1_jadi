@@ -25,11 +25,11 @@
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
       <thead>
         <tr>
-                    <th>TANGGAL</th>
-                    <th>USER</th>
-                    <th>VERSI</th>
-                    <th>TAHUN</th>
-                    <th>PROSES</th>
+            <th>TANGGAL</th>
+            <th>USER</th>
+            <th>VERSI</th>
+            <th>TAHUN</th>
+            <th>PROSES</th>
         </tr>
       </thead>
 
@@ -38,12 +38,12 @@
             foreach ($data['pengajuan'] as $item) {
               ?>
               <tr>
-                <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
-                <th><?php echo $this->m_penilaian->ambil_data_user($item->user_id)->username; ?></th>
-                <th><?php echo $item->nama . ' (' . $item->tahun . ')'; ?></th>
+                <th><?php echo $item->tanggal_penilaian; ?></th>
+                <th><?php echo $item->level;  ?></th>
+                <th><?php echo $item->nama_versi; ?></th>
                 <th><?php echo $item->tahun_borang; ?></th>
                 <th>
-                  <a class="btn btn-info" href="<?php echo base_url('penilaian/nilai/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
+                  <a class="btn btn-info" href="<?php echo base_url('penilaian/nilai/'.$item->id_penilaian) ?>"><i class="fa fa-pencil"></i></a>
                 </th>
               </tr>
               <?php

@@ -10,7 +10,7 @@ class Dokumen extends CI_Controller {
 	function index($id) {
 		$data['isi'] = "dokumen/index";
 		$data['data']['pengajuan'] = $this->m_dokumen->ambil_pengajuan($id);
-		$data['data']['standar'] = $this->m_dokumen->ambil_standar($data['data']['pengajuan']->versi_id);
+		$data['data']['standar'] = $this->m_dokumen->ambil_standar($data['data']['pengajuan']->tipeversi_id);
 		
 		$this->load->view("template/template", $data);
 	}
@@ -18,8 +18,9 @@ class Dokumen extends CI_Controller {
 	function upload() {
 		$id_pengajuan = $this->input->post('id_pengajuan');
 		$pengajuan = $this->m_dokumen->ambil_pengajuan($id_pengajuan);
-		$list_dokumen = $this->m_dokumen->ambil_listdokumen($pengajuan->versi_id);
-		$versi = $this->m_dokumen->ambil_versi($pengajuan->versi_id);
+		$list_dokumen = $this->m_dokumen->ambil_listdokumen($pengajuan->tipeversi_id);
+		$tipeversi = $this->m_dokumen->ambil_tipeversi($pengajuan->versi_id);
+		$tipeversi = $this->m_dokumen->ambil_versi($tipeversi->versi_id);
 		$user = $this->m_dokumen->ambil_user($pengajuan->user_id);
 		$dokumen = $_FILES['dokumen'];
 
