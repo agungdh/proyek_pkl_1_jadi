@@ -35,8 +35,16 @@
           <select id="user" class="form-control select2" name="user">
             <?php
             foreach ($data['user'] as $item) {
+              $user = $this->m_universal->get_id('user', $item->id);
+              if ($user->prodi_id != null) {
+                $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
+                $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
+                $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
+              } else {
+                $tblUser = $user->username;
+              }
               ?>
-              <option value="<?php echo $item->id; ?>"><?php echo $item->username; ?></option>
+              <option value="<?php echo $item->id; ?>"><?php echo $tblUser; ?></option>
               <?php
             }
             ?>

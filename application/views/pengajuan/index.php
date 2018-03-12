@@ -29,6 +29,7 @@
                     <th>TANGGAL</th>
                     <th>TIPE VERSI</th>
                     <th>TAHUN</th>
+                    <th>USER</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -36,11 +37,20 @@
       <tbody>
         <?php
         foreach ($data['pengajuan'] as $item) {
+          $user = $this->m_universal->get_id('user', $item->id_user);
+          if ($user->prodi_id != null) {
+            $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
+            $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
+            $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
+          } else {
+            $tblUser = $user->username;
+          }
           ?>
           <tr>
             <th><?php echo $this->pustaka->tanggal_indo($item->tgl_pengajuan); ?></th>
             <th><?php echo $item->tipeversi; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
+            <th><?php echo $tblUser; ?></th>
               <th>
                 <!-- <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i>  Dokumen</a> -->
                 <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id_pengajuan) ?>"><i class="fa fa-pencil"></i> </a>

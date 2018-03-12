@@ -23,19 +23,41 @@
     <div class="form-group">
       <h5><strong>
 
-        <a href='<?php echo base_url("butir/index/").$data['butir']->substandar_id; ?>'>
+        <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
-            <u>Butir :</u>
-          </a><?php echo $data['butir']->nomor.' | '.$data['butir']->nama; ?></font>
-        </a>
-          <br> 
-        </strong>
-      </h5>
+            <u>Versi:</u>
+          </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
+
+          <br>
+        <a href='<?php echo base_url("tipeversi/index/").$data['tipeversi']->versi_id; ?>'>
+          <font color=black>
+            <u>Tipe Versi:</u>
+          </a><?php echo $data['tipeversi']->tipe; ?></font>
+        
+        <br>
+        <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
+          <font color=blue>
+            <u>Standar:</u>
+          </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>
+        
+        <br>
+        <a href='<?php echo base_url("substandar/index/".$data['substandar']->standar_id); ?>'>
+          <font color=black>
+            <u>Substandar:</u>
+          </a><?php echo $data['substandar']->nomor . ' ' . $data['substandar']->nama; ?></font>
+        
+        <br>
+        <a href='<?php echo base_url("butir/index/".$data['butir']->substandar_id); ?>'>
+          <font color=blue>
+            <u>Butir:</u>
+          </a><?php echo $data['butir']->nomor . ' ' . $data['butir']->nama; ?></font>
+        
+      </strong></h5>
     
 
     </div>
 
-    <a href="<?php echo base_url('butirpenilaian/tambah/').$data['butir']->id;?>"><button class="btn btn-success"><i class="fa fa-plus"></i> butir penilaian</button></a>
+    <a href="<?php echo base_url('butirpenilaian/tambah/').$data['butir']->id;?>"><button class="btn btn-success"><i class="fa fa-plus"></i> Butir Penilaian</button></a>
 
     <br><br>
 

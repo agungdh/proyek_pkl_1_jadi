@@ -70,7 +70,7 @@
               <th>
                 <a class="btn btn-primary" href="<?php echo base_url('listdokumen/index/'.$item->id) ?>"> <i class="fa fa-share"></i> List Dokumen</a>
 
-                <a class="btn btn-warning" href="<?php echo base_url('butirpenilaian/index/'.$item->id) ?>"> <i class="fa fa-share"></i> Butiir penilain</a>
+                <a class="btn btn-warning" href="<?php echo base_url('butirpenilaian/index/'.$item->id) ?>"> <i class="fa fa-share"></i> Butir Penilain</a>
 
                 <a class="btn btn-info" href="<?php echo base_url('butir/ubah/'.$item->id) ?>"> <i class="fa fa-pencil"></i></a>
                 
