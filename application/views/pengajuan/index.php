@@ -30,6 +30,7 @@
                     <th>TIPE VERSI</th>
                     <th>TAHUN</th>
                     <th>USER</th>
+                    <th>PROGRES</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -51,8 +52,9 @@
             <th><?php echo $item->tipeversi; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
             <th><?php echo $tblUser; ?></th>
+            <th><?php echo '20%'; ?></th>
               <th>
-                <!-- <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i>  Dokumen</a> -->
+                <a class="btn btn-primary" href="<?php echo base_url('penilaian/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i> Penilaian</a>
                 <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id_pengajuan) ?>"><i class="fa fa-pencil"></i> </a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id_pengajuan; ?>')"><i class="fa fa-trash"></i> </a>
               </th>

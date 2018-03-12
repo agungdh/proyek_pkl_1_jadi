@@ -22,9 +22,9 @@
 </li>
 
 <li>
-	<a href="<?php echo base_url("penilaian"); ?>">
+	<a href="<?php echo base_url("pengajuan"); ?>">
 		<i class="fa fa-users text-aqua"></i>
-		<span>Data Penilaian</span>
+		<span>Data Pengajuan</span>
 	</a>
 </li>
 
@@ -34,12 +34,3 @@
 		<span>Type List Dokumen</span>
 	</a>
 </li>
-
-<li>
-	<a href="<?php echo base_url("pengajuan"); ?>">
-		<i class="fa fa-users text-aqua"></i>
-		<span>Pengajuan</span>
-	</a>
-</li>
-
-

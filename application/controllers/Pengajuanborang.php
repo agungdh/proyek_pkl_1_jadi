@@ -10,7 +10,7 @@ class Pengajuanborang extends CI_Controller {
 
 	function index() {
 		$data['isi'] = "pengajuanborang/index";
-		$data['data']['pengajuanborang'] = $this->m_pengajuanborang->ambil_pengajuan();
+		$data['data']['pengajuanborang'] = $this->m_pengajuanborang->ambil_pengajuan($this->session->id);
 
 		$this->load->view("template/template", $data);
 	}
