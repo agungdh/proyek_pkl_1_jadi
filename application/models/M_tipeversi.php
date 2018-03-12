@@ -35,10 +35,11 @@ class M_tipeversi extends CI_Model{
 		return $row;
 	}
 
-	function tambah_type($type){
+	function tambah_type($type, $versi_id){
 		$sql = "INSERT INTO tipeversi
-				SET tipe = ? ";
-		$query = $this->db->query($sql, array($type));
+				SET tipe = ?,
+				versi_id = ? ";
+		$query = $this->db->query($sql, array($type), $versi_id);
 	}	
 
 	function ubah_type($type, $id){

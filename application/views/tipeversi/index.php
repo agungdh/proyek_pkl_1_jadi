@@ -26,7 +26,7 @@
           </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
       </strong></h5>
 
-      <a href='<?php echo base_url("tipeversi/tambah"); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Type versi</button></a><br><br>
+      <a href='<?php echo base_url("tipeversi/tambah/" . $data['versi']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Type versi</button></a><br><br>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">

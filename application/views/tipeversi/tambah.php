@@ -4,11 +4,11 @@
   </div><!-- /.box-header -->
 
   <!-- form start -->
-  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('tipeversi/aksi_tambah/'); ?>">
+  <form name="form" id="form" role="form" method="post" action="<?php echo base_url('tipeversi/aksi_tambah/' . $data['versi']->id); ?>">
     <div class="box-body">
 
     <div class="form-group">
-      <label for="versi">tipe versi</label>
+      <label for="versi">Tipe Versi</label>
           <input required type="text" class="form-control" id="versi" placeholder="Isi tipe versi" name="type">          
     </div>
 

@@ -19,7 +19,7 @@
 
     <div class="form-group">
       <label for="tahun">Tahun</label>
-          <input required type="text" maxlength="4" class="form-control" id="tahun" placeholder="Isi Tahun" name="tahun">          
+          <input required type="number" max="2900" min="1900" class="form-control" id="tahun" placeholder="Isi Tahun" name="tahun">          
     </div>
 
     </div><!-- /.box-body -->

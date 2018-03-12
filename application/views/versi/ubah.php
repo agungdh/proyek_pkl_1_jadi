@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <label for="tahun">Tahun</label>
-          <input value="<?php echo $data['data_versi']->tahun; ?>" required type="text" maxlength="4" class="form-control" id="tahun" placeholder="Isi Tahun" name="tahun">          
+          <input value="<?php echo $data['data_versi']->tahun; ?>" required type="number" max="2900" min="1900" class="form-control" id="tahun" placeholder="Isi Tahun" name="tahun">          
     </div>
 
     </div><!-- /.box-body -->

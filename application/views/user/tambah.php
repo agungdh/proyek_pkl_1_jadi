@@ -32,7 +32,7 @@
             <?php
             foreach ($data['prodi'] as $item) {
               ?>
-              <option value="<?php echo $item->id_prodi; ?>"><?php echo '(' . $item->kode_fakultas . ') ' . $item->nama_fakultas . ' | (' . $item->kode_prodi . ') ' . $item->nama_prodi; ?></option>
+              <option value="<?php echo $item->id; ?>"><?php echo '(' . $item->kode_fakultas . ') ' . $item->nama_fakultas . ' | (' . $item->kode . ') ' . $item->nama; ?></option>
               <?php
             }
             ?>

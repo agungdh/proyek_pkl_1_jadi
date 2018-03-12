@@ -14,14 +14,16 @@ class Tipeversi extends CI_Controller {
 		$this->load->view("template/template", $data);
 	}
 
-	function tambah(){
+	function tambah($id_versi){
 		$data['isi'] = "tipeversi/tambah";
+		$data['data']['versi'] = $this->m_tipeversi->ambil_versi_id($id_versi);
 		$this->load->view("template/template",$data);
 	}
 
-	function aksi_tambah(){
+	function aksi_tambah($id_versi){
 		$this->m_tipeversi->tambah_type(
-			$this->input->post('type')
+			$this->input->post('type'),
+			$id_versi
 		);
 		redirect('tipeversi');
 	}
