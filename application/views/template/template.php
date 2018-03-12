@@ -51,6 +51,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <img src="<?php echo base_url() . "assets/"; ?>dist/img/avatar1.png" class="img-circle" alt="User Image">
                     <p>
                       <?php echo $this->session->username; //echo $_SESSION['user_login']; ?>
+                      <small><?php
+                      $user = $this->m_universal->get_id('user', $this->session->id);
+                      $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
+                      if ($prodi != null) {
+                        $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
+                        echo $fakultas->nama . ' | ' . $prodi->nama;
+                      }
+                      ?></small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -149,9 +157,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          
+          <?php
+          $tambahan = null;
+          if($prodi!=null){$tambahan = ' | ' . $fakultas->nama . ' | ' . $prodi->nama;}
+          ?>
           <h1>
-            Welcome
+            Welcome <small><?php echo $this->session->username . $tambahan; ?></small>
             <small><marquee scrolldelay=250><?php echo date('l, d F Y');?></marquee></small>
           </h1>
 <!--           
