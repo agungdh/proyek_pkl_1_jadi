@@ -1,4 +1,8 @@
-
+<?php 
+if ($this->session->level != 1) {
+  redirect(base_url('pengajuanborang'));
+}
+?>
  <div id="myCarousel" class="carousel slide" data-ride="carousel">
     
     <!-- Indicators -->

@@ -46,10 +46,11 @@ class M_penilaian extends CI_Model{
 		$query = $this->db->query($sql, array($id_penilaian));
 	}
 
-	function ambil_pengajuan(){
+	function ambil_penilaian($id_pengajuan){
 		$sql = "SELECT *
-				FROM v_penilaian";
-		$query = $this->db->query($sql, array());
+				FROM penilaian
+				WHERE pengajuan_id = ?";
+		$query = $this->db->query($sql, array($id_pengajuan));
 		$row = $query->result();
 
 		return $row;
@@ -101,7 +102,7 @@ class M_penilaian extends CI_Model{
 	function ambil_pengajuan_id($id_pengajuan){
 		$sql = "SELECT *
 				FROM v_pengajuan
-				WHERE id = ?";
+				WHERE id_pengajuan = ?";
 		$query = $this->db->query($sql, array($id_pengajuan));
 		$row = $query->row();
 

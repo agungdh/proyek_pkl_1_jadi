@@ -8,9 +8,10 @@ class Penilaian extends CI_Controller {
 		$this->load->library('pustaka');	
 	}
 
-	function index() {
+	function index($id_pengajuan) {
 		$data['isi'] = "penilaian/index";
-		$data['data']['pengajuan'] = $this->m_penilaian->ambil_pengajuan();
+		$data['data']['penilaian'] = $this->m_penilaian->ambil_penilaian($id_pengajuan);
+		$data['data']['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($id_pengajuan);
 
 		$this->load->view("template/template", $data);
 	}
