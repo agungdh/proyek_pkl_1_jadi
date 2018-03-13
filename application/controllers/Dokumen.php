@@ -63,7 +63,7 @@ class Dokumen extends CI_Controller {
 					$this->m_dokumen->hapus_dokumen($item->id_listdokumen, $pengajuan->id);
 					unlink($cek_dokumen->url);
 				} 
-				
+				//
 				$dokumen_upload = $this->m_dokumen->tambah_dokumen(
 					'_' . $dokumen['name'][$item->id_listdokumen],
 					$dokumen['name'][$item->id_listdokumen],
