@@ -27,8 +27,10 @@
       <thead>
         <tr>
                     <th>TANGGAL</th>
+                    <th>VERSI</th>
                     <th>TIPE VERSI</th>
-                    <th>TAHUN</th>
+                    <th>TAHUN BORANG</th>
+                    <th>UPLOAD</th>
                     <th>PROSES</th>
         </tr>
       </thead>
@@ -36,11 +38,17 @@
       <tbody>
         <?php
         foreach ($data['pengajuanborang'] as $item) {
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->id_tipeversi))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id_pengajuan))->result());
+          $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->id_tipeversi))->row()->versi_id))->row();
           ?>
           <tr>
             <th><?php echo $this->pustaka->tanggal_indo($item->tgl_pengajuan); ?></th>
+            <th><?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?></th>
             <th><?php echo $item->tipeversi; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
+            <th><?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?></th>
               <th>
                 <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i>  Dokumen</a>
               <!--   <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id_pengajuan) ?>"><i class="fa fa-pencil"></i> </a>
