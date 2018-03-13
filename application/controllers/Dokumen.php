@@ -24,7 +24,7 @@ class Dokumen extends CI_Controller {
 		$tipeversi = $this->m_dokumen->ambil_versi($tipeversi->versi_id);
 		$user = $this->m_dokumen->ambil_user($pengajuan->user_id);
 		$dokumen = $_FILES['dokumen'];
-
+		//
 		foreach ($list_dokumen as $item) {
 			if ($dokumen['size'][$item->id_listdokumen] != 0){
 				
