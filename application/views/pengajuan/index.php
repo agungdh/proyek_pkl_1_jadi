@@ -27,8 +27,9 @@
       <thead>
         <tr>
                     <th>TANGGAL</th>
+                    <th>VERSI</th>
                     <th>TIPE VERSI</th>
-                    <th>TAHUN</th>
+                    <th>TAHUN BORANG</th>
                     <th>USER</th>
                     <th>UPLOAD</th>
                     <th>PROSES</th>
@@ -46,9 +47,11 @@
           } else {
             $tblUser = $user->username;
           }
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->id_tipeversi))->row()->versi_id))->row();
           ?>
           <tr>
             <th><?php echo $this->pustaka->tanggal_indo($item->tgl_pengajuan); ?></th>
+            <th><?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?></th>
             <th><?php echo $item->tipeversi; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
             <th><?php echo $tblUser; ?></th>
