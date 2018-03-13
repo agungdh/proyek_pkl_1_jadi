@@ -8,7 +8,8 @@ class Butirpenilaian extends CI_Controller {
 		$this->load->model('m_listdokumen');	
 		$this->load->library('pustaka');	
 	}
-
+//
+// asfasfasf
 	function index($id_butir) {
 		$data['isi'] = "butirpenilaian/index";
 		$data['data']['butir'] = $this->m_listdokumen->ambil_butir_id($id_butir);
