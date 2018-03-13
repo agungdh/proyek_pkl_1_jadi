@@ -6,8 +6,7 @@ class Butir extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_butir');
 	}
- // safasfas
- // asf
+
 	function index($id_substandar) {
 		$data['isi'] = "butir/index";
 		$data['data']['substandar'] = $this->m_butir->ambil_substandar_id($id_substandar);
