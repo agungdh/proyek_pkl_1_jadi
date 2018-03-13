@@ -103,29 +103,7 @@
                     <td><?php echo $substandar; ?></td>
                     <td><?php echo $butir; ?></td>
                     <td><?php echo $listdokumen; ?></td>
-                    <td>
-                    <?php
-                    switch ($item2->tipe_listdokumen) {
-                      case 1:
-                        $tipe = "Dokumen Wajib";
-                        break;
-                      
-                      case 2:
-                        $tipe = "Dokumen Visitasi";
-                        break;
-                      
-                      case 3:
-                        $tipe = "Dokumen Pendukung";
-                        break;
-                      
-                      default:
-                        $tipe = null;
-                        break;
-                    }
-
-                    echo $tipe;
-                    ?>  
-                    </td>
+                    <td><?php echo $item2->tipe; ?></td>
                     <td>
                       <?php
                  
