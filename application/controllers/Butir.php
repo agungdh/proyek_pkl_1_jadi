@@ -4,9 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Butir extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-		$this->load->model('m_butir');	
+		$this->load->model('m_butir');
 	}
-
+ // safasfas
+ // asf
 	function index($id_substandar) {
 		$data['isi'] = "butir/index";
 		$data['data']['substandar'] = $this->m_butir->ambil_substandar_id($id_substandar);
@@ -44,13 +45,13 @@ class Butir extends CI_Controller {
 
 	function aksi_ubah() {
 		$versi = $this->m_butir->ambil_data_substandar_dari_id_butir($this->input->post('id'));
-		
+
 		$this->m_butir->ubah_butir(
 			$this->input->post('nomor'),
 			$this->input->post('nama'),
 			$this->input->post('id')
 		);
-		
+
 		redirect(base_url('butir/index/'.$versi->id_substandar));
 	}
 
