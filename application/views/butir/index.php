@@ -29,7 +29,7 @@
           
           <br> 
 
-        <a href='<?php echo base_url("tipeversi/index/").$data['standar']->tipeversi_id; ?>'>
+        <a href='<?php echo base_url("tipeversi/index/").$data['tipeversi']->versi_id; ?>'>
           <font color=black>
             <u>TipeVersi:</u>
           </a><?php echo $data['tipeversi']->tipe; ?></font>

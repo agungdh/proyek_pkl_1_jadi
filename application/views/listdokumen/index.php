@@ -34,7 +34,7 @@
           </a><?php echo $data['tipeversi']->tipe; ?></font>
         
         <br>
-        <a href='<?php echo base_url("standar/index/".$data['standar']->versi_id); ?>'>
+        <a href='<?php echo base_url("standar/index/".$data['standar']->tipeversi_id); ?>'>
           <font color=blue>
             <u>Standar:</u>
           </a><?php echo $data['standar']->nomor . ' ' . $data['standar']->nama; ?></font>

@@ -23,10 +23,10 @@
 
         <a href='<?php echo base_url("versi"); ?>'>
           <font color=blue>
-            <u>Tipe Versi:</u>
+            <u>Versi:</u>
           </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
           <br>
-        <a href='<?php echo base_url("versi"); ?>'>
+        <a href='<?php echo base_url("tipeversi/index/" . $data['tipeversi']->versi_id); ?>'>
           <font color=black>
             <u>Tipe Versi:</u>
           </a><?php echo $data['tipeversi']->tipe; ?></font>

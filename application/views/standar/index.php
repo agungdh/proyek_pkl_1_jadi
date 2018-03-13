@@ -27,7 +27,7 @@
             <u>Versi:</u>
           </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
         <br>
-        <a href='<?php echo base_url("tipeversi/index/").$data['tipeversi']->id; ?>'>
+        <a href='<?php echo base_url("tipeversi/index/").$data['tipeversi']->versi_id; ?>'>
           <font color=black>
             <u>Tipe Versi:</u>
           </a><?php echo $data['tipeversi']->tipe; ?></font>
