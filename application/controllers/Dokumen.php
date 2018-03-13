@@ -20,8 +20,8 @@ class Dokumen extends CI_Controller {
 		$id_pengajuan = $this->input->post('id_pengajuan');
 		$pengajuan = $this->m_dokumen->ambil_pengajuan($id_pengajuan);
 		$list_dokumen = $this->m_dokumen->ambil_listdokumen($pengajuan->tipeversi_id);
-		$tipeversi = $this->m_dokumen->ambil_tipeversi($pengajuan->versi_id);
-		$tipeversi = $this->m_dokumen->ambil_versi($tipeversi->versi_id);
+		// var_dump($list_dokumen); exit();
+		$tipeversi = $this->m_dokumen->ambil_tipeversi($pengajuan->tipeversi_id);
 		$user = $this->m_dokumen->ambil_user($pengajuan->user_id);
 		$dokumen = $_FILES['dokumen'];
 
@@ -38,11 +38,22 @@ class Dokumen extends CI_Controller {
 					$awal = "ERROR !!!";
 				}
 
+				// echo 'upload'
+				// 	. '/' . $awal
+				// 	. '/' . $pengajuan->tahun_borang 
+				// 	. '/' . $this->db->get_where('versi', array("id" => $tipeversi->versi_id))->row()->nama
+				// 	. '/' . $tipeversi->tipe 
+				// 	. '/standar_' . $item->nomor_standar 
+				// 	. '/substandar_' . $item->nomor_substandar
+				// 	. '/butir_' . $item->nomor_butir . '/';
+				// 	exit();
+
 				@mkdir(
 					'upload'
 					. '/' . $awal
 					. '/' . $pengajuan->tahun_borang 
-					. '/' . $versi->nama 
+					. '/' . $this->db->get_where('versi', array("id" => $tipeversi->versi_id))->row()->nama
+					. '/' . $tipeversi->tipe 
 					. '/standar_' . $item->nomor_standar 
 					. '/substandar_' . $item->nomor_substandar
 					. '/butir_' . $item->nomor_butir . '/'
@@ -60,10 +71,11 @@ class Dokumen extends CI_Controller {
 					'upload'
 					. '/' . $awal
 					. '/' . $pengajuan->tahun_borang 
-					. '/' . $versi->nama 
+					. '/' . $this->db->get_where('versi', array("id" => $tipeversi->versi_id))->row()->nama
+					. '/' . $tipeversi->tipe 
 					. '/standar_' . $item->nomor_standar 
 					. '/substandar_' . $item->nomor_substandar
-					. '/butir_' . $item->nomor_butir
+					. '/butir_' . $item->nomor_butir . '/'
 					. '/',
 					$item->id_listdokumen,
 					$pengajuan->id
