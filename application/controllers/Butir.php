@@ -16,8 +16,7 @@ class Butir extends CI_Controller {
 		$data['data']['versi'] = $this->m_butir->ambil_versi_id($data['data']['tipeversi']->versi_id);
 		$this->load->view("template/template", $data);
 	}
-	//test lokal
-//asdfsdaasf
+
 	function tambah($id_substandar) {
 		$data['isi'] = "butir/tambah";
 		$data['data']['substandar'] = $this->m_butir->ambil_substandar_id($id_substandar);
