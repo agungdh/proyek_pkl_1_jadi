@@ -39,6 +39,9 @@
       <tbody>
         <?php
         foreach ($data['pengajuan'] as $item) {
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->id_tipeversi))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id_pengajuan))->result());
+          $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
           $user = $this->m_universal->get_id('user', $item->id_user);
           if ($user->prodi_id != null) {
             $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
@@ -55,7 +58,7 @@
             <th><?php echo $item->tipeversi; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
             <th><?php echo $tblUser; ?></th>
-            <th><?php echo '20% (BETA)'; ?></th>
+            <th><?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?></th>
               <th>
                 <a class="btn btn-primary" href="<?php echo base_url('penilaian/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i> Penilaian</a>
                 <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id_pengajuan) ?>"><i class="fa fa-pencil"></i> </a>
