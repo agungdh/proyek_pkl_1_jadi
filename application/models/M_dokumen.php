@@ -113,7 +113,7 @@ class M_dokumen extends CI_Model{
 	function ambil_listdokumen($id_versi){
 		$sql = "SELECT *
 				FROM v_pengajuan_dokumen
-				WHERE id_tipeversi = ?";
+				WHERE versi_id = ?";
 		$query = $this->db->query($sql, array($id_versi));
 		$row = $query->result();
 
