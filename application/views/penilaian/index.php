@@ -78,9 +78,10 @@
                 $this->db->where(array('penilaian_id' => $item->id));
                 $jumlah = $this->db->get('detilpenilaian')->row()->nilai;
                 ?>
-                <th><?php echo $jumlah; ?></th>
+                <th><?php echo $jumlah == null ? 0 : $jumlah; ?></th>
                 <th>
                   <a class="btn btn-info" href="<?php echo base_url('penilaian/nilai/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
+                  <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"> <i class="fa fa-trash"></i></a>
                 </th>
               </tr>
               <?php
@@ -91,3 +92,11 @@
     </table>
   </div><!-- /.boxbody -->
 </div><!-- /.box -->
+
+<script type="text/javascript">
+function hapus(id) {
+  if (confirm("Yakin hapus ?")) {
+    window.location = "<?php echo base_url('penilaian/aksi_hapus/'); ?>" + id + '/' + '<?php echo $data['pengajuan']->id_pengajuan; ?>';
+  }
+}
+</script>

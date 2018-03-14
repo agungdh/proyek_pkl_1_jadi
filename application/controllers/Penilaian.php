@@ -75,12 +75,12 @@ class Penilaian extends CI_Controller {
 			}
 		}
 
-		redirect(base_url('penilaian/nilai/'.$id_pengajuan));
+		redirect(base_url('penilaian/index/'.$id_pengajuan));
 	}
 
 	function aksi_hapus($id_penilaian, $id_pengajuan) {
 		$this->m_penilaian->hapus_penilaian($id_penilaian);
 
-		redirect(base_url('penilaian/nilai/'.$id_pengajuan));
+		redirect(base_url('penilaian/index/'.$id_pengajuan));
 	}
 }
