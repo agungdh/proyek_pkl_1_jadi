@@ -26,9 +26,16 @@
           <font color=blue>
             <u>Pengajuan:</u></a>
           </font><br>
+          <?php
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->id_tipeversi))->row()->versi_id))->row();
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->id_tipeversi))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id_pengajuan))->result());
+          $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          ?>
           Tanggal Pengajuan: <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tgl_pengajuan); ?><br>
+          Versi: <?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?><br>
+          Tipe Versi: <?php echo $data['pengajuan']->tipeversi; ?><br>
           Tahun Borang: <?php echo $data['pengajuan']->tahun_borang; ?><br>
-          Tipe: <?php echo $data['pengajuan']->tipeversi; ?><br>
           <?php
           $user = $this->m_universal->get_id('user', $data['pengajuan']->id_user);
           $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
@@ -40,12 +47,13 @@
           }
           ?>
           User: <?php echo $tblUser; ?><br>
+          Upload: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?><br>
         <br>
         
 
       </strong></h5>
 
-      <a href='<?php echo base_url("standar/tambah/".$data['tipeversi']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Penilaian</button></a>
+      <a href='<?php echo base_url("penilaian/tambah/".$data['pengajuan']->id_pengajuan); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Penilaian</button></a>
 
 
     </div>
