@@ -57,7 +57,7 @@ class Penilaian extends CI_Controller {
 			}
 		}
 
-		redirect(base_url('penilaian/nilai/'.$id_pengajuan));
+		redirect(base_url('penilaian/index/'.$id_pengajuan));
 	}
 
 	function aksi_ubah() {

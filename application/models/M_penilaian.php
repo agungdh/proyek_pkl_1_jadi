@@ -20,12 +20,12 @@ class M_penilaian extends CI_Model{
 		return $this->db->insert_id();
 	}
 
-	function tambah_detil_penilaian($id_penilaian, $id_butir, $nilai){
+	function tambah_detil_penilaian($id_penilaian, $id_butirpenilaian, $nilai){
 		$sql = "INSERT INTO detilpenilaian
 				SET penilaian_id = ?,
-				butir_id = ?,
+				butirpenilaian_id = ?,
 				nilai = ?";
-		$query = $this->db->query($sql, array($id_penilaian, $id_butir, $nilai));
+		$query = $this->db->query($sql, array($id_penilaian, $id_butirpenilaian, $nilai));
 	}
 
 	function ubah_detil_penilaian($id_penilaian, $id_butir, $nilai){

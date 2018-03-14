@@ -73,7 +73,12 @@
               ?>
               <tr>
                 <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
-                <th><?php echo '200'; ?></th>
+                <?php
+                $this->db->select_sum('nilai');
+                $this->db->where(array('penilaian_id' => $item->id));
+                $jumlah = $this->db->get('detilpenilaian')->row()->nilai;
+                ?>
+                <th><?php echo $jumlah; ?></th>
                 <th>
                   <a class="btn btn-info" href="<?php echo base_url('penilaian/nilai/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
                 </th>
