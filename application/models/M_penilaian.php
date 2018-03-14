@@ -140,12 +140,12 @@ class M_penilaian extends CI_Model{
 		return $row;
 	}
 
-	function ambil_standar($id_versi){
+	function ambil_standar($id_tipeversi){
 		$sql = "SELECT *
 				FROM standar
-				WHERE versi_id = ?
+				WHERE tipeversi_id = ?
 				ORDER BY nomor";
-		$query = $this->db->query($sql, array($id_versi));
+		$query = $this->db->query($sql, array($id_tipeversi));
 		$row = $query->result();
 
 		return $row;
@@ -153,9 +153,9 @@ class M_penilaian extends CI_Model{
 
 	function ambil_detail($id_standar){
 		$sql = "SELECT *
-				FROM v_pengajuan_dokumen
+				FROM v_penilaian_tambah
 				WHERE id_standar = ?
-				ORDER BY nomor_standar, nomor_substandar, nomor_butir, id_listdokumen";
+				ORDER BY nomor_standar, nomor_substandar, nomor_butir, nomor_butirpenilaian";
 		$query = $this->db->query($sql, array($id_standar));
 		$row = $query->result();
 

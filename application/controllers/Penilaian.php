@@ -5,6 +5,7 @@ class Penilaian extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_penilaian');	
+		$this->load->model('m_dokumen');	
 		$this->load->library('pustaka');	
 	}
 
@@ -27,7 +28,7 @@ class Penilaian extends CI_Controller {
 	function tambah($id_pengajuan) {
 		$data['isi'] = "penilaian/tambah";
 		$data['data']['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($id_pengajuan);
-		$data['data']['standar'] = $this->m_penilaian->ambil_standar($data['data']['pengajuan']->versi_id);
+		$data['data']['standar'] = $this->m_penilaian->ambil_standar($data['data']['pengajuan']->id_tipeversi);
 
 		$this->load->view("template/template", $data);
 	}

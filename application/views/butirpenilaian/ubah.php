@@ -26,7 +26,7 @@
 
     <div class="form-group">
       <label for="nama">Bobot</label>
-          <input value="<?php echo $data['data_butirpenilaian']->bobot; ?>" required type="text" class="form-control" id="nama" placeholder="Isi bobot" name="bobot">          
+          <input value="<?php echo $data['data_butirpenilaian']->bobot; ?>" required type="number" class="form-control" id="nama" placeholder="Isi bobot" name="bobot">          
     </div>
 
     </div><!-- /.box-body -->
