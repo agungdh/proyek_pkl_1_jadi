@@ -28,9 +28,9 @@
 </script>
 
 <!-- Custom Tabs -->
-    <form method="post" enctype="multipart/form-data" action="<?php echo base_url('penilaian/aksi_ubah'); ?>">
-    <input type="hidden" name="id_pengajuan" value="<?php echo $data['pengajuan']->id; ?>">
-    <input type="hidden" name="id_penilaian" value="<?php echo $data['penilaian']->id; ?>">
+    <form method="post" action="<?php echo base_url('penilaian/aksi_ubah'); ?>">
+    <input type="hidden" name="id_pengajuan" value="<?php echo $data['pengajuan']->id_pengajuan; ?>">
+    <input type="hidden" name="id_penilaian" value="<?php echo $data['penilaian_id']->id; ?>">
     <input type="hidden" name="last_tab" id="last_tab" value="1">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
@@ -48,9 +48,6 @@
         ?>
       </ul>
       <div class="tab-content">
-      <a class="btn btn-primary" href="<?php echo base_url('penilaian/nilai/'.$data['pengajuan']->id); ?>">Kembali</a>
-      <br>
-      <br>
       <input class="btn btn-success" type="submit" name="submit" value="Submit">
       <input class="btn btn-success pull-right" type="submit" name="submit" value="Submit">
         <?php
@@ -62,17 +59,16 @@
           }
           ?>
           <div class="tab-pane <?php echo $status; ?>" id="tab_<?php echo $item->nomor; ?>">
-
           <table class="table">
             <thead>
               <tr>
                 <th>Standar</th>
                 <th>Substandar</th>
                 <th>Butir</th>
+                <th>Butir Penilaian</th>
+                <th>Bobot</th>
                 <th>Nilai</th>
                 <th>List Dokumen</th>
-                <th>Tipe Dokumen</th>
-                <th>Dokumen</th>
               </tr>
             </thead>
             <tbody>
@@ -91,69 +87,44 @@
                     $substandar = $item2->nomor_substandar . ' ' . $item2->nama_substandar;
                   }
                   
+                  $jml_lido = count($this->db->get_where('butirpenilaian', array('butir_id' => $item2->id_butir))->result());
                   if ($id_butir == $item2->id_butir) {
                     $butir = null;
-                    $nilai = null;
+                    $lido = null;
                   } else {
-                    $nilai_awal = $this->m_penilaian->ambil_nilai_butir($data['penilaian']->id, $item2->id_butir);
-                    if ($nilai_awal != null) {
-                      $nilai_awal = $nilai_awal->nilai;
-                    } else {
-                      $nilai_awal = null;
-                    }
                     $butir = $item2->nomor_butir . ' ' . $item2->nama_butir;
-                    $nilai = '<input type="number" min="0" max="100" name="nilai[' . $item2->id_butir . ']" value="' . $nilai_awal .'">';
+                    $isi_lido = null;
+                    foreach ($this->db->get_where('listdokumen', array('butir_id' => $item2->id_butir))->result() as $item3) {
+                      $temp_lido = $this->db->get_where('dokumen', array('listdokumen_id' => $item3->id))->result();
+                      if ($temp_lido != null) {
+                        foreach ($temp_lido as $item4) {
+                          $isi_lido .= '<p><a href="'.base_url($item4->url).'">' . $item4->nama_file . '</a></p>'; 
+                        }
+                      }
+                    }
+                    $lido = "<td rowspan='".$jml_lido."'>".$isi_lido."</td>";
                   }
-                  
-                  if ($id_listdokumen == $item2->id_listdokumen) {
-                    $listdokumen = null;
-                  } else {
-                    $listdokumen = $item2->keterangan_listdokumen;
+                
+                  $nilai = null;
+                  $nilai_tmp = $this->db->get_where('detilpenilaian', array('butirpenilaian_id' => $item2->id_butir_penilaian, 'penilaian_id' => $data['penilaian_id']->id))->row();
+                  if ($nilai_tmp != null) {
+                    $nilai = $nilai_tmp->nilai;
                   }
+
                   ?>
                   <tr>
                     <td><?php echo $standar; ?></td>
                     <td><?php echo $substandar; ?></td>
                     <td><?php echo $butir; ?></td>
-                    <td><?php echo $nilai; ?></td>
-                    <td><?php echo $listdokumen; ?></td>
+                    <td><?php echo $item2->nomor_butirpenilaian . ' ' . $item2->deskripsi; ?></td>
+                    <td><?php echo $item2->bobot; ?></td>
                     <td>
-                    <?php
-                    switch ($item2->tipe_listdokumen) {
-                      case 1:
-                        $tipe = "Dokumen Wajib";
-                        break;
-                      
-                      case 2:
-                        $tipe = "Dokumen Visitasi";
-                        break;
-                      
-                      case 3:
-                        $tipe = "Dokumen Pendukung";
-                        break;
-                      
-                      default:
-                        $tipe = null;
-                        break;
-                    }
-                    echo $tipe;
-                    ?>  
+                      <input type="number" value="<?php echo $nilai; ?>" name="nilai[<?php echo $item2->id_butir_penilaian; ?>]">
                     </td>
-                    <td>
-                      <?php
-                      $dokumen = $this->m_penilaian->ambil_dokumen($data['pengajuan']->id, $item2->id_listdokumen);
-                      if ($dokumen != null) {
-                        ?>
-                        <a href="<?php echo base_url($dokumen->url); ?>"><?php echo $dokumen->nama_file; ?></a>
-                        <?php
-                      } else {
-                        echo "-";
-                      }
-                      ?>
-                    </td>
+                    <?php echo $lido; ?>
                   </tr>
                   <?php
-                  $id_standar = $item2->id_standar; $id_substandar = $item2->id_substandar; $id_butir = $item2->id_butir; $id_listdokumen = $item2->id_listdokumen; 
+                  $id_standar = $item2->id_standar; $id_substandar = $item2->id_substandar; $id_butir = $item2->id_butir;
               }
               ?>
             </tbody>
@@ -170,4 +141,3 @@
     </div>
     <!-- nav-tabs-custom -->
     </form>
-

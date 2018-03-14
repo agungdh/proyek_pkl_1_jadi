@@ -35,9 +35,10 @@ class Penilaian extends CI_Controller {
 
 	function ubah($id_penilaian) {
 		$data['isi'] = "penilaian/ubah";
-		$data['data']['penilaian'] = $this->m_penilaian->ambil_penilaian_id($id_penilaian);
-		$data['data']['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($data['data']['penilaian']->pengajuan_id);
-		$data['data']['standar'] = $this->m_penilaian->ambil_standar($data['data']['pengajuan']->versi_id);
+		$data['data']['penilaian_id'] = $this->m_penilaian->ambil_penilaian_id($id_penilaian);
+		$data['data']['penilaian'] = $this->m_penilaian->ambil_penilaian($data['data']['penilaian_id']->pengajuan_id);
+		$data['data']['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($data['data']['penilaian_id']->pengajuan_id);
+		$data['data']['standar'] = $this->m_penilaian->ambil_standar($data['data']['pengajuan']->id_tipeversi);
 
 		$this->load->view("template/template", $data);
 	}
@@ -65,13 +66,23 @@ class Penilaian extends CI_Controller {
 		$id_penilaian = $this->input->post('id_penilaian');
 		$nilai = $this->input->post('nilai');
 
-		foreach ($nilai as $butir => $jumlah_nilai) {
-			if ($jumlah_nilai != null) {
-				if ($this->m_penilaian->cek_detil_penilaian($butir, $id_penilaian) != null) {
-					$this->m_penilaian->ubah_detil_penilaian($id_penilaian, $butir, $jumlah_nilai);
+		foreach ($nilai as $butirpenilaian_id => $nilai) {
+			$total_data = $this->db->get_where('detilpenilaian', array('butirpenilaian_id' => $butirpenilaian_id, 'penilaian_id' => $id_penilaian))->row();
+			// var_dump($total_data) . "<br>\n";
+			// echo $this->db->last_query() . "<br>\n";
+			if ($total_data == null) {
+				if ($nilai != null) {
+					$this->m_penilaian->tambah_detil_penilaian($id_penilaian, $butirpenilaian_id, $nilai);
+				}
+			} else {
+				$where['penilaian_id'] = $id_penilaian;
+				$where['butirpenilaian_id'] = $butirpenilaian_id;
+				$data['nilai'] = $nilai;
+				if ($nilai != null) {
+					$this->db->update('detilpenilaian', $data, $where);
 				} else {
-					$this->m_penilaian->tambah_detil_penilaian($id_penilaian, $butir, $jumlah_nilai);
-				}			
+					$this->db->delete('detilpenilaian', $where);
+				}
 			}
 		}
 
