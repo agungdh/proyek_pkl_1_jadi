@@ -1,6 +1,6 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h4><strong><font color=blue>TAMBAH TYPE LIST DOKUMEN</font></strong></h4>
+    <h4><strong><font color=blue>TAMBAH TIPE LIST DOKUMEN</font></strong></h4>
   </div><!-- /.box-header -->
 
   <!-- form start -->
@@ -8,8 +8,8 @@
     <div class="box-body">
 
     <div class="form-group">
-      <label for="versi">type List Dokumen</label>
-          <input required type="text" class="form-control" id="versi" placeholder="Isi type list dokumen" name="type">          
+      <label for="versi">Tipe List Dokumen</label>
+          <input required type="text" class="form-control" id="versi" placeholder="Isi Tipe List Dokumen" name="type">          
     </div>
 
     </div><!-- /.box-body -->

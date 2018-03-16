@@ -1,6 +1,6 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h4><strong><font color=blue>UBAH TYPE LIST DOKUMEN</font></strong></h4>
+    <h4><strong><font color=blue>UBAH TIPE LIST DOKUMEN</font></strong></h4>
   </div><!-- /.box-header -->
 
   <!-- form start -->
@@ -10,8 +10,8 @@
     <input type="hidden" name="id" value="<?php echo $data['type']->id_type; ?>">
 
     <div class="form-group">
-      <label for="substandar">Type List Dokumen</label>
-          <input value="<?php echo $data['type']->type; ?>"  required type="text" class="form-control" id="substandar" placeholder="Isi subStandar" name="type">          
+      <label for="substandar">Tipe List Dokumen</label>
+          <input value="<?php echo $data['type']->type; ?>"  required type="text" class="form-control" id="substandar" placeholder="Isi Tipe List Dokumen" name="type">          
     </div>
 
     </div><!-- /.box-body -->

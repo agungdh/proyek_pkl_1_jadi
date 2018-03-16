@@ -13,20 +13,20 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h4><strong><font color=blue>DATA VERSI</font></strong></h4>
+    <h4><strong><font color=blue>DATA TIPE LIST DOKUMEN</font></strong></h4>
   </div><!-- /.box-header -->
 
     <div class="box-body">
 
     <div class="form-group">
-      <a href='<?php echo base_url("type_dokumen/tambah"); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Type list dokumen</button></a><br><br>
+      <a href='<?php echo base_url("type_dokumen/tambah"); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Tipe list dokumen</button></a><br><br>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
       <thead>
         <tr>
             <th>NO</th>
-            <th>Type List Dokumen</th>
+            <th>Tipe List Dokumen</th>
             <th>Proses </th>
         </tr>
       </thead>

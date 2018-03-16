@@ -31,6 +31,6 @@
 <li>
 	<a href="<?php echo base_url("type_dokumen"); ?>">
 		<i class="fa fa-users text-aqua"></i>
-		<span>Type List Dokumen</span>
+		<span>Tipe List Dokumen</span>
 	</a>
 </li>
