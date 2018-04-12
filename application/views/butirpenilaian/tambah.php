@@ -25,7 +25,7 @@
 
     <div class="form-group">
       <label for="nama">Bobot</label>
-          <input required type="number" class="form-control" id="nama" placeholder="Isi Bobot" name="bobot">          
+          <input required type="number" class="form-control" min="0" max="1" step=".01" id="nama" placeholder="Isi Bobot" name="bobot">          
     </div>
 
     </div><!-- /.box-body -->

@@ -119,7 +119,7 @@
                     <td><?php echo $item2->nomor_butirpenilaian . ' ' . $item2->deskripsi; ?></td>
                     <td><?php echo $item2->bobot; ?></td>
                     <td>
-                      <input type="number" value="<?php echo $nilai; ?>" name="nilai[<?php echo $item2->id_butir_penilaian; ?>]">
+                      <input type="number" min="0" max="4" step=".01" value="<?php echo $nilai; ?>" name="nilai[<?php echo $item2->id_butir_penilaian; ?>]">
                     </td>
                     <?php echo $lido; ?>
                   </tr>
