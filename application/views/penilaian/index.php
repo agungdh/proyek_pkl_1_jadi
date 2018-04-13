@@ -34,19 +34,21 @@
           ?>
           Tanggal Pengajuan: <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tgl_pengajuan); ?><br>
           Versi: <?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?><br>
-          Tipe Versi: <?php echo $data['pengajuan']->tipeversi; ?><br>
+          Tipe Versi: <?php echo $data['pengajuan']->tipe; ?><br>
           Tahun Borang: <?php echo $data['pengajuan']->tahun_borang; ?><br>
           <?php
-          $user = $this->m_universal->get_id('user', $data['pengajuan']->id_user);
-          $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
-          if ($prodi != null) {
-            $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
-            $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
-          } else {
-            $tblUser = $user->username;
-          }
+          // $user = $this->m_universal->get_id('user', $data['pengajuan']->id_user);
+          // $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
+          // if ($prodi != null) {
+          //   $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
+          //   $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
+          // } else {
+          //   $tblUser = $user->username;
+          // }
+          $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->id_prodi))->row();
           ?>
-          User: <?php echo $tblUser; ?><br>
+          Prodi: <?php echo $prodi->nama; ?><br>
+          Fakultas: <?php echo $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama; ?><br>
           Upload: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?><br>
         <br>
         
@@ -74,11 +76,16 @@
               <tr>
                 <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
                 <?php
-                $this->db->select_sum('nilai');
-                $this->db->where(array('penilaian_id' => $item->id));
-                $jumlah = $this->db->get('detilpenilaian')->row()->nilai;
+                // $this->db->select_sum('nilai');
+                // $this->db->where(array('penilaian_id' => $item->id));
+                // $jumlah = $this->db->get('detilpenilaian')->row()->nilai;
+                $jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->id_tipeversi);
+                $this->db->where('penilaian_id', $item->id);
+                $jumlah_yang_dinilai = $this->db->count_all_results('detilpenilaian');
+                $hasil = ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100;
                 ?>
-                <th><?php echo $jumlah == null ? 0 : $jumlah; ?></th>
+                <!-- <th><?php echo $jumlah == null ? 0 : $jumlah; ?></th> -->
+                <th><?php echo number_format((float)$hasil, 2, '.', '') . ' %'; ?></th>
                 <th>
                   <a class="btn btn-info" href="<?php echo base_url('penilaian/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
                   <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"> <i class="fa fa-trash"></i></a>

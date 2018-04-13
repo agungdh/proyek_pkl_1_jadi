@@ -26,14 +26,14 @@
           </a><?php echo $data['versi']->nama.' | '.$data['versi']->versi.' | '.$data['versi']->tahun; ?></font>
       </strong></h5>
 
-      <a href='<?php echo base_url("tipeversi/tambah/").$data['versi']->id; ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Type versi</button></a><br><br>
+      <a href='<?php echo base_url("tipeversi/tambah/").$data['versi']->id; ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Tipe versi</button></a><br><br>
     </div>
 
     <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
       <thead>
         <tr>
             <th>NO</th>
-            <th>Type versi</th>
+            <th>Tipe versi</th>
             <th>Proses </th>
         </tr>
       </thead>
@@ -46,7 +46,7 @@
             <th><?php echo $no++; ?></th>
             <th><?php echo $item->tipe; ?></th>
               <th><center>
-                <a class="btn btn-primary" href="<?php echo base_url('standar/index/'.$item->id) ?>"><i class="fa fa-share"> standar</i></a>
+                <a class="btn btn-primary" href="<?php echo base_url('standar/index/'.$item->id) ?>"><i class="fa fa-share"> Standar</i></a>
                 <a class="btn btn-info" href="<?php echo base_url('tipeversi/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i></a>
                 <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i></a>
               </center></th>

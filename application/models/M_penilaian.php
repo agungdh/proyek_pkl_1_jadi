@@ -4,6 +4,18 @@ class M_penilaian extends CI_Model{
 		parent::__construct();		
 	}
 
+	function hitung_butir_penilaian($tipeversi_id) {
+		$sql = "SELECT count(*) total
+				FROM tipeversi t, standar s, substandar ss, butir b, butirpenilaian bp
+				WHERE s.tipeversi_id = t.id
+				AND ss.standar_id = s.id
+				AND b.substandar_id = ss.id
+				AND bp.butir_id = b.id
+				AND t.id = ?";
+		$query = $this->db->query($sql, array($tipeversi_id))->row();
+		return $query->total;
+	}
+
 	function ubah_penilaian($tanggal, $id_pengajuan){
 		$sql = "UPDATE penilaian
 				SET tanggal = ?,
