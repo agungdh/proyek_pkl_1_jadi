@@ -22,11 +22,12 @@ class User extends CI_Controller {
 	}
 
 	function aksi_tambah() {
+		$id_prodi = $this->input->post('prodi') != null ? $this->input->post('prodi') : '0';
 		$this->m_user->tambah_user(
 			$this->input->post('username'),
 			hash('sha512', $this->input->post('password')),
 			$this->input->post('level'),
-			$this->input->post('prodi')
+			$id_prodi
 		);
 
 		redirect(base_url('user'));
