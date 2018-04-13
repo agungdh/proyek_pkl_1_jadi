@@ -159,10 +159,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="content-header">
           <?php
           $tambahan = null;
-          if($prodi!=null){$tambahan = ' | ' . $fakultas->nama . ' | ' . $prodi->nama;}
+          if($prodi!=null){$tambahan = $fakultas->nama . ' | ' . $prodi->nama;}
           ?>
           <h1>
-            Welcome <small><?php echo $this->session->username . $tambahan; ?></small>
+            Welcome <small><?php echo $tambahan; ?></small>
             <small><marquee scrolldelay=250><?php echo date('l, d F Y');?></marquee></small>
           </h1>
 <!--           
