@@ -30,7 +30,8 @@
           $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->id_tipeversi))->row()->versi_id))->row();
           $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->id_tipeversi))->result());
           $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id_pengajuan))->result());
-          $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
           ?>
           Tanggal Pengajuan: <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tgl_pengajuan); ?><br>
           Versi: <?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?><br>
@@ -82,7 +83,8 @@
                 $jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->id_tipeversi);
                 $this->db->where('penilaian_id', $item->id);
                 $jumlah_yang_dinilai = $this->db->count_all_results('detilpenilaian');
-                $hasil = ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100;
+                // $hasil = ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100;
+                $hasil = $jumlah_yang_dinilai != 0 ? ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100 : 0;
                 ?>
                 <!-- <th><?php echo $jumlah == null ? 0 : $jumlah; ?></th> -->
                 <th><?php echo number_format((float)$hasil, 2, '.', '') . ' %'; ?></th>
