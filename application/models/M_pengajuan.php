@@ -70,14 +70,14 @@ class M_pengajuan extends CI_Model{
 		$query = $this->db->query($sql, array($tanggal, $prodi, $tipe, $tahun));
 	}
 
-	function ubah_pengajuan($tanggal, $user, $tipe, $tahun, $id){
+	function ubah_pengajuan($tanggal, $prodi, $tipe, $tahun, $id){
 		$sql = "UPDATE pengajuan
 				SET tanggal 	= ?,
-				user_id 		= ?,
+				prodi_id 		= ?,
 				tipeversi_id 	= ?,
 				tahun_borang 	= ?
 				WHERE id 		= ?";
-		$query = $this->db->query($sql, array($tanggal, $user, $tipe, $tahun, $id));
+		$query = $this->db->query($sql, array($tanggal, $prodi, $tipe, $tahun, $id));
 	}
 
 	function hapus_pengajuan($id){

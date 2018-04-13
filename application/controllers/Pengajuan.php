@@ -45,7 +45,7 @@ class Pengajuan extends CI_Controller {
 	function aksi_ubah() {
 		$this->m_pengajuan->ubah_pengajuan(
 			$this->input->post('tanggal'),
-			$this->input->post('user'),
+			$this->input->post('prodi'),
 			$this->input->post('tipe'),
 			$this->input->post('tahun'),
 			$this->input->post('id')

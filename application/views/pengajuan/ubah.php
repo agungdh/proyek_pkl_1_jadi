@@ -34,26 +34,19 @@
     </div>
 
     <div class="form-group">
-      <label for="versi">User</label>
-          <select id="tipe" class="form-control select2" name="user">
+      <label for="versi">Prodi</label>
+          <select id="user" class="form-control select2" name="prodi">
+            <option <?php echo $data['pengajuan']->prodi_id == 0 ? "selected" : null; ?> value="0">Universitas</option>
             <?php
-            foreach ($data['user'] as $item) {
-              $user = $this->m_universal->get_id('user', $item->id);
-              if ($user->prodi_id != null) {
-                $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
-                $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
-                $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
-              } else {
-                $tblUser = $user->username;
-              }
-              if ($item->id == $data['pengajuan']->user_id) {
+            foreach ($this->db->get('prodi')->result() as $item) {
+              if ($data['pengajuan']->prodi_id == $item->id) {
                 ?>
-                <option selected value="<?php echo $item->id; ?>"><?php echo $tblUser; ?></option>
-                <?php
-              } else {
-                ?>
-                <option value="<?php echo $item->id; ?>"><?php echo $tblUser; ?></option>
+                <option selected value="<?php echo $item->id; ?>"><?php echo $item->nama . ' | ' . $this->db->get_where('fakultas', array('id' => $item->fakultas_id))->row()->nama; ?></option>
                 <?php                
+              } else {
+                ?>
+                <option value="<?php echo $item->id; ?>"><?php echo $item->nama . ' | ' . $this->db->get_where('fakultas', array('id' => $item->fakultas_id))->row()->nama; ?></option>
+                <?php                                
               }
             }
             ?>
