@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2018 at 03:23 AM
+-- Generation Time: Apr 13, 2018 at 10:27 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -448,7 +448,24 @@ INSERT INTO `detilpenilaian` (`id`, `penilaian_id`, `butirpenilaian_id`, `nilai`
 (8, 3, 9, '5.00'),
 (9, 3, 10, '6.00'),
 (56, 2, 11, '6.00'),
-(57, 4, 5, '2.50');
+(57, 4, 5, '2.50'),
+(58, 5, 5, '1.00'),
+(59, 5, 6, '2.00'),
+(60, 5, 7, '3.00'),
+(61, 5, 8, '4.00'),
+(62, 5, 9, '4.00'),
+(63, 5, 10, '2.00'),
+(64, 5, 49, '3.00'),
+(65, 5, 11, '2.00'),
+(66, 5, 12, '3.00'),
+(67, 5, 13, '2.00'),
+(68, 5, 14, '2.00'),
+(69, 5, 15, '1.00'),
+(70, 5, 16, '2.00'),
+(71, 5, 17, '1.00'),
+(72, 5, 48, '0.20'),
+(73, 5, 24, '2.00'),
+(74, 6, 5, '2.00');
 
 -- --------------------------------------------------------
 
@@ -471,17 +488,13 @@ CREATE TABLE `dokumen` (
 --
 
 INSERT INTO `dokumen` (`id`, `nama_file`, `nama_file_asli`, `mime`, `url`, `listdokumen_id`, `pengajuan_id`) VALUES
-(18, '18_Screenshot from 2018-03-06 15-09-08.png', 'Screenshot from 2018-03-06 15-09-08.png', 'image/png', 'upload/A/A1/2018/7 Standar/Tikem/standar_3/substandar_3.1/butir_3.1.3//18_Screenshot from 2018-03-06 15-09-08.png', 344, 2),
-(19, '19_Screenshot from 2018-03-06 08-13-12.png', 'Screenshot from 2018-03-06 08-13-12.png', 'image/png', 'upload/A/A1/2018/7 Standar/Tikem/standar_1/substandar_1.1/butir_1.1.2//19_Screenshot from 2018-03-06 08-13-12.png', 261, 2),
-(20, '20_adminer-4.6.2.php', 'adminer-4.6.2.php', 'application/x-php', 'upload/A/A1/2018/7 Standar/Tikem/standar_1/substandar_1.1/butir_1.1.3//20_adminer-4.6.2.php', 265, 2),
-(22, '22_DATA BORANG TESTING.docx', 'DATA BORANG TESTING.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'upload/A/A1/2018/7 Standar/Tikem/standar_4/substandar_4.1/butir_4.1.1//22_DATA BORANG TESTING.docx', 375, 2),
-(23, '23_DATA BORANG TESTING.docx', 'DATA BORANG TESTING.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'upload/A/A1/2018/7 Standar/Tikem/standar_6/substandar_6.1/butir_6.1.1//23_DATA BORANG TESTING.docx', 479, 2),
-(24, '24_DATA BORANG TESTING.docx', 'DATA BORANG TESTING.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'upload/A/A1/2018/7 Standar/Tikem/standar_6/substandar_6.1/butir_6.1.3//24_DATA BORANG TESTING.docx', 487, 2),
-(25, '25_DATA BORANG TESTING.docx', 'DATA BORANG TESTING.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'upload/A/A1/2018/7 Standar/Tikem/standar_4/substandar_4.1/butir_4.1.2//25_DATA BORANG TESTING.docx', 380, 2),
-(26, '26_adminer-4.6.2.php', 'adminer-4.6.2.php', 'application/x-php', 'upload/A/A1/2018/7 Standar/Tikem/standar_1/substandar_1.1/butir_1.1.1//26_adminer-4.6.2.php', 258, 2),
-(27, '27_android_tutorial.pdf', 'android_tutorial.pdf', 'application/pdf', 'upload/A/A1/2018/7 Standar/Tikem/standar_1/substandar_1.1/butir_1.1.1//27_android_tutorial.pdf', 259, 2),
-(28, '28_adminer-4.6.2.php', 'adminer-4.6.2.php', 'application/x-php', 'upload/A/A1/2018/7 Standar/Tikem/standar_1/substandar_1.1/butir_1.1.2//28_adminer-4.6.2.php', 260, 2),
-(29, '29_android_tutorial.pdf', 'android_tutorial.pdf', 'application/pdf', 'upload/A/A1/2018/7 Standar/Tikem/standar_5/substandar_5.1/butir_5.1.1//29_android_tutorial.pdf', 433, 2);
+(55, '55_Gambar-Pemandangan-Alam-Danau-1194.jpg', 'Gambar-Pemandangan-Alam-Danau-1194.jpg', 'image/jpeg', 'upload/A/A1/2018/7 Standar/AIPT/standar_5/substandar_5.1/butir_5.1.1//55_Gambar-Pemandangan-Alam-Danau-1194.jpg', 628, 7),
+(56, '56_Gambar-Pemandangan-Alam-Danau-1194.jpg', 'Gambar-Pemandangan-Alam-Danau-1194.jpg', 'image/jpeg', 'upload/A/A1/2018/7 Standar/AIPT/standar_5/substandar_5.3/butir_5.3.2//56_Gambar-Pemandangan-Alam-Danau-1194.jpg', 646, 7),
+(57, '57_Gambar-Pemandangan-Alam-Danau-1194.jpg', 'Gambar-Pemandangan-Alam-Danau-1194.jpg', 'image/jpeg', 'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.2//57_Gambar-Pemandangan-Alam-Danau-1194.jpg', 404, 7),
+(58, '58_Gambar-Pemandangan-Alam-Danau-1194.jpg', 'Gambar-Pemandangan-Alam-Danau-1194.jpg', 'image/jpeg', 'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.1//58_Gambar-Pemandangan-Alam-Danau-1194.jpg', 397, 7),
+(59, '59_Gambar-Pemandangan-Alam-Pantai-1323.jpg', 'Gambar-Pemandangan-Alam-Pantai-1323.jpg', 'image/jpeg', 'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.3//59_Gambar-Pemandangan-Alam-Pantai-1323.jpg', 409, 7),
+(60, '60_[DownSub.com] Kotlin Tutorial.srt', '[DownSub.com] Kotlin Tutorial.srt', 'application/x-subrip', 'upload/A/A1/2018/7 Standar/AIPT/standar_5/substandar_5.1/butir_5.1.2//60_[DownSub.com] Kotlin Tutorial.srt', 630, 7),
+(61, '61_[DownSub.com] Kotlin Tutorial.srt', '[DownSub.com] Kotlin Tutorial.srt', 'application/x-subrip', 'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.1//61_[DownSub.com] Kotlin Tutorial.srt', 392, 7);
 
 -- --------------------------------------------------------
 
@@ -502,7 +515,7 @@ CREATE TABLE `fakultas` (
 INSERT INTO `fakultas` (`id`, `kode`, `nama`) VALUES
 (8, 'A', 'Ilmu Komunikasi'),
 (9, 'B', 'Teknik'),
-(10, 'C', 'Teknologi Informasi'),
+(10, 'C', 'Fakultas Teknologi Informasi'),
 (12, 'D', 'Ekonomi dan Bisnis'),
 (13, 'E', 'Ilmu Sosial & Ilmu Politik');
 
@@ -1024,7 +1037,7 @@ INSERT INTO `listdokumen` (`id`, `keterangan`, `butir_id`, `tipe`) VALUES
 CREATE TABLE `pengajuan` (
   `id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `prodi_id` int(11) NOT NULL,
   `tipeversi_id` int(11) NOT NULL,
   `tahun_borang` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1033,10 +1046,9 @@ CREATE TABLE `pengajuan` (
 -- Dumping data for table `pengajuan`
 --
 
-INSERT INTO `pengajuan` (`id`, `tanggal`, `user_id`, `tipeversi_id`, `tahun_borang`) VALUES
-(2, '2018-03-13', 4, 3, 2018),
-(3, '2018-03-12', 4, 2, 2018),
-(4, '2018-04-12', 3, 1, 2018);
+INSERT INTO `pengajuan` (`id`, `tanggal`, `prodi_id`, `tipeversi_id`, `tahun_borang`) VALUES
+(7, '2018-04-13', 7, 3, 2018),
+(8, '2018-04-13', 13, 4, 2003);
 
 -- --------------------------------------------------------
 
@@ -1057,7 +1069,10 @@ CREATE TABLE `penilaian` (
 INSERT INTO `penilaian` (`id`, `tanggal`, `pengajuan_id`) VALUES
 (2, '2018-03-14', 2),
 (3, '2018-03-14', 2),
-(4, '2018-04-12', 2);
+(4, '2018-04-12', 2),
+(5, '2018-04-13', 7),
+(6, '2018-04-13', 7),
+(7, '2018-04-13', 8);
 
 -- --------------------------------------------------------
 
@@ -1271,10 +1286,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `level`, `prodi_id`) VALUES
-(1, 'admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 1, NULL),
-(3, 'univ', 'c001deeb52dc9ff9e859f65772659245cff32c5607e8932f3efeba343bd829cc497f299789b15cc27c95dc3ec865447679e7bbb52138a3e97f3f4b38c7c17874', 2, NULL),
+(3, 'univ', 'c001deeb52dc9ff9e859f65772659245cff32c5607e8932f3efeba343bd829cc497f299789b15cc27c95dc3ec865447679e7bbb52138a3e97f3f4b38c7c17874', 2, 0),
 (4, 'ophumas', '8f18c505ea83c1503b199ca936692912f9e08fda787fbedfc2fc144467bb3d4243ed1df050f001225df6c93dfba15f465eda50e97a10705299f0ff71137b3520', 3, 7),
-(14, 'manajemen', 'd2d966dc907af41d781d1a44142d121cd66d209e21768cd9d8dfb2b57b828c8f5e2ac88b6d9944f00e6aa02af582414dfebf4617695ab8af9989e4c3a8b21e24', 3, 17);
+(14, 'manajemen', 'd2d966dc907af41d781d1a44142d121cd66d209e21768cd9d8dfb2b57b828c8f5e2ac88b6d9944f00e6aa02af582414dfebf4617695ab8af9989e4c3a8b21e24', 3, 17),
+(18, 'admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1371,11 +1386,14 @@ CREATE TABLE `v_pengajuan` (
 `id_pengajuan` int(11)
 ,`tgl_pengajuan` date
 ,`tahun_borang` year(4)
-,`id_user` int(11)
-,`username` varchar(255)
-,`level` int(11)
+,`id_prodi` int(11)
+,`kode_prodi` varchar(255)
+,`nama_prodi` varchar(255)
+,`id_fakultas` int(11)
+,`kode_fakultas` varchar(4)
+,`nama_fakultas` varchar(255)
 ,`id_tipeversi` int(11)
-,`tipeversi` text
+,`tipe` text
 );
 
 -- --------------------------------------------------------
@@ -1409,15 +1427,6 @@ CREATE TABLE `v_pengajuan_dokumen` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_penilaian` (
-`id_penilaian` int(11)
-,`tanggal_penilaian` date
-,`tanggal_pengajuan` date
-,`id_pengajuan` int(11)
-,`tahun_borang` year(4)
-,`tipe` text
-,`nama_versi` varchar(255)
-,`tahun_versi` year(4)
-,`level` int(11)
 );
 
 -- --------------------------------------------------------
@@ -1429,7 +1438,7 @@ CREATE TABLE `v_penilaian` (
 CREATE TABLE `v_penilaian_tambah` (
 `id_pengajuan` int(11)
 ,`tanggal_pengajuan` date
-,`user_id` int(11)
+,`prodi_id` int(11)
 ,`tipeversi_id` int(11)
 ,`tahun_borang` year(4)
 ,`id_tipeversi` int(11)
@@ -1553,7 +1562,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_pengajuan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_pengajuan`  AS  select `p`.`id` AS `id_pengajuan`,`p`.`tanggal` AS `tgl_pengajuan`,`p`.`tahun_borang` AS `tahun_borang`,`u`.`id` AS `id_user`,`u`.`username` AS `username`,`u`.`level` AS `level`,`t`.`id` AS `id_tipeversi`,`t`.`tipe` AS `tipeversi` from ((`pengajuan` `p` join `user` `u`) join `tipeversi` `t`) where ((`p`.`user_id` = `u`.`id`) and (`p`.`tipeversi_id` = `t`.`id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_pengajuan`  AS  select `pe`.`id` AS `id_pengajuan`,`pe`.`tanggal` AS `tgl_pengajuan`,`pe`.`tahun_borang` AS `tahun_borang`,`pr`.`id` AS `id_prodi`,`pr`.`kode` AS `kode_prodi`,`pr`.`nama` AS `nama_prodi`,`fa`.`id` AS `id_fakultas`,`fa`.`kode` AS `kode_fakultas`,`fa`.`nama` AS `nama_fakultas`,`ti`.`id` AS `id_tipeversi`,`ti`.`tipe` AS `tipe` from (((`pengajuan` `pe` join `prodi` `pr`) join `tipeversi` `ti`) join `fakultas` `fa`) where ((`pe`.`prodi_id` = `pr`.`id`) and (`pe`.`tipeversi_id` = `ti`.`id`) and (`pr`.`fakultas_id` = `fa`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -1580,7 +1589,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_penilaian_tambah`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_penilaian_tambah`  AS  select `p`.`id` AS `id_pengajuan`,`p`.`tanggal` AS `tanggal_pengajuan`,`p`.`user_id` AS `user_id`,`p`.`tipeversi_id` AS `tipeversi_id`,`p`.`tahun_borang` AS `tahun_borang`,`t`.`id` AS `id_tipeversi`,`t`.`tipe` AS `tipe_tipeversi`,`t`.`versi_id` AS `versi_id`,`s`.`id` AS `id_standar`,`s`.`nomor` AS `nomor_standar`,`s`.`nama` AS `nama_standar`,`ss`.`id` AS `id_substandar`,`ss`.`nomor` AS `nomor_substandar`,`ss`.`nama` AS `nama_substandar`,`b`.`id` AS `id_butir`,`b`.`nomor` AS `nomor_butir`,`b`.`nama` AS `nama_butir`,`bp`.`id` AS `id_butir_penilaian`,`bp`.`deskripsi` AS `deskripsi`,`bp`.`bobot` AS `bobot`,`bp`.`nomor_butir` AS `nomor_butirpenilaian` from (((((`pengajuan` `p` join `tipeversi` `t`) join `standar` `s`) join `substandar` `ss`) join `butir` `b`) join `butirpenilaian` `bp`) where ((`p`.`tipeversi_id` = `t`.`id`) and (`s`.`tipeversi_id` = `t`.`id`) and (`ss`.`standar_id` = `s`.`id`) and (`b`.`substandar_id` = `ss`.`id`) and (`bp`.`butir_id` = `b`.`id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_penilaian_tambah`  AS  select `p`.`id` AS `id_pengajuan`,`p`.`tanggal` AS `tanggal_pengajuan`,`p`.`prodi_id` AS `prodi_id`,`p`.`tipeversi_id` AS `tipeversi_id`,`p`.`tahun_borang` AS `tahun_borang`,`t`.`id` AS `id_tipeversi`,`t`.`tipe` AS `tipe_tipeversi`,`t`.`versi_id` AS `versi_id`,`s`.`id` AS `id_standar`,`s`.`nomor` AS `nomor_standar`,`s`.`nama` AS `nama_standar`,`ss`.`id` AS `id_substandar`,`ss`.`nomor` AS `nomor_substandar`,`ss`.`nama` AS `nama_substandar`,`b`.`id` AS `id_butir`,`b`.`nomor` AS `nomor_butir`,`b`.`nama` AS `nama_butir`,`bp`.`id` AS `id_butir_penilaian`,`bp`.`deskripsi` AS `deskripsi`,`bp`.`bobot` AS `bobot`,`bp`.`nomor_butir` AS `nomor_butirpenilaian` from (((((`pengajuan` `p` join `tipeversi` `t`) join `standar` `s`) join `substandar` `ss`) join `butir` `b`) join `butirpenilaian` `bp`) where ((`p`.`tipeversi_id` = `t`.`id`) and (`s`.`tipeversi_id` = `t`.`id`) and (`ss`.`standar_id` = `s`.`id`) and (`b`.`substandar_id` = `ss`.`id`) and (`bp`.`butir_id` = `b`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -1672,8 +1681,7 @@ ALTER TABLE `listdokumen`
 --
 ALTER TABLE `pengajuan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `versi_id` (`tipeversi_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `versi_id` (`tipeversi_id`);
 
 --
 -- Indexes for table `penilaian`
@@ -1722,8 +1730,7 @@ ALTER TABLE `type_listdokumen`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD KEY `prodi_id` (`prodi_id`);
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `versi`
@@ -1751,13 +1758,13 @@ ALTER TABLE `butirpenilaian`
 -- AUTO_INCREMENT for table `detilpenilaian`
 --
 ALTER TABLE `detilpenilaian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `dokumen`
 --
 ALTER TABLE `dokumen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `fakultas`
@@ -1775,13 +1782,13 @@ ALTER TABLE `listdokumen`
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `penilaian`
 --
 ALTER TABLE `penilaian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `prodi`
@@ -1817,7 +1824,7 @@ ALTER TABLE `type_listdokumen`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `versi`
@@ -1866,8 +1873,7 @@ ALTER TABLE `listdokumen`
 -- Constraints for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  ADD CONSTRAINT `pengajuan_ibfk_1` FOREIGN KEY (`tipeversi_id`) REFERENCES `tipeversi` (`id`),
-  ADD CONSTRAINT `pengajuan_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `pengajuan_ibfk_1` FOREIGN KEY (`tipeversi_id`) REFERENCES `tipeversi` (`id`);
 
 --
 -- Constraints for table `penilaian`
@@ -1898,12 +1904,6 @@ ALTER TABLE `substandar`
 --
 ALTER TABLE `tipeversi`
   ADD CONSTRAINT `tipeversi_ibfk_1` FOREIGN KEY (`versi_id`) REFERENCES `versi` (`id`);
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`prodi_id`) REFERENCES `prodi` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
