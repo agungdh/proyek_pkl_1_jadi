@@ -4,26 +4,76 @@ if ($this->session->level != 1) {
 }
 ?>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
-     
-    <!-- Indicators --> 
-    <ol class="carousel-indicators"> 
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li> 
-      <li data-target="#myCarousel" data-slide-to="1"></li> 
-      <li data-target="#myCarousel" data-slide-to="2"></li> 
-    </ol> 
- 
-    <!-- Wrapper for slides --> 
-    <div class="carousel-inner" role="listbox"> 
- 
-      <div class="item active"> 
-        <img src="<?php echo base_url("assets/gambar/ubl.jpg"); ?>" alt="Photo1" width="100%"> 
-      </div> 
- 
-      <div class="item"> 
-        <img src="<?php echo base_url("assets/gambar/ubl3.jpg"); ?>" alt="Photo2" width="100%"> 
-      </div> 
- 
-      <div class="item"> 
-        <img src="<?php echo base_url("assets/gambar/ubl2.jpg"); ?>" alt="Photo3" width="100%"> 
-      </div> 
+<script type="text/javascript" language="javascript" >
+  var dTable;
+  $(document).ready(function() {
+    dTable = $('#lookup').DataTable({
+      responsive: true
+    });
+  });
+</script>
+
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h4><strong><font color=blue>DATA PENGAJUAN</font></strong></h4>
+  </div><!-- /.box-header -->
+
+    <div class="box-body">
+
+    <div class="form-group">
+    </div>
+
+    <table id="lookup" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+                    <th>TANGGAL</th>
+                    <th>VERSI</th>
+                    <th>TIPE VERSI</th>
+                    <th>TAHUN BORANG</th>
+                    <th>PRODI</th>
+                    <th>FAKULTAS</th>
+                    <th>UPLOAD</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <?php
+        foreach ($this->db->get('pengajuan')->result() as $item) {
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->tipeversi_id))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id))->result());
+          
+          // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
+
+          $prodi = $this->m_universal->get_id('prodi', $item->prodi_id);
+          // var_dump($prodi);
+          if ($prodi == null) {
+            // $tblUser = $user->username;
+            $prodi = $fakultas = null;
+          } else {
+            $prodi = $this->m_universal->get_id('prodi', $item->prodi_id);
+            $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
+            // $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
+            $prodi = $prodi->nama;
+            $fakultas = $fakultas->nama;
+          }
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->tipeversi_id))->row()->versi_id))->row();
+          $windowLocation = base_url('welcome/penilaian/' . $item->id);
+          ?>
+          <tr onclick="window.location = '<?php echo $windowLocation; ?>'">
+            <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
+            <th><?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?></th>
+            <th><?php echo $this->db->get_where('tipeversi', array('id' => $item->tipeversi_id))->row()->tipe; ?></th>
+            <th><?php echo $item->tahun_borang; ?></th>
+            <th><?php echo $prodi; ?></th>
+            <th><?php echo $fakultas; ?></th>
+            <th><?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?></th>
+          </tr>
+          <?php
+        }
+        ?>
+      </tbody>
+      
+    </table>
+  </div><!-- /.boxbody -->
+</div><!-- /.box -->
