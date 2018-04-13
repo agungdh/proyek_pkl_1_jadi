@@ -42,7 +42,10 @@
         foreach ($this->db->get('pengajuan')->result() as $item) {
           $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->tipeversi_id))->result());
           $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id))->result());
-          $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          
+          // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
+
           $prodi = $this->m_universal->get_id('prodi', $item->prodi_id);
           // var_dump($prodi);
           if ($prodi == null) {

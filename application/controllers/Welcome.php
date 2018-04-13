@@ -5,6 +5,8 @@ class Welcome extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_welcome');
+		$this->load->model('m_pengajuan');
+		$this->load->library('pustaka');
 	}
 
 	function index() {
