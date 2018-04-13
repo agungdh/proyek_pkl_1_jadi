@@ -4,11 +4,11 @@ class M_pengajuanborang extends CI_Model{
 		parent::__construct();		
 	}
 
-	function ambil_pengajuan($id_user){
+	function ambil_pengajuan($id_prodi){
 		$sql = "SELECT *
 				FROM v_pengajuan
-				WHERE id_user = ? ";
-		$query = $this->db->query($sql, array($id_user));
+				WHERE id_prodi = ? ";
+		$query = $this->db->query($sql, array($id_prodi));
 		$row = $query->result();
 
 		return $row;

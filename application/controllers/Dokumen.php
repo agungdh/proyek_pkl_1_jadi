@@ -22,17 +22,17 @@ class Dokumen extends CI_Controller {
 		$list_dokumen = $this->m_dokumen->ambil_listdokumen($pengajuan->tipeversi_id);
 		// var_dump($list_dokumen); exit();
 		$tipeversi = $this->m_dokumen->ambil_tipeversi($pengajuan->tipeversi_id);
-		$user = $this->m_dokumen->ambil_user($pengajuan->user_id);
+		// $user = $this->m_dokumen->ambil_user($pengajuan->user_id);
+		$prodi = $this->db->get_where('prodi', array('id' => $pengajuan->prodi_id))->row();
 		$dokumen = $_FILES['dokumen'];
 
 		foreach ($list_dokumen as $item) {
 			if ($dokumen['size'][$item->id_listdokumen] != 0){
 				
-				if ($user->level == 3) {
-					$prodi = $this->m_dokumen->ambil_prodi($user->prodi_id);
+				if ($prodi->id != 0) {
 					$fakultas = $this->m_dokumen->ambil_fakultas($prodi->fakultas_id);
 					$awal = $fakultas->kode . '/' . $prodi->kode; 
-				} elseif ($user->level == 2) {
+				} elseif ($user->id == 0) {
 					$awal = 'univ'; 
 				} else {
 					$awal = "ERROR !!!";

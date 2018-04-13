@@ -19,6 +19,7 @@ class Welcome extends CI_Controller {
 				'id'  => $data_user->id,
 				'username'  => $data_user->username,
 				'level'  => $data_user->level,
+				'prodi_id'  => $data_user->prodi_id,
 				'login'  => true
 			);
 

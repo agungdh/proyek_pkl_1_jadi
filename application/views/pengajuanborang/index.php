@@ -46,7 +46,7 @@
           <tr>
             <th><?php echo $this->pustaka->tanggal_indo($item->tgl_pengajuan); ?></th>
             <th><?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?></th>
-            <th><?php echo $item->tipeversi; ?></th>
+            <th><?php echo $item->tipe; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
             <th><?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?></th>
               <th>
