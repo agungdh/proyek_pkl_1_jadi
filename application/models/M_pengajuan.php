@@ -61,13 +61,13 @@ class M_pengajuan extends CI_Model{
 		return $row;
 	}
 
-	function tambah_pengajuan($tanggal, $user, $tipe, $tahun){
+	function tambah_pengajuan($tanggal, $prodi, $tipe, $tahun){
 		$sql = "INSERT INTO pengajuan
 				SET tanggal = ?,
-				user_id = ?,
+				prodi_id = ?,
 				tipeversi_id = ?,
 				tahun_borang = ?";
-		$query = $this->db->query($sql, array($tanggal, $user, $tipe, $tahun));
+		$query = $this->db->query($sql, array($tanggal, $prodi, $tipe, $tahun));
 	}
 
 	function ubah_pengajuan($tanggal, $user, $tipe, $tahun, $id){

@@ -30,7 +30,8 @@
                     <th>VERSI</th>
                     <th>TIPE VERSI</th>
                     <th>TAHUN BORANG</th>
-                    <th>USER</th>
+                    <th>PRODI</th>
+                    <th>FAKULTAS</th>
                     <th>UPLOAD</th>
                     <th>PROSES</th>
         </tr>
@@ -38,31 +39,36 @@
 
       <tbody>
         <?php
-        foreach ($data['pengajuan'] as $item) {
-          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->id_tipeversi))->result());
-          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id_pengajuan))->result());
+        foreach ($this->db->get('pengajuan')->result() as $item) {
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->tipeversi_id))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id))->result());
           $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
-          $user = $this->m_universal->get_id('user', $item->id_user);
-          if ($user->prodi_id != null) {
-            $prodi = $this->m_universal->get_id('prodi', $user->prodi_id);
-            $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
-            $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
+          $prodi = $this->m_universal->get_id('prodi', $item->prodi_id);
+          // var_dump($prodi);
+          if ($prodi == null) {
+            // $tblUser = $user->username;
+            $prodi = $fakultas = null;
           } else {
-            $tblUser = $user->username;
+            $prodi = $this->m_universal->get_id('prodi', $item->prodi_id);
+            $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
+            // $tblUser = $user->username . ' (' . $fakultas->nama . ' | ' . $prodi->nama . ')';
+            $prodi = $prodi->nama;
+            $fakultas = $fakultas->nama;
           }
-          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->id_tipeversi))->row()->versi_id))->row();
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->tipeversi_id))->row()->versi_id))->row();
           ?>
           <tr>
-            <th><?php echo $this->pustaka->tanggal_indo($item->tgl_pengajuan); ?></th>
+            <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
             <th><?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?></th>
-            <th><?php echo $item->tipeversi; ?></th>
+            <th><?php echo $this->db->get_where('tipeversi', array('id' => $item->tipeversi_id))->row()->tipe; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
-            <th><?php echo $tblUser; ?></th>
+            <th><?php echo $prodi; ?></th>
+            <th><?php echo $fakultas; ?></th>
             <th><?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?></th>
               <th>
-                <a class="btn btn-primary" href="<?php echo base_url('penilaian/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i> Penilaian</a>
-                <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id_pengajuan) ?>"><i class="fa fa-pencil"></i> </a>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id_pengajuan; ?>')"><i class="fa fa-trash"></i> </a>
+                <a class="btn btn-primary" href="<?php echo base_url('penilaian/index/'.$item->id) ?>"><i class="fa fa-share"></i> Penilaian</a>
+                <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a>
               </th>
           </tr>
           <?php
