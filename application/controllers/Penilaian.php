@@ -180,11 +180,11 @@ class Penilaian extends CI_Controller {
 	              $temp_lido = $this->db->get_where('dokumen', array('listdokumen_id' => $item3->id))->result();
 	              if ($temp_lido != null) {
 	                foreach ($temp_lido as $item4) {
-	                  $isi_lido .= $item4->nama_file . ", "; 
+	                  $isi_lido .= $item4->nama_file . "\n"; 
 	                }
 	              }
 	            }
-              	$isi_lido = rtrim($isi_lido, ", ");
+              	$isi_lido = rtrim($isi_lido, "\n");
 	            // $lido = "<td rowspan='".$jml_lido."'>".$isi_lido."</td>";
 	            $jumlah_lido = $a + $jml_lido - 1;
 	            $this->excel->getActiveSheet()->mergeCells('G' . $a . ':G' . $jumlah_lido);
