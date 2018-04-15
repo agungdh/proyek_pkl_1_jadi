@@ -32,7 +32,8 @@
 
 <div class="box-header with-border">
     <div class="form-group">
-    <h4><strong><font color=blue>TAMBAH PENILAIAN</font></strong></h4>
+    <h4><strong><font color=blue>UBAH PENILAIAN</font></strong></h4>
+    <br>
       <h5><strong>
 
         <a href='<?php echo base_url("pengajuan"); ?>'>
@@ -72,7 +73,11 @@
         <?php
         echo 'Tanggal: ' . $this->pustaka->tanggal_indo($data['penilaian_id']->tanggal);
         ?><br><?php
-        echo $data['penilaian_id']->nilai;
+        $jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->id_tipeversi);
+        $this->db->where('penilaian_id', $data['penilaian_id']->id);
+        $jumlah_yang_dinilai = $this->db->count_all_results('detilpenilaian');
+        $hasil = $jumlah_yang_dinilai != 0 ? ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100 : 0;
+        echo 'Nilai: ' . number_format((float)$hasil, 2, '.', '') . ' %';
         ?>
 
       </strong></h5>
