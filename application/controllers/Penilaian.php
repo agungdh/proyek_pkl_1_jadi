@@ -118,7 +118,7 @@ class Penilaian extends CI_Controller {
 		
 		$this->excel->getActiveSheet()->setTitle('Standar ' . $item->nomor);
 		
-		foreach(range('A','C') as $columnID) {
+		foreach(range('A','G') as $columnID) {
 		    $this->excel->getActiveSheet()->getColumnDimension($columnID)
 		        ->setAutoSize(true);
 		}
@@ -180,11 +180,14 @@ class Penilaian extends CI_Controller {
 	              $temp_lido = $this->db->get_where('dokumen', array('listdokumen_id' => $item3->id))->result();
 	              if ($temp_lido != null) {
 	                foreach ($temp_lido as $item4) {
-	                  $isi_lido .= '<p><a href="'.base_url($item4->url).'">' . $item4->nama_file . '</a></p>'; 
+	                  $isi_lido .= $item4->nama_file . ", "; 
 	                }
 	              }
 	            }
+              	$isi_lido = rtrim($isi_lido, ", ");
 	            // $lido = "<td rowspan='".$jml_lido."'>".$isi_lido."</td>";
+	            $jumlah_lido = $a + $jml_lido - 1;
+	            $this->excel->getActiveSheet()->mergeCells('G' . $a . ':G' . $jumlah_lido);
 	            $lido2 = $isi_lido;
 	          }
 	        
