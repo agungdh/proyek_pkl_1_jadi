@@ -94,4 +94,8 @@ class Penilaian extends CI_Controller {
 
 		redirect(base_url('penilaian/index/'.$id_pengajuan));
 	}
+
+	function export_excel($id_penilaian) {
+		
+	}
 }
