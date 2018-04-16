@@ -40,7 +40,7 @@
         foreach ($data['pengajuanborang'] as $item) {
           $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->id_tipeversi))->result());
           $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id_pengajuan))->result());
-          $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
           $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->id_tipeversi))->row()->versi_id))->row();
           ?>
           <tr>
