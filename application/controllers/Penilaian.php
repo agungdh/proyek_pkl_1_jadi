@@ -101,6 +101,13 @@ class Penilaian extends CI_Controller {
 		$data['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($data['penilaian_id']->pengajuan_id);
 		$data['standar'] = $this->m_penilaian->ambil_standar($data['pengajuan']->id_tipeversi);
 
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->id_tipeversi))->row()->versi_id))->row();
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->id_tipeversi))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id_pengajuan))->result());
+          // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
+          $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
+		  $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->id_prodi))->row();
+
 		$this->load->library('excel');
 		
 		$iterasi = 0;		
@@ -123,23 +130,57 @@ class Penilaian extends CI_Controller {
 		        ->setAutoSize(true);
 		}
 
-		$this->excel->getActiveSheet()->setCellValue('A1', 'DATA LIMBAH B3 YANG KELUAR DARI TPS');
+		$this->excel->getActiveSheet()->setCellValue('A1', strtoupper('LAPORAN PENGAJUAN BORANG'));
 		$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(20);
 		$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
 		$this->excel->getActiveSheet()->mergeCells('A1:G1');
 		$this->excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
-		$this->excel->getActiveSheet()->getStyle('A3:G3')->getFont()->setBold(true); 
-		$this->excel->getActiveSheet()->setCellValue('A3', 'STANDAR');
-		$this->excel->getActiveSheet()->setCellValue('B3', 'SUBSTANDAR');
-		$this->excel->getActiveSheet()->setCellValue('C3', 'BUTIR');
-		$this->excel->getActiveSheet()->setCellValue('D3', 'BUTIR PENILAIAN');
-		$this->excel->getActiveSheet()->setCellValue('E3', 'BOBOT');
-		$this->excel->getActiveSheet()->setCellValue('F3', 'NILAI');
-		$this->excel->getActiveSheet()->setCellValue('G3', 'LIST DOKUMEN');
+		$this->excel->getActiveSheet()->setCellValue('A2', strtoupper('VERSI ' . $versih->nama . ' ' . $versih->tahun . ' - ' . $data['pengajuan']->tipe));
+		$this->excel->getActiveSheet()->getStyle('A2')->getFont()->setSize(20);
+		$this->excel->getActiveSheet()->getStyle('A2')->getFont()->setBold(true);
+		$this->excel->getActiveSheet()->mergeCells('A2:G2');
+		$this->excel->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
+		$this->excel->getActiveSheet()->setCellValue('A3', strtoupper('TAHUN BORANG ' . $data['pengajuan']->tahun_borang));
+		$this->excel->getActiveSheet()->getStyle('A3')->getFont()->setSize(20);
+		$this->excel->getActiveSheet()->getStyle('A3')->getFont()->setBold(true);
+		$this->excel->getActiveSheet()->mergeCells('A3:G3');
+		$this->excel->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+		$this->excel->getActiveSheet()->setCellValue('A4', strtoupper('PRODI ' . $prodi->nama . ' - ' . $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama));
+		$this->excel->getActiveSheet()->getStyle('A4')->getFont()->setSize(20);
+		$this->excel->getActiveSheet()->getStyle('A4')->getFont()->setBold(true);
+		$this->excel->getActiveSheet()->mergeCells('A4:G4');
+		$this->excel->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+
+		$this->excel->getActiveSheet()->setCellValue('A6', 'PERSENTASE UPLOAD');
+		$this->excel->getActiveSheet()->setCellValue('B6', number_format((float)$persentase, 2, '.', '') . ' %');
+		
+		$this->excel->getActiveSheet()->setCellValue('A7', 'TANGGAL PENILAIAN');
+		$this->excel->getActiveSheet()->setCellValue('B7', $this->pustaka->tanggal_indo($data['penilaian_id']->tanggal));
+		$jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->id_tipeversi);
+        $this->db->where('penilaian_id', $data['penilaian_id']->id);
+        $jumlah_yang_dinilai = $this->db->count_all_results('detilpenilaian');
+        $hasil = $jumlah_yang_dinilai != 0 ? ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100 : 0;
+		$this->excel->getActiveSheet()->setCellValue('A8', 'PERSENTASE PENILAIAN');
+		$this->excel->getActiveSheet()->setCellValue('B8', number_format((float)$hasil, 2, '.', '') . ' %');
+		$this->excel->getActiveSheet()->setCellValue('A9', 'WAKTU EKSPOR');
+		$this->excel->getActiveSheet()->setCellValue('B9', date('d-m-Y H:i:s'));
+
+
+		$this->excel->getActiveSheet()->getStyle('A10:G10')->getFont()->setBold(true); 
+		$this->excel->getActiveSheet()->setCellValue('A10', 'STANDAR');
+		$this->excel->getActiveSheet()->setCellValue('B10', 'SUBSTANDAR');
+		$this->excel->getActiveSheet()->setCellValue('C10', 'BUTIR');
+		$this->excel->getActiveSheet()->setCellValue('D10', 'BUTIR PENILAIAN');
+		$this->excel->getActiveSheet()->setCellValue('E10', 'BOBOT');
+		$this->excel->getActiveSheet()->setCellValue('F10', 'NILAI');
+		$this->excel->getActiveSheet()->setCellValue('G10', 'LIST DOKUMEN');
+		
 		$i = 1;
-		$a = 4;
+		$a = 11;
 		$styleArray = array(
 		      'borders' => array(
 		          'allborders' => array(
@@ -155,6 +196,9 @@ class Penilaian extends CI_Controller {
 		      )
 		  );
 		
+		$IboldHeader = $a - 1;
+		$this->excel->getActiveSheet()->getStyle('A' . $IboldHeader . ':'. 'G' . $IboldHeader)->applyFromArray($styleArrayBold);
+
 		$id_standar = 0; $id_substandar = 0; $id_butir = 0; $id_listdokumen = 0; 
 	      foreach ($this->m_penilaian->ambil_detail($item->id) as $item2) {
 	          if ($id_standar == $item2->id_standar) {
@@ -197,6 +241,8 @@ class Penilaian extends CI_Controller {
 	            $nilai = $nilai_tmp->nilai;
 	          }
 
+	          $this->excel->getActiveSheet()->getStyle('A' . $a . ':'. 'G' . $a)->applyFromArray($styleArray);
+
 			$this->excel->getActiveSheet()->setCellValue('A' . $a, $standar);
 			$this->excel->getActiveSheet()->setCellValue('B' . $a, $substandar);
 			$this->excel->getActiveSheet()->setCellValue('C' . $a, $butir);
@@ -210,6 +256,9 @@ class Penilaian extends CI_Controller {
 	      }
 		
 		}
+
+		$this->excel->setActiveSheetIndex(0);
+		
 		$filename='test.xlsx'; 
 		header('Content-Type: application/vnd.ms-excel'); 
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); 

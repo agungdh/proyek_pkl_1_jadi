@@ -36,7 +36,7 @@ if ($this->session->level != 1) {
         </tr>
       </thead>
 
-      <tbody>
+      <tbody style="cursor: pointer;">
         <?php
         foreach ($this->db->get('pengajuan')->result() as $item) {
           $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->tipeversi_id))->result());

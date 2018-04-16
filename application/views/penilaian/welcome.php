@@ -68,7 +68,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody style="cursor: pointer;">
             <?php
             foreach ($data['penilaian'] as $item) {
               $href = base_url('welcome/ubah/'.$item->id);
