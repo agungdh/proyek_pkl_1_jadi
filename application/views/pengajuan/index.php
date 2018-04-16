@@ -51,6 +51,7 @@
           if ($prodi == null) {
             // $tblUser = $user->username;
             $prodi = $fakultas = null;
+            $prodi = "UNIVERSITAS";
           } else {
             $prodi = $this->m_universal->get_id('prodi', $item->prodi_id);
             $fakultas = $this->m_universal->get_id('fakultas', $prodi->fakultas_id);
