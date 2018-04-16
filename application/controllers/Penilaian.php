@@ -265,7 +265,7 @@ class Penilaian extends CI_Controller {
 
 		$this->excel->setActiveSheetIndex(0);
 		
-		$filename='test.xlsx'; 
+		$filename='laporan pengajuan borang.xlsx'; 
 		header('Content-Type: application/vnd.ms-excel'); 
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); 
 		header('Cache-Control: max-age=0'); 
