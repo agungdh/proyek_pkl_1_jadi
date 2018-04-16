@@ -32,7 +32,7 @@ if ($this->session->level != 1) {
                     <th>TAHUN BORANG</th>
                     <th>PRODI</th>
                     <th>FAKULTAS</th>
-                    <th>UPLOAD</th>
+                    <th>PERSENTASE DOKUMEN</th>
         </tr>
       </thead>
 

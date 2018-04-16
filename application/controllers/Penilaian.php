@@ -155,7 +155,7 @@ class Penilaian extends CI_Controller {
 		$this->excel->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
 
-		$this->excel->getActiveSheet()->setCellValue('A6', 'PERSENTASE UPLOAD');
+		$this->excel->getActiveSheet()->setCellValue('A6', 'PERSENTASE DOKUMEN');
 		$this->excel->getActiveSheet()->setCellValue('B6', number_format((float)$persentase, 2, '.', '') . ' %');
 		
 		$this->excel->getActiveSheet()->setCellValue('A7', 'TANGGAL PENILAIAN');

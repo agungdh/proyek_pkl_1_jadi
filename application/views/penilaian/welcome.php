@@ -50,7 +50,7 @@
           ?>
           Prodi: <?php echo $prodi->nama; ?><br>
           Fakultas: <?php echo $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama; ?><br>
-          Upload: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?><br>
+          Persentase Dokumen: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?><br>
         <br>
         
 
@@ -64,7 +64,7 @@
       <thead>
         <tr>
             <th>TANGGAL</th>
-            <th>NILAI</th>
+            <th>PERSENTASE PENILAIAN</th>
         </tr>
       </thead>
 
