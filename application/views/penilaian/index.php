@@ -27,15 +27,15 @@
             <u>Pengajuan:</u></a>
           </font><br>
           <?php
-          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->id_tipeversi))->row()->versi_id))->row();
-          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->id_tipeversi))->result());
-          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id_pengajuan))->result());
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->tipeversi_id))->row()->versi_id))->row();
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->tipeversi_id))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id))->result());
           // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
           $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
           ?>
-          Tanggal Pengajuan: <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tgl_pengajuan); ?><br>
+          Tanggal Pengajuan: <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tanggal); ?><br>
           Versi: <?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?><br>
-          Tipe Versi: <?php echo $data['pengajuan']->tipe; ?><br>
+          Tipe Versi: <?php echo $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->tipeversi_id))->row()->tipe; ?><br>
           Tahun Borang: <?php echo $data['pengajuan']->tahun_borang; ?><br>
           <?php
           // $user = $this->m_universal->get_id('user', $data['pengajuan']->id_user);
@@ -46,17 +46,23 @@
           // } else {
           //   $tblUser = $user->username;
           // }
-          $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->id_prodi))->row();
+          if ($data['pengajuan']->prodi_id == 0) {
+            echo 'Universitas<br>';
+          } else {
+          $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->prodi_id))->row();
           ?>
           Prodi: <?php echo $prodi->nama; ?><br>
           Fakultas: <?php echo $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama; ?><br>
+          <?php
+          }
+          ?>
           Persentase Dokumen: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?><br>
         <br>
         
 
       </strong></h5>
 
-      <a href='<?php echo base_url("penilaian/tambah/".$data['pengajuan']->id_pengajuan); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Penilaian</button></a>
+      <a href='<?php echo base_url("penilaian/tambah/".$data['pengajuan']->id); ?>'><button class="btn btn-success"><i class="fa fa-plus"></i> Penilaian</button></a>
 
 
     </div>
@@ -80,7 +86,7 @@
                 // $this->db->select_sum('nilai');
                 // $this->db->where(array('penilaian_id' => $item->id));
                 // $jumlah = $this->db->get('detilpenilaian')->row()->nilai;
-                $jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->id_tipeversi);
+                $jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->tipeversi_id);
                 $this->db->where('penilaian_id', $item->id);
                 $jumlah_yang_dinilai = $this->db->count_all_results('detilpenilaian');
                 // $hasil = ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100;

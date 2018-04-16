@@ -12,8 +12,8 @@ class Penilaian extends CI_Controller {
 	function index($id_pengajuan) {
 		$data['isi'] = "penilaian/index";
 		$data['data']['penilaian'] = $this->m_penilaian->ambil_penilaian($id_pengajuan);
-		$data['data']['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($id_pengajuan);
-
+		$data['data']['pengajuan'] = $this->db->get_where('pengajuan', array('id' => $id_pengajuan))->row();
+		// var_dump($data); exit();
 		$this->load->view("template/template", $data);
 	}
 
