@@ -107,7 +107,7 @@ class Penilaian extends CI_Controller {
           // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
           $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
           if ($data['pengajuan']->prodi_id != 0) {
-			  $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->id_prodi))->row();
+			  $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->prodi_id))->row();
           }
 
 		$this->load->library('excel');
