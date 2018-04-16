@@ -64,7 +64,7 @@
           ?>
           Prodi: <?php echo $prodi->nama; ?><br>
           Fakultas: <?php echo $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama; ?><br>
-          Upload: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?>
+          Persentase Dokumen: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?>
         <br>
         <a href='<?php echo base_url("penilaian/index/" . $data['pengajuan']->id_pengajuan); ?>'>
           <font color=blue>
