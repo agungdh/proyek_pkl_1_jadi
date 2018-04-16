@@ -111,7 +111,7 @@
 <script type="text/javascript">
 function hapus(id) {
   if (confirm("Yakin hapus ?")) {
-    window.location = "<?php echo base_url('penilaian/aksi_hapus/'); ?>" + id + '/' + '<?php echo $data['pengajuan']->id_pengajuan; ?>';
+    window.location = "<?php echo base_url('penilaian/aksi_hapus/'); ?>" + id + '/' + '<?php echo $data['pengajuan']->id; ?>';
   }
 }
 </script>
