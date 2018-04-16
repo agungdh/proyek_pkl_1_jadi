@@ -34,20 +34,20 @@
     <div class="form-group">
       <h5><strong>
 
-        <a href='<?php echo base_url(); ?>'>
+        <a href='<?php echo base_url("welcome"); ?>'>
           <font color=blue>
             <u>Pengajuan:</u></a>
           </font><br>
           <?php
-          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->id_tipeversi))->row()->versi_id))->row();
-          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->id_tipeversi))->result());
-          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id_pengajuan))->result());
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->tipeversi_id))->row()->versi_id))->row();
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->tipeversi_id))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id))->result());
           // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
           $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
           ?>
-          Tanggal Pengajuan: <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tgl_pengajuan); ?><br>
+          Tanggal Pengajuan: <?php echo $this->pustaka->tanggal_indo($data['pengajuan']->tanggal); ?><br>
           Versi: <?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?><br>
-          Tipe Versi: <?php echo $data['pengajuan']->tipe; ?><br>
+          Tipe Versi: <?php echo $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->tipeversi_id))->row()->tipe; ?><br>
           Tahun Borang: <?php echo $data['pengajuan']->tahun_borang; ?><br>
           <?php
           // $user = $this->m_universal->get_id('user', $data['pengajuan']->id_user);
@@ -58,20 +58,26 @@
           // } else {
           //   $tblUser = $user->username;
           // }
-          $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->id_prodi))->row();
+          if ($data['pengajuan']->prodi_id == 0) {
+            echo 'Universitas<br>';
+          } else {
+          $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->prodi_id))->row();
           ?>
           Prodi: <?php echo $prodi->nama; ?><br>
           Fakultas: <?php echo $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama; ?><br>
-          Persentase Dokumen: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?>
+          <?php
+          }
+          ?>
+          Persentase Dokumen: <?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?><br>
         <br>
-        <a href='<?php echo base_url("welcome/penilaian/" . $data['pengajuan']->id_pengajuan); ?>'>
+        <a href='<?php echo base_url("welcome/penilaian/" . $data['pengajuan']->id); ?>'>
           <font color=blue>
             <u>Penilaian:</u></a>
           </font><br>
         <?php
         echo 'Tanggal: ' . $this->pustaka->tanggal_indo($data['penilaian_id']->tanggal);
         ?><br><?php
-        $jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->id_tipeversi);
+        $jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->tipeversi_id);
         $this->db->where('penilaian_id', $data['penilaian_id']->id);
         $jumlah_yang_dinilai = $this->db->count_all_results('detilpenilaian');
         $hasil = $jumlah_yang_dinilai != 0 ? ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100 : 0;
@@ -85,7 +91,7 @@
   <div class="box-body">
 
     <form method="post" action="<?php echo base_url('penilaian/aksi_ubah'); ?>">
-    <input type="hidden" name="id_pengajuan" value="<?php echo $data['pengajuan']->id_pengajuan; ?>">
+    <input type="hidden" name="id_pengajuan" value="<?php echo $data['pengajuan']->id; ?>">
     <input type="hidden" name="id_penilaian" value="<?php echo $data['penilaian_id']->id; ?>">
     <input type="hidden" name="last_tab" id="last_tab" value="1">
     <div class="nav-tabs-custom">

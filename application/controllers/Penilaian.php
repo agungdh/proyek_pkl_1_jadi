@@ -98,15 +98,17 @@ class Penilaian extends CI_Controller {
 	function export_excel($id_penilaian) {
 		$data['penilaian_id'] = $this->m_penilaian->ambil_penilaian_id($id_penilaian);
 		$data['penilaian'] = $this->m_penilaian->ambil_penilaian($data['penilaian_id']->pengajuan_id);
-		$data['pengajuan'] = $this->m_penilaian->ambil_pengajuan_id($data['penilaian_id']->pengajuan_id);
-		$data['standar'] = $this->m_penilaian->ambil_standar($data['pengajuan']->id_tipeversi);
+		$data['pengajuan'] = $this->db->get_where('pengajuan', array('id' => $data['penilaian_id']->pengajuan_id))->row();
+		$data['standar'] = $this->m_penilaian->ambil_standar($data['pengajuan']->tipeversi_id);
 
-          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->id_tipeversi))->row()->versi_id))->row();
-          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->id_tipeversi))->result());
-          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id_pengajuan))->result());
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->tipeversi_id))->row()->versi_id))->row();
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $data['pengajuan']->tipeversi_id))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $data['pengajuan']->id))->result());
           // $persentase = $jumlah_dokumen / $jumlah_total_dokumen * 100;
           $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
-		  $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->id_prodi))->row();
+          if ($data['pengajuan']->prodi_id != 0) {
+			  $prodi = $this->db->get_where('prodi', array('id' => $data['pengajuan']->id_prodi))->row();
+          }
 
 		$this->load->library('excel');
 		
@@ -136,7 +138,7 @@ class Penilaian extends CI_Controller {
 		$this->excel->getActiveSheet()->mergeCells('A1:G1');
 		$this->excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
-		$this->excel->getActiveSheet()->setCellValue('A2', strtoupper('VERSI ' . $versih->nama . ' ' . $versih->tahun . ' - ' . $data['pengajuan']->tipe));
+		$this->excel->getActiveSheet()->setCellValue('A2', strtoupper('VERSI ' . $versih->nama . ' ' . $versih->tahun . ' - ' . $this->db->get_where('tipeversi', array('id' => $data['pengajuan']->tipeversi_id))->row()->tipe));
 		$this->excel->getActiveSheet()->getStyle('A2')->getFont()->setSize(20);
 		$this->excel->getActiveSheet()->getStyle('A2')->getFont()->setBold(true);
 		$this->excel->getActiveSheet()->mergeCells('A2:G2');
@@ -148,7 +150,11 @@ class Penilaian extends CI_Controller {
 		$this->excel->getActiveSheet()->mergeCells('A3:G3');
 		$this->excel->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
-		$this->excel->getActiveSheet()->setCellValue('A4', strtoupper('PRODI ' . $prodi->nama . ' - ' . $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama));
+		if ($data['pengajuan']->prodi_id != 0) {
+			$this->excel->getActiveSheet()->setCellValue('A4', strtoupper('PRODI ' . $prodi->nama . ' - ' . $this->db->get_where('fakultas', array('id' => $prodi->fakultas_id))->row()->nama));		
+		} else {
+			$this->excel->getActiveSheet()->setCellValue('A4', strtoupper('universitas'));		
+		}
 		$this->excel->getActiveSheet()->getStyle('A4')->getFont()->setSize(20);
 		$this->excel->getActiveSheet()->getStyle('A4')->getFont()->setBold(true);
 		$this->excel->getActiveSheet()->mergeCells('A4:G4');
@@ -160,7 +166,7 @@ class Penilaian extends CI_Controller {
 		
 		$this->excel->getActiveSheet()->setCellValue('A7', 'TANGGAL PENILAIAN');
 		$this->excel->getActiveSheet()->setCellValue('B7', $this->pustaka->tanggal_indo($data['penilaian_id']->tanggal));
-		$jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->id_tipeversi);
+		$jumlah_yang_harus_dinilai = $this->m_penilaian->hitung_butir_penilaian($data['pengajuan']->tipeversi_id);
         $this->db->where('penilaian_id', $data['penilaian_id']->id);
         $jumlah_yang_dinilai = $this->db->count_all_results('detilpenilaian');
         $hasil = $jumlah_yang_dinilai != 0 ? ($jumlah_yang_dinilai / $jumlah_yang_harus_dinilai) * 100 : 0;
