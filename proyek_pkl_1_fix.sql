@@ -397,6 +397,19 @@ INSERT INTO `butirpenilaian` (`id`, `nomor_butir`, `deskripsi`, `bobot`, `butir_
 (177,	'7.3.3.3',	'Isi Dokumen',	0.80,	155),
 (178,	'1.1.1.1',	'Visi Misi',	0.70,	5);
 
+DROP TABLE IF EXISTS `ci_sessions`;
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `data` blob NOT NULL,
+  KEY `ci_sessions_timestamp` (`timestamp`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('b949f6ee17979a254bf6ad5d8bd5597a8b9a2428',	'127.0.0.1',	1523932538,	'__ci_last_regenerate|i:1523932498;id|s:2:\"18\";username|s:5:\"admin\";level|s:1:\"1\";prodi_id|s:1:\"0\";login|b:1;'),
+('a1bf11e8231f7dc1d58b42328f4680386498ed1b',	'::1',	1523932742,	'__ci_last_regenerate|i:1523932742;');
+
 DROP TABLE IF EXISTS `detilpenilaian`;
 CREATE TABLE `detilpenilaian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -419,23 +432,22 @@ INSERT INTO `detilpenilaian` (`id`, `penilaian_id`, `butirpenilaian_id`, `nilai`
 (9,	3,	10,	6.00),
 (56,	2,	11,	6.00),
 (57,	4,	5,	2.50),
-(58,	5,	5,	1.00),
-(59,	5,	6,	2.00),
-(60,	5,	7,	3.00),
-(61,	5,	8,	4.00),
-(62,	5,	9,	4.00),
-(63,	5,	10,	2.00),
-(64,	5,	49,	3.00),
-(65,	5,	11,	2.00),
-(66,	5,	12,	3.00),
-(67,	5,	13,	2.00),
-(68,	5,	14,	2.00),
-(69,	5,	15,	1.00),
-(70,	5,	16,	2.00),
-(71,	5,	17,	1.00),
-(72,	5,	48,	0.20),
-(73,	5,	24,	2.00),
-(74,	6,	5,	2.00);
+(74,	6,	5,	2.00),
+(144,	12,	5,	0.01),
+(145,	12,	6,	0.02),
+(146,	12,	7,	0.01),
+(147,	12,	8,	0.02),
+(148,	12,	9,	0.02),
+(149,	12,	10,	0.01),
+(150,	12,	49,	0.01),
+(151,	12,	11,	0.01),
+(152,	13,	5,	0.01),
+(153,	13,	6,	0.01),
+(154,	13,	7,	0.01),
+(155,	13,	8,	0.01),
+(156,	13,	9,	0.02),
+(157,	14,	5,	2.00),
+(158,	14,	6,	3.00);
 
 DROP TABLE IF EXISTS `dokumen`;
 CREATE TABLE `dokumen` (
@@ -460,7 +472,10 @@ INSERT INTO `dokumen` (`id`, `nama_file`, `nama_file_asli`, `mime`, `url`, `list
 (58,	'58_Gambar-Pemandangan-Alam-Danau-1194.jpg',	'Gambar-Pemandangan-Alam-Danau-1194.jpg',	'image/jpeg',	'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.1//58_Gambar-Pemandangan-Alam-Danau-1194.jpg',	397,	7),
 (59,	'59_Gambar-Pemandangan-Alam-Pantai-1323.jpg',	'Gambar-Pemandangan-Alam-Pantai-1323.jpg',	'image/jpeg',	'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.3//59_Gambar-Pemandangan-Alam-Pantai-1323.jpg',	409,	7),
 (60,	'60_[DownSub.com] Kotlin Tutorial.srt',	'[DownSub.com] Kotlin Tutorial.srt',	'application/x-subrip',	'upload/A/A1/2018/7 Standar/AIPT/standar_5/substandar_5.1/butir_5.1.2//60_[DownSub.com] Kotlin Tutorial.srt',	630,	7),
-(61,	'61_[DownSub.com] Kotlin Tutorial.srt',	'[DownSub.com] Kotlin Tutorial.srt',	'application/x-subrip',	'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.1//61_[DownSub.com] Kotlin Tutorial.srt',	392,	7);
+(61,	'61_[DownSub.com] Kotlin Tutorial.srt',	'[DownSub.com] Kotlin Tutorial.srt',	'application/x-subrip',	'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.1//61_[DownSub.com] Kotlin Tutorial.srt',	392,	7),
+(63,	'63_limbahb3 (3).sql',	'limbahb3 (3).sql',	'application/sql',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.1//63_limbahb3 (3).sql',	258,	7),
+(64,	'64_limbahb3.sql',	'limbahb3.sql',	'application/sql',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.1//64_limbahb3.sql',	259,	7),
+(65,	'65_limbahb3 (3).sql',	'limbahb3 (3).sql',	'application/sql',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.2//65_limbahb3 (3).sql',	260,	7);
 
 DROP TABLE IF EXISTS `fakultas`;
 CREATE TABLE `fakultas` (
@@ -996,8 +1011,9 @@ CREATE TABLE `pengajuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `pengajuan` (`id`, `tanggal`, `prodi_id`, `tipeversi_id`, `tahun_borang`) VALUES
-(7,	'2018-04-13',	7,	3,	'2018'),
-(8,	'2018-04-13',	13,	4,	'2003');
+(7,	'2018-04-13',	13,	3,	'2018'),
+(8,	'2018-04-13',	13,	4,	'2003'),
+(9,	'2018-04-16',	15,	3,	'2019');
 
 DROP TABLE IF EXISTS `penilaian`;
 CREATE TABLE `penilaian` (
@@ -1013,9 +1029,11 @@ INSERT INTO `penilaian` (`id`, `tanggal`, `pengajuan_id`) VALUES
 (2,	'2018-03-14',	2),
 (3,	'2018-03-14',	2),
 (4,	'2018-04-12',	2),
-(5,	'2018-04-13',	7),
 (6,	'2018-04-13',	7),
-(7,	'2018-04-13',	8);
+(7,	'2018-04-13',	8),
+(12,	'2018-04-16',	9),
+(13,	'2018-04-16',	9),
+(14,	'2018-04-16',	7);
 
 DROP TABLE IF EXISTS `prodi`;
 CREATE TABLE `prodi` (
@@ -1194,7 +1212,8 @@ INSERT INTO `user` (`id`, `username`, `password`, `level`, `prodi_id`) VALUES
 (3,	'univ',	'c001deeb52dc9ff9e859f65772659245cff32c5607e8932f3efeba343bd829cc497f299789b15cc27c95dc3ec865447679e7bbb52138a3e97f3f4b38c7c17874',	2,	0),
 (4,	'ophumas',	'8f18c505ea83c1503b199ca936692912f9e08fda787fbedfc2fc144467bb3d4243ed1df050f001225df6c93dfba15f465eda50e97a10705299f0ff71137b3520',	3,	7),
 (14,	'manajemen',	'd2d966dc907af41d781d1a44142d121cd66d209e21768cd9d8dfb2b57b828c8f5e2ac88b6d9944f00e6aa02af582414dfebf4617695ab8af9989e4c3a8b21e24',	3,	17),
-(18,	'admin',	'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec',	1,	0);
+(18,	'admin',	'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec',	1,	0),
+(20,	'teknikinformatika',	'777dbe55d36fb70581749ab1541d4e9008db4d5ca0db89f929f0e65b74cb163181c42f1dd05066bd260274fdf30dc4c3b7e468c139abb8b1ebf59b223da3c230',	3,	13);
 
 DROP TABLE IF EXISTS `versi`;
 CREATE TABLE `versi` (
@@ -1278,4 +1297,4 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_substandar` AS select `s
 DROP TABLE IF EXISTS `v_versitipe`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_versitipe` AS select `t`.`id` AS `id_tipeversi`,`t`.`tipe` AS `tipe`,`v`.`id` AS `id_versi`,`v`.`nama` AS `nama`,`v`.`versi` AS `versi`,`v`.`tahun` AS `tahun` from (`tipeversi` `t` join `versi` `v`) where (`t`.`versi_id` = `v`.`id`);
 
--- 2018-04-13 10:09:32
+-- 2018-04-17 02:40:13
