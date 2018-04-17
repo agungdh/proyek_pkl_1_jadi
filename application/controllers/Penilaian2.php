@@ -5,6 +5,15 @@ class Penilaian2 extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
+
+		if ($this->session->login != true) {
+			redirect(base_url('logout'));
+		}
+
+		if ($this->session->level != 1) {
+			redirect(base_url('logout'));
+		}
+
 	}
 
 	function index(){
