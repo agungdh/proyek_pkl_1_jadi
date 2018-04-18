@@ -397,19 +397,6 @@ INSERT INTO `butirpenilaian` (`id`, `nomor_butir`, `deskripsi`, `bobot`, `butir_
 (177,	'7.3.3.3',	'Isi Dokumen',	0.80,	155),
 (178,	'1.1.1.1',	'Visi Misi',	0.70,	5);
 
-DROP TABLE IF EXISTS `ci_sessions`;
-CREATE TABLE `ci_sessions` (
-  `id` varchar(128) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) unsigned NOT NULL DEFAULT '0',
-  `data` blob NOT NULL,
-  KEY `ci_sessions_timestamp` (`timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('b949f6ee17979a254bf6ad5d8bd5597a8b9a2428',	'127.0.0.1',	1523932538,	'__ci_last_regenerate|i:1523932498;id|s:2:\"18\";username|s:5:\"admin\";level|s:1:\"1\";prodi_id|s:1:\"0\";login|b:1;'),
-('a1bf11e8231f7dc1d58b42328f4680386498ed1b',	'::1',	1523932742,	'__ci_last_regenerate|i:1523932742;');
-
 DROP TABLE IF EXISTS `detilpenilaian`;
 CREATE TABLE `detilpenilaian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -475,7 +462,8 @@ INSERT INTO `dokumen` (`id`, `nama_file`, `nama_file_asli`, `mime`, `url`, `list
 (61,	'61_[DownSub.com] Kotlin Tutorial.srt',	'[DownSub.com] Kotlin Tutorial.srt',	'application/x-subrip',	'upload/A/A1/2018/7 Standar/AIPT/standar_1/substandar_1.1/butir_1.1.1//61_[DownSub.com] Kotlin Tutorial.srt',	392,	7),
 (63,	'63_limbahb3 (3).sql',	'limbahb3 (3).sql',	'application/sql',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.1//63_limbahb3 (3).sql',	258,	7),
 (64,	'64_limbahb3.sql',	'limbahb3.sql',	'application/sql',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.1//64_limbahb3.sql',	259,	7),
-(65,	'65_limbahb3 (3).sql',	'limbahb3 (3).sql',	'application/sql',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.2//65_limbahb3 (3).sql',	260,	7);
+(65,	'65_limbahb3 (3).sql',	'limbahb3 (3).sql',	'application/sql',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.2//65_limbahb3 (3).sql',	260,	7),
+(66,	'66_Gambar-Pemandangan-Alam-Danau-1194.jpg',	'Gambar-Pemandangan-Alam-Danau-1194.jpg',	'image/jpeg',	'upload/C/C1/2018/7 Standar/Borang Prodi S2/standar_1/substandar_1.1/butir_1.1.1//66_Gambar-Pemandangan-Alam-Danau-1194.jpg',	262,	7);
 
 DROP TABLE IF EXISTS `fakultas`;
 CREATE TABLE `fakultas` (
@@ -1297,4 +1285,4 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_substandar` AS select `s
 DROP TABLE IF EXISTS `v_versitipe`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v_versitipe` AS select `t`.`id` AS `id_tipeversi`,`t`.`tipe` AS `tipe`,`v`.`id` AS `id_versi`,`v`.`nama` AS `nama`,`v`.`versi` AS `versi`,`v`.`tahun` AS `tahun` from (`tipeversi` `t` join `versi` `v`) where (`t`.`versi_id` = `v`.`id`);
 
--- 2018-04-17 02:40:13
+-- 2018-04-18 06:21:00
