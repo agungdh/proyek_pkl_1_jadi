@@ -21,7 +21,7 @@ class Dokumen extends CI_Controller {
 		$this->load->view("template/template", $data);
 	}
 
-	function hapus($id_listdokumen, $id_dokumen) {
+	function hapus($id_listdokumen, $id_dokumen, $tab) {
 		// $data['isi'] = "dokumen/index";
 		// $data['data']['pengajuan'] = $this->db->get_where('pengajuan', array("id" => $id))->row();
 		// $data['data']['standar'] = $this->m_dokumen->ambil_standar($data['data']['pengajuan']->tipeversi_id);
@@ -37,7 +37,7 @@ class Dokumen extends CI_Controller {
 
 		unlink($link);
 
-		redirect(base_url('dokumen/index/' . $id_dokumen));
+		redirect(base_url('dokumen/index/' . $id_dokumen . '?tab=' . $tab));
 	}
 
 	function upload() {

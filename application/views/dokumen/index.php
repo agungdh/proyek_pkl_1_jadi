@@ -143,7 +143,7 @@
     <script type="text/javascript">
     function hapus(id) {
       if (confirm("Yakin hapus ?")) {
-        window.location = "<?php echo base_url('dokumen/hapus/'); ?>" + id + "/<?php echo $data['pengajuan']->id; ?>";
+        window.location = "<?php echo base_url('dokumen/hapus/'); ?>" + id + "/<?php echo $data['pengajuan']->id; ?>/" + $('#last_tab').val();
       }
     }
     </script>
