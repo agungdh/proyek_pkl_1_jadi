@@ -110,7 +110,7 @@
                       $dokumen = $this->m_dokumen->ambil_dokumen($data['pengajuan']->id, $item2->id_listdokumen);
                       if ($dokumen != null) {
                         ?>
-                        <a href="<?php echo base_url($dokumen->url); ?>"><?php echo $dokumen->nama_file; ?></a>
+                        <a class="btn btn-danger btn-xs" onclick="hapus('<?php echo $dokumen->id; ?>')"><i class="fa fa-trash"></i> </a> <a href="<?php echo base_url($dokumen->url); ?>"><?php echo $dokumen->nama_file; ?></a>
                         <?php
                       } else {
                         echo "-";
@@ -139,3 +139,11 @@
     </div>
     <!-- nav-tabs-custom -->
     </form>
+
+    <script type="text/javascript">
+    function hapus(id) {
+      if (confirm("Yakin hapus ?")) {
+        window.location = "<?php echo base_url('dokumen/hapus/'); ?>" + id + "/<?php echo $data['pengajuan']->id; ?>";
+      }
+    }
+    </script>
