@@ -38,21 +38,22 @@
       <tbody>
         <?php
         foreach ($data['pengajuanborang'] as $item) {
-          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->id_tipeversi))->result());
-          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id_pengajuan))->result());
+          $jumlah_total_dokumen = count($this->db->get_where('v_pengajuan_dokumen', array('id_tipeversi' => $item->tipeversi_id))->result());
+          $jumlah_dokumen = count($this->db->get_where('dokumen', array('pengajuan_id' => $item->id))->result());
           $persentase = $jumlah_dokumen != 0 ? $jumlah_dokumen / $jumlah_total_dokumen * 100 : 0;
-          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->id_tipeversi))->row()->versi_id))->row();
+          $versih = $this->db->get_where('versi', array('id' => $this->db->get_where('tipeversi', array('id' => $item->tipeversi_id))->row()->versi_id))->row();
+          $tipeversih = $this->db->get_where('tipeversi', array('id' => $item->tipeversi_id))->row();
           ?>
           <tr>
-            <th><?php echo $this->pustaka->tanggal_indo($item->tgl_pengajuan); ?></th>
+            <th><?php echo $this->pustaka->tanggal_indo($item->tanggal); ?></th>
             <th><?php echo $versih->versi . ' | ' . $versih->nama . ' | ' . $versih->tahun; ?></th>
-            <th><?php echo $item->tipe; ?></th>
+            <th><?php echo $tipeversih->tipe; ?></th>
             <th><?php echo $item->tahun_borang; ?></th>
             <th><?php echo number_format((float)$persentase, 2, '.', '') . ' %'; ?></th>
               <th>
-                <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id_pengajuan) ?>"><i class="fa fa-share"></i>  Dokumen</a>
-              <!--   <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id_pengajuan) ?>"><i class="fa fa-pencil"></i> </a>
-                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id_pengajuan; ?>')"><i class="fa fa-trash"></i> </a> -->
+                <a class="btn btn-primary" href="<?php echo base_url('dokumen/index/'.$item->id) ?>"><i class="fa fa-share"></i>  Dokumen</a>
+              <!--   <a class="btn btn-info" href="<?php echo base_url('pengajuan/ubah/'.$item->id) ?>"><i class="fa fa-pencil"></i> </a>
+                <a class="btn btn-danger" onclick="hapus('<?php echo $item->id; ?>')"><i class="fa fa-trash"></i> </a> -->
               </th>
           </tr>
           <?php

@@ -16,7 +16,9 @@ class Pengajuanborang extends CI_Controller {
 	function index() {
 		// var_dump($this->session); exit();
 		$data['isi'] = "pengajuanborang/index";
-		$data['data']['pengajuanborang'] = $this->m_pengajuanborang->ambil_pengajuan($this->session->prodi_id);
+		// $data['data']['pengajuanborang'] = $this->m_pengajuanborang->ambil_pengajuan($this->session->prodi_id);
+		$where['prodi_id'] = $this->session->prodi_id;
+		$data['data']['pengajuanborang'] = $this->db->get_where('pengajuan', $where)->result();
 
 		$this->load->view("template/template", $data);
 	}
